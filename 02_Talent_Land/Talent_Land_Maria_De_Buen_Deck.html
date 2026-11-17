@@ -1,0 +1,1653 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Talent Land · UX y AI: El nuevo motor del crecimiento empresarial | María De Buen</title>
+  
+  <!-- Tipografía Oficial Onest y JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Onest:wght@200;300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    /* ───────── BPDS 2027 & Talent Land Signature Palette ───────── */
+    :root, [data-theme="dark"] {
+      --bp-bg: oklch(0.11 0.035 248);
+      --bp-bg-2: oklch(0.15 0.045 248);
+      --bp-bg-surface: oklch(0.17 0.04 248);
+      --bp-stage-bg: radial-gradient(circle at 50% 35%, #141e34 0%, #0a0e1a 100%);
+      --bp-fg: oklch(0.98 0.003 250);
+      --bp-muted: oklch(0.80 0.018 248);
+      --bp-dim: oklch(0.65 0.014 248);
+      --bp-line: color-mix(in oklab, var(--bp-fg) 12%, transparent);
+      --bp-line-strong: color-mix(in oklab, var(--bp-fg) 20%, transparent);
+      
+      /* Talent Land Signature Accents */
+      --tl-cyan: #00d2ff;
+      --tl-cyan-soft: #16A2CD;
+      --tl-coral: #ff6b4a;
+      --tl-coral-vibrant: #e75125;
+      --tl-mint: #2dd4bf;
+      --tl-purple: #a855f7;
+
+      --bp-gradient-cyan: linear-gradient(135deg, #00d2ff 0%, #16A2CD 100%);
+      --bp-gradient-coral: linear-gradient(135deg, #ff6b4a 0%, #e75125 100%);
+      --bp-gradient-paradox: linear-gradient(135deg, #00d2ff 0%, #ff6b4a 100%);
+      
+      --radius: 0.75rem;
+      --radius-sm: 0.5rem;
+      --shadow-elevated: 0 24px 48px -12px rgba(0, 0, 0, 0.65), 0 0 0 1px var(--bp-line);
+      --shadow-glow-cyan: 0 0 40px rgba(0, 210, 255, 0.25);
+      --shadow-glow-coral: 0 0 40px rgba(255, 107, 74, 0.25);
+    }
+
+    [data-theme="light"] {
+      --bp-bg: #f8fafc;
+      --bp-bg-2: #f1f5f9;
+      --bp-bg-surface: #ffffff;
+      --bp-stage-bg: radial-gradient(circle at 50% 35%, #ffffff 0%, #eef2f6 100%);
+      --bp-fg: #090d16;
+      --bp-muted: #334155;
+      --bp-dim: #64748b;
+      --bp-line: #cbd5e1;
+      --bp-line-strong: #94a3b8;
+      
+      --tl-cyan: #0284c7;
+      --tl-cyan-soft: #0369a1;
+      --tl-coral: #ea580c;
+      --tl-coral-vibrant: #c2410c;
+      --tl-mint: #0d9488;
+      --tl-purple: #7e22ce;
+
+      --bp-gradient-cyan: linear-gradient(135deg, #0284c7 0%, #0369a1 100%);
+      --bp-gradient-coral: linear-gradient(135deg, #ea580c 0%, #c2410c 100%);
+      --bp-gradient-paradox: linear-gradient(135deg, #0284c7 0%, #ea580c 100%);
+      
+      --shadow-elevated: 0 20px 40px -15px rgba(0, 0, 0, 0.1), 0 0 0 1px var(--bp-line);
+      --shadow-glow-cyan: 0 0 30px rgba(2, 132, 199, 0.15);
+      --shadow-glow-coral: 0 0 30px rgba(234, 88, 12, 0.15);
+    }
+
+    /* ───────── Reset & Base ───────── */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html, body {
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      font-family: 'Onest', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: var(--bp-bg);
+      color: var(--bp-fg);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ───────── Shell de la Aplicación ───────── */
+    #app {
+      display: flex;
+      flex-direction: column;
+      width: 100vw;
+      height: 100vh;
+      position: relative;
+    }
+
+    /* ───────── Header / Barra Superior ───────── */
+    .top-bar {
+      height: 60px;
+      padding: 0 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid var(--bp-line);
+      background: color-mix(in oklab, var(--bp-bg) 85%, transparent);
+      backdrop-filter: blur(16px);
+      z-index: 50;
+      flex-shrink: 0;
+    }
+
+    .brand-group {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .brand-logo-badge {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      font-size: 15px;
+    }
+
+    .logo-tl {
+      background: #111;
+      color: #fff;
+      padding: 3px 8px;
+      border-radius: 4px;
+      font-size: 11px;
+      font-weight: 700;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+    }
+
+    .logo-bp {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .logo-bp-box {
+      width: 12px;
+      height: 12px;
+      background: var(--tl-cyan);
+      border-radius: 2px;
+    }
+
+    .brand-divider {
+      color: var(--bp-dim);
+      font-weight: 300;
+      font-size: 14px;
+    }
+
+    .brand-title {
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--bp-muted);
+    }
+
+    .brand-tag {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px;
+      text-transform: uppercase;
+      padding: 2px 8px;
+      border-radius: 9999px;
+      background: color-mix(in oklab, var(--tl-cyan) 14%, transparent);
+      color: var(--tl-cyan);
+      border: 1px solid color-mix(in oklab, var(--tl-cyan) 30%, transparent);
+      letter-spacing: 0.05em;
+    }
+
+    .top-actions {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .btn-action {
+      background: var(--bp-bg-surface);
+      border: 1px solid var(--bp-line);
+      color: var(--bp-fg);
+      padding: 7px 14px;
+      border-radius: var(--radius-sm);
+      font-family: inherit;
+      font-size: 12px;
+      font-weight: 500;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.15s ease;
+    }
+
+    .btn-action:hover {
+      background: color-mix(in oklab, var(--bp-fg) 8%, var(--bp-bg-surface));
+      border-color: var(--bp-line-strong);
+      transform: translateY(-1px);
+    }
+
+    .btn-action.primary {
+      background: var(--bp-gradient-cyan);
+      color: #000;
+      font-weight: 700;
+      border: none;
+    }
+
+    .btn-action.primary:hover {
+      box-shadow: 0 4px 14px rgba(0, 210, 255, 0.4);
+    }
+
+    /* ───────── Barra de Progreso ───────── */
+    .progress-track {
+      width: 100%;
+      height: 3px;
+      background: var(--bp-line);
+      position: relative;
+      flex-shrink: 0;
+    }
+
+    .progress-bar {
+      height: 100%;
+      width: 0%;
+      background: var(--bp-gradient-paradox);
+      transition: width 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    /* ───────── Viewport / Escenario de la Lámina ───────── */
+    .viewport {
+      flex: 1 1 auto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      position: relative;
+      background: var(--bp-bg);
+      overflow: hidden;
+    }
+
+    .slide-stage {
+      width: 100%;
+      max-width: 1400px;
+      aspect-ratio: 16 / 9;
+      max-height: 84vh;
+      background: var(--bp-stage-bg);
+      border: 1px solid var(--bp-line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow-elevated);
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      animation: fadeIn 0.25s ease-out;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: scale(0.995); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    .slide-header {
+      padding: 20px 36px 14px 36px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid var(--bp-line);
+      background: color-mix(in oklab, var(--bp-bg) 35%, transparent);
+      flex-shrink: 0;
+    }
+
+    .slide-meta {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      color: var(--bp-dim);
+    }
+
+    .slide-speaker {
+      font-size: 12px;
+      color: var(--bp-muted);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .slide-speaker img {
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 1.5px solid var(--tl-cyan);
+    }
+
+    .slide-speaker span {
+      color: var(--tl-cyan);
+      font-weight: 600;
+    }
+
+    .slide-content {
+      flex: 1 1 auto;
+      padding: 36px 48px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      overflow-y: auto;
+      position: relative;
+    }
+
+    .slide-footer {
+      padding: 12px 36px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-top: 1px solid var(--bp-line);
+      background: color-mix(in oklab, var(--bp-bg) 40%, transparent);
+      flex-shrink: 0;
+      font-size: 12px;
+      color: var(--bp-dim);
+    }
+
+    /* ───────── Tipografía de Impacto Talent Land ───────── */
+    .tl-display {
+      font-size: clamp(2.4rem, 4.4vw, 4.2rem);
+      font-weight: 800;
+      letter-spacing: -0.04em;
+      line-height: 1.05;
+      color: var(--bp-fg);
+      margin-bottom: 16px;
+    }
+
+    .tl-title {
+      font-size: clamp(1.8rem, 3vw, 2.8rem);
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      line-height: 1.15;
+      color: var(--bp-fg);
+      margin-bottom: 14px;
+    }
+
+    .tl-subtitle {
+      font-size: clamp(1.05rem, 1.5vw, 1.35rem);
+      color: var(--bp-muted);
+      font-weight: 300;
+      line-height: 1.5;
+      max-width: 65ch;
+    }
+
+    .tl-cyan {
+      color: var(--tl-cyan);
+    }
+
+    .tl-coral {
+      color: var(--tl-coral);
+    }
+
+    .tl-eyebrow {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: var(--tl-cyan);
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .tl-eyebrow::before {
+      content: "";
+      width: 6px;
+      height: 6px;
+      background: var(--tl-cyan);
+      border-radius: 50%;
+      display: inline-block;
+    }
+
+    /* ───────── Layouts & Tarjetas de Diapositiva ───────── */
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 32px;
+      align-items: center;
+      width: 100%;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      width: 100%;
+      margin-top: 24px;
+    }
+
+    .card {
+      background: color-mix(in oklab, var(--bp-fg) 4%, transparent);
+      border: 1px solid var(--bp-line);
+      border-radius: var(--radius);
+      padding: 26px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      transition: all 0.2s ease;
+      position: relative;
+    }
+
+    .card:hover {
+      border-color: var(--bp-line-strong);
+      transform: translateY(-2px);
+    }
+
+    .card.cyan-edge {
+      border-top: 3px solid var(--tl-cyan);
+    }
+
+    .card.coral-edge {
+      border-top: 3px solid var(--tl-coral);
+    }
+
+    .card.mint-edge {
+      border-top: 3px solid var(--tl-mint);
+    }
+
+    /* Esferas Diagnóstico Trust-Flow-Delight */
+    .sphere-container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 24px;
+      margin-top: 24px;
+      flex-wrap: wrap;
+    }
+
+    .sphere-card {
+      width: 320px;
+      height: 320px;
+      border-radius: 50%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 32px;
+      position: relative;
+      background: color-mix(in oklab, var(--bp-fg) 3%, transparent);
+      backdrop-filter: blur(8px);
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .sphere-card.trust {
+      border: 2px solid var(--tl-cyan);
+      box-shadow: 0 0 30px rgba(0, 210, 255, 0.15);
+    }
+
+    .sphere-card.flow {
+      border: 2px solid var(--tl-mint);
+      box-shadow: 0 0 30px rgba(45, 212, 191, 0.15);
+    }
+
+    .sphere-card.delight {
+      border: 2px solid var(--tl-coral);
+      box-shadow: 0 0 30px rgba(255, 107, 74, 0.15);
+    }
+
+    .sphere-card:hover {
+      transform: scale(1.04);
+    }
+
+    .sphere-card.trust:hover {
+      box-shadow: 0 0 50px rgba(0, 210, 255, 0.35);
+    }
+
+    .sphere-card.flow:hover {
+      box-shadow: 0 0 50px rgba(45, 212, 191, 0.35);
+    }
+
+    .sphere-card.delight:hover {
+      box-shadow: 0 0 50px rgba(255, 107, 74, 0.35);
+    }
+
+    .sphere-title {
+      font-size: 28px;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      margin-bottom: 8px;
+    }
+
+    .sphere-desc {
+      font-size: 14px;
+      line-height: 1.45;
+      color: var(--bp-muted);
+    }
+
+    /* Vista Previa de Figma con Lightbox */
+    .figma-preview-card {
+      background: #000;
+      border: 1px solid var(--bp-line);
+      border-radius: var(--radius);
+      overflow: hidden;
+      cursor: pointer;
+      position: relative;
+      box-shadow: 0 16px 36px rgba(0, 0, 0, 0.5);
+      transition: all 0.25s ease;
+      aspect-ratio: 16 / 9;
+    }
+
+    .figma-preview-card:hover {
+      border-color: var(--tl-cyan);
+      transform: scale(1.02);
+      box-shadow: var(--shadow-glow-cyan);
+    }
+
+    .figma-preview-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .figma-preview-badge {
+      position: absolute;
+      bottom: 12px;
+      right: 12px;
+      background: rgba(0, 0, 0, 0.75);
+      backdrop-filter: blur(8px);
+      color: #fff;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      padding: 4px 10px;
+      border-radius: 9999px;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    /* ───────── Lightbox Modal ───────── */
+    .lightbox-modal {
+      position: fixed;
+      inset: 0;
+      background: rgba(4, 7, 15, 0.95);
+      backdrop-filter: blur(20px);
+      z-index: 200;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 32px;
+    }
+
+    .lightbox-modal.open {
+      display: flex;
+    }
+
+    .lightbox-img {
+      max-width: 92vw;
+      max-height: 90vh;
+      object-fit: contain;
+      border-radius: 8px;
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.9), 0 0 0 1px rgba(255, 255, 255, 0.15);
+      animation: zoomIn 0.2s ease-out;
+    }
+
+    @keyframes zoomIn {
+      from { transform: scale(0.95); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
+    }
+
+    .btn-close-lightbox {
+      position: absolute;
+      top: 24px;
+      right: 28px;
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      color: #fff;
+      font-size: 18px;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.15s ease;
+    }
+
+    .btn-close-lightbox:hover {
+      background: var(--tl-coral);
+      border-color: var(--tl-coral);
+    }
+
+    /* ───────── Barra Inferior de Navegación ───────── */
+    .bottom-bar {
+      height: 64px;
+      padding: 0 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-top: 1px solid var(--bp-line);
+      background: color-mix(in oklab, var(--bp-bg) 85%, transparent);
+      backdrop-filter: blur(16px);
+      z-index: 50;
+      flex-shrink: 0;
+    }
+
+    .nav-group {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .btn-nav {
+      width: 40px;
+      height: 40px;
+      border-radius: var(--radius-sm);
+      background: var(--bp-bg-surface);
+      border: 1px solid var(--bp-line);
+      color: var(--bp-fg);
+      font-size: 18px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }
+
+    .btn-nav:hover {
+      border-color: var(--tl-cyan);
+      color: var(--tl-cyan);
+      transform: translateY(-1px);
+    }
+
+    .counter {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 13px;
+      font-weight: 600;
+      padding: 0 10px;
+      color: var(--bp-fg);
+    }
+
+    /* ───────── Drawer de Notas del Orador ───────── */
+    .notes-drawer {
+      position: absolute;
+      top: 60px;
+      right: 0;
+      bottom: 64px;
+      width: 440px;
+      background: color-mix(in oklab, var(--bp-bg-surface) 95%, transparent);
+      backdrop-filter: blur(24px);
+      border-left: 1px solid var(--bp-line);
+      z-index: 90;
+      transform: translateX(100%);
+      transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+      display: flex;
+      flex-direction: column;
+      box-shadow: -10px 0 30px rgba(0, 0, 0, 0.4);
+    }
+
+    .notes-drawer.open {
+      transform: translateX(0);
+    }
+
+    .notes-header {
+      padding: 16px 20px;
+      border-bottom: 1px solid var(--bp-line);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .notes-title {
+      font-size: 13px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .notes-body {
+      flex: 1;
+      padding: 24px 20px;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      font-size: 14px;
+      line-height: 1.6;
+      color: var(--bp-muted);
+    }
+
+    .notes-quote {
+      background: color-mix(in oklab, var(--tl-cyan) 8%, transparent);
+      border-left: 3px solid var(--tl-cyan);
+      padding: 14px 16px;
+      border-radius: 0 6px 6px 0;
+      font-style: italic;
+      color: var(--bp-fg);
+    }
+
+    .notes-meta-box {
+      background: color-mix(in oklab, var(--bp-fg) 3%, transparent);
+      border: 1px solid var(--bp-line);
+      border-radius: 6px;
+      padding: 12px;
+      font-size: 12px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    /* ───────── Modal Cuadrícula / Overview ───────── */
+    .grid-modal {
+      position: absolute;
+      inset: 60px 0 64px 0;
+      background: rgba(10, 14, 26, 0.94);
+      backdrop-filter: blur(14px);
+      z-index: 80;
+      padding: 40px;
+      overflow-y: auto;
+      display: none;
+    }
+
+    .grid-modal.open {
+      display: block;
+    }
+
+    .grid-container {
+      max-width: 1280px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 20px;
+    }
+
+    .thumb-card {
+      background: var(--bp-bg-surface);
+      border: 1px solid var(--bp-line);
+      border-radius: 8px;
+      padding: 14px;
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      transition: all 0.2s ease;
+      aspect-ratio: 16 / 10;
+      position: relative;
+    }
+
+    .thumb-card:hover, .thumb-card.active {
+      border-color: var(--tl-cyan);
+      transform: scale(1.02);
+      box-shadow: 0 8px 24px rgba(0, 210, 255, 0.25);
+    }
+
+    .thumb-num {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      color: var(--bp-dim);
+    }
+
+    .thumb-title {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--bp-fg);
+      line-height: 1.3;
+    }
+
+    /* Responsive */
+    @media (max-width: 900px) {
+      .grid-2, .grid-3 { grid-template-columns: 1fr; }
+      .slide-stage { aspect-ratio: auto; min-height: 540px; }
+      .notes-drawer { width: 100%; }
+      .sphere-card { width: 100%; height: auto; border-radius: 12px; }
+    }
+  </style>
+</head>
+<body>
+
+<div id="app">
+  <!-- Barra Superior -->
+  <header class="top-bar">
+    <div class="brand-group">
+      <div class="brand-logo-badge">
+        <span class="logo-tl">TALENT LAND®</span>
+        <span class="brand-divider">×</span>
+        <div class="logo-bp">
+          <div class="logo-bp-box"></div>
+          <span>BLUEPIXEL</span>
+        </div>
+      </div>
+      <span class="brand-tag">DECK 02 · CANON FIGMA 1346:2</span>
+    </div>
+
+    <div class="top-actions">
+      <button class="btn-action" id="btn-theme" title="Cambiar Tema (T)">
+        <span id="theme-icon">☀️</span> <span id="theme-text">Modo Claro</span>
+      </button>
+      <button class="btn-action" id="btn-grid" title="Ver Cuadrícula (G)">
+        <span>▦</span> Cuadrícula
+      </button>
+      <button class="btn-action" id="btn-notes" title="Notas del Orador (N)">
+        <span>🎙️</span> Guion Verbatim
+      </button>
+      <button class="btn-action primary" id="btn-fs" title="Pantalla Completa (F)">
+        <span>⛶</span> Presentar
+      </button>
+    </div>
+  </header>
+
+  <!-- Barra de Progreso Superior -->
+  <div class="progress-track">
+    <div class="progress-bar" id="progress-bar"></div>
+  </div>
+
+  <!-- Viewport de Presentación -->
+  <main class="viewport">
+    <div class="slide-stage" id="slide-stage">
+      <!-- El contenido se renderiza dinámicamente con JavaScript -->
+    </div>
+  </main>
+
+  <!-- Barra Inferior de Controles -->
+  <footer class="bottom-bar">
+    <div class="nav-group">
+      <span style="font-size: 13px; color: var(--bp-muted); font-weight: 500;" id="slide-name-label">
+        UX y AI: El nuevo motor del crecimiento empresarial
+      </span>
+    </div>
+
+    <div class="nav-group">
+      <button class="btn-nav" id="btn-prev" title="Lámina Anterior (←)">‹</button>
+      <div class="counter" id="slide-counter">01 / 13</div>
+      <button class="btn-nav" id="btn-next" title="Lámina Siguiente (→)">›</button>
+    </div>
+
+    <div class="nav-group">
+      <span class="brand-tag">● FIGMA VERIFIED</span>
+      <span style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--bp-dim);">
+        Atajos: ← → | Espacio | N | G | F
+      </span>
+    </div>
+  </footer>
+
+  <!-- Drawer Lateral: Notas del Orador -->
+  <aside class="notes-drawer" id="notes-drawer">
+    <div class="notes-header">
+      <div class="notes-title">
+        <img src="assets/maria_de_buen_foto.png" alt="María De Buen" style="width: 24px; height: 24px; border-radius: 50%; object-fit: cover;">
+        <span>Guion Verbatim · María De Buen</span>
+      </div>
+      <button class="btn-action" id="btn-close-notes" style="padding: 4px 8px;">✕</button>
+    </div>
+    <div class="notes-body" id="notes-content">
+      <!-- Inyectado dinámicamente -->
+    </div>
+  </aside>
+
+  <!-- Modal Cuadrícula / Overview -->
+  <div class="grid-modal" id="grid-modal">
+    <div style="max-width: 1280px; margin: 0 auto 24px auto; display: flex; justify-content: space-between; align-items: center;">
+      <h2 style="font-size: 20px; font-weight: 700; letter-spacing: -0.02em;">Todas las Láminas de Talent Land (13)</h2>
+      <button class="btn-action" id="btn-close-grid">Cerrar (Esc)</button>
+    </div>
+    <div class="grid-container" id="grid-container">
+      <!-- Inyectado dinámicamente -->
+    </div>
+  </div>
+
+  <!-- Lightbox Modal -->
+  <div class="lightbox-modal" id="lightbox-modal">
+    <button class="btn-close-lightbox" id="btn-close-lightbox">✕</button>
+    <img src="" class="lightbox-img" id="lightbox-img" alt="Figma Render">
+  </div>
+</div>
+
+<script>
+  /* ───────── Base de Datos de las 13 Láminas de Talent Land (Figma 1346:2) ───────── */
+  const SLIDES = [
+    {
+      id: "01",
+      eyebrow: "PORTADA OFICIAL · FIGMA 1346:3",
+      title: "UX y AI: El nuevo motor del crecimiento empresarial",
+      subtitle: "Conferencia Magistral en Talent Land · María de Buen (CEO @BluePixel)",
+      type: "PORTADA",
+      render: () => `
+        <div class="grid-2" style="height: 100%;">
+          <div style="display: flex; flex-direction: column; justify-content: center;">
+            <div class="tl-eyebrow">TALENT LAND® KEYNOTE · BLUEPIXEL</div>
+            <h1 class="tl-display">
+              UX y AI:<br>
+              <span class="tl-cyan">el nuevo motor</span><br>
+              <span class="tl-coral">del crecimiento empresarial</span>
+            </h1>
+            <p class="tl-subtitle" style="margin-bottom: 24px;">
+              Por qué la adopción humana es el único multiplicador que convierte modelos matemáticos en millones en el balance general.
+            </p>
+            <div style="display: flex; align-items: center; gap: 14px;">
+              <img src="assets/maria_de_buen_foto.png" alt="María de Buen" style="width: 52px; height: 52px; border-radius: 50%; object-fit: cover; border: 2px solid var(--tl-cyan);">
+              <div>
+                <div style="font-weight: 700; font-size: 15px; color: var(--bp-fg);">María de Buen</div>
+                <div style="font-size: 12px; color: var(--bp-dim); font-family: 'JetBrains Mono', monospace;">CEO @BluePixel</div>
+              </div>
+            </div>
+          </div>
+          <div class="figma-preview-card" onclick="openLightbox('assets/talent_01_cover.png')" title="Clic para ampliar render original de Figma">
+            <img src="assets/talent_01_cover.png" alt="Portada Original Figma Talent Land">
+            <div class="figma-preview-badge">🔍 Render Figma 1920×1080</div>
+          </div>
+        </div>
+      `,
+      notes: {
+        time: "1:00 min",
+        keyIdea: "Apertura en Talent Land: la tecnología no genera valor por sí sola si los humanos no la adoptan.",
+        speech: "Hola a todos en Talent Land. Miren a su alrededor: estamos viviendo la explosión tecnológica más acelerada de la historia humana. Cada semana se publica un nuevo modelo de inteligencia artificial, cada empresa anuncia que ahora es 'AI-First', y los presupuestos de tecnología se han disparado como nunca antes. Pero hoy no vengo a hablarles de parámetros, ni de arquitecturas neuronales, ni de tarjetas gráficas. Vengo a hablarles de la única variable que decide si toda esa inversión crea valor o se va a la basura: el ser humano al otro lado de la pantalla. Hoy les voy a demostrar por qué el UX es el eslabón perdido y el verdadero motor que convierte la inteligencia artificial en crecimiento empresarial."
+      }
+    },
+    {
+      id: "02",
+      eyebrow: "HOOK INICIAL · FIGMA 1346:30",
+      title: "Noviembre de 2022: La IA dejó de ser código y se volvió conversación.",
+      subtitle: "¿Por qué ChatGPT rompió récords cuando los modelos ya existían años atrás?",
+      type: "HOOK",
+      render: () => `
+        <div class="grid-2" style="height: 100%;">
+          <div style="display: flex; flex-direction: column; justify-content: center;">
+            <div class="tl-eyebrow">EL PUNTO DE INFLEXIÓN</div>
+            <h2 class="tl-title">El modelo no cambió el mundo.<br><span class="tl-cyan">La interfaz sí.</span></h2>
+            <p class="tl-subtitle" style="margin-bottom: 20px;">
+              GPT-3 ya existía desde 2020 y tenía casi la misma potencia, pero vivía encerrado en pantallas complejas que solo entendían los programadores. Cuando OpenAI le puso un cuadro de texto simple, 100 millones de personas lo adoptaron en 60 días.
+            </p>
+            <div class="card cyan-edge">
+              <div style="font-weight: 700; color: var(--tl-cyan); font-size: 14px;">La Lección de la Historia:</div>
+              <p style="font-size: 13px; color: var(--bp-muted); margin: 0;">
+                "El valor de una tecnología no está en qué tan compleja es por dentro, sino en qué tan fácil hace la vida de quien la usa."
+              </p>
+            </div>
+          </div>
+          <div class="figma-preview-card" onclick="openLightbox('assets/talent_02_hook.png')" title="Clic para ampliar">
+            <img src="assets/talent_02_hook.png" alt="Hook OpenAI Figma">
+            <div class="figma-preview-badge">🔍 Render Figma 1920×1080</div>
+          </div>
+        </div>
+      `,
+      notes: {
+        time: "1:30 min",
+        keyIdea: "Desmitificar la IA: el triunfo de ChatGPT fue un triunfo de experiencia de usuario, no solo de tecnología.",
+        speech: "Hagamos un poco de memoria. En noviembre de 2022, ChatGPT alcanzó 100 millones de usuarios en apenas dos meses. Se convirtió en la aplicación de más rápido crecimiento en la historia. Pero aquí está el secreto que pocas veces se cuenta: la inteligencia detrás ya existía desde hacía años. GPT-3 estaba disponible desde 2020. ¿Por qué no explotó antes? Porque vivía encerrado en pantallas llenas de código que solo entendían los ingenieros. La verdadera genialidad de OpenAI fue quitar toda la fricción y poner un simple cuadro de texto con un botón de enviar. Una experiencia sencilla y humana. Demostraron que el diseño UX no es un adorno: es la llave que abre la adopción masiva."
+      }
+    },
+    {
+      id: "03",
+      eyebrow: "INTERACCIÓN CON EL AUDITORIO · FIGMA 1346:69",
+      title: "¿Quién de aquí sabe usar Excel?",
+      subtitle: "La trampa de las herramientas que tardamos 40 años en aprender.",
+      type: "QUESTION",
+      render: () => `
+        <div class="grid-2" style="height: 100%;">
+          <div style="display: flex; flex-direction: column; justify-content: center;">
+            <div class="tl-eyebrow">PREGUNTA AL AUDITORIO</div>
+            <h2 class="tl-title">¿Quién de aquí<br><span class="tl-cyan">sabe usar Excel?</span></h2>
+            <p class="tl-subtitle" style="margin-bottom: 24px;">
+              Casi todos levantamos la mano. Pero, ¿realmente lo dominamos, o aprendimos a lidiar con su complejidad porque no había otra opción?
+            </p>
+            <div class="card coral-edge">
+              <div style="font-weight: 700; color: var(--tl-coral); font-size: 14px;">El Dilema de la Nueva Era:</div>
+              <p style="font-size: 13px; color: var(--bp-muted); margin: 0;">
+                Excel tuvo 40 años para educar a generaciones enteras. En el mercado competitivo actual, una empresa que tarde meses en capacitar a su personal en una herramienta de IA ya perdió contra quien diseñó un flujo natural.
+              </p>
+            </div>
+          </div>
+          <div class="figma-preview-card" onclick="openLightbox('assets/talent_03_excel.png')" title="Clic para ampliar">
+            <img src="assets/talent_03_excel.png" alt="Lámina Excel Figma">
+            <div class="figma-preview-badge">🔍 Render Figma 1920×1080</div>
+          </div>
+        </div>
+      `,
+      notes: {
+        time: "1:45 min",
+        keyIdea: "Interactuar con el público: contrastar el software del pasado con la urgencia de adopción de la IA.",
+        speech: "Quiero hacer un ejercicio rápido con ustedes. Por favor, levanten la mano: ¿quién de aquí sabe usar Excel? (Pausa para que el auditorio levante la mano). Miren a su alrededor: casi el noventa por ciento de la sala. Ahora déjenla arriba solo los que disfrutan diseñar macros complejas, anidar BUSCARV con condicionales o arreglar errores de referencia un domingo por la noche. Exacto, casi todas las manos bajan. Aprendimos a usar Excel porque el mundo corporativo nos obligó durante cuatro décadas. Pero las empresas de hoy no tienen cuarenta años para que sus equipos aprendan a formular prompts crípticos o interpretar dashboards incomprensibles. Si el software de IA no es intuitivo desde el primer minuto, la gente lo abandona y regresa a sus viejas hojas de cálculo."
+      }
+    },
+    {
+      id: "04",
+      eyebrow: "LA PARADOJA CENTRAL · FIGMA 1346:89",
+      title: "El problema de adopción de la IA: Inversión ↑ vs. Adopción ↓",
+      subtitle: "Por qué el 80% de los proyectos de IA en empresas fracasan antes de llegar a producción.",
+      type: "PARADOX",
+      render: () => `
+        <div class="grid-2" style="height: 100%;">
+          <div style="display: flex; flex-direction: column; justify-content: center;">
+            <div class="tl-eyebrow">DIAGNÓSTICO EMPRESARIAL</div>
+            <h2 class="tl-title">El problema de<br><span class="tl-coral">adopción de la IA</span></h2>
+            <div style="background: rgba(0,0,0,0.3); border: 1px solid var(--bp-line); border-radius: var(--radius); padding: 24px; margin: 16px 0;">
+              <div style="font-size: 24px; font-weight: 800; color: var(--tl-cyan); margin-bottom: 8px;">
+                Inversión en tecnología ↑
+              </div>
+              <div style="font-size: 24px; font-weight: 800; color: var(--tl-coral); margin-bottom: 16px;">
+                Adopción de usuarios ↓
+              </div>
+              <div style="font-size: 18px; font-weight: 600; color: #fff; border-top: 1px solid var(--bp-line); padding-top: 12px;">
+                El eslabón perdido: <span class="tl-cyan">UX</span>
+              </div>
+            </div>
+            <p class="tl-subtitle">
+              Los comités directivos aprueban millones en infraestructura, pero cuando el software llega a los escritorios, nadie lo usa.
+            </p>
+          </div>
+          <div class="figma-preview-card" onclick="openLightbox('assets/talent_04_paradoja.png')" title="Clic para ampliar">
+            <img src="assets/talent_04_paradoja.png" alt="Paradoja de la Adopción Figma">
+            <div class="figma-preview-badge">🔍 Render Figma 1920×1080</div>
+          </div>
+        </div>
+      `,
+      notes: {
+        time: "2:00 min",
+        keyIdea: "Presentar la paradoja matemática: gastar más en IA sin invertir en diseño conductual produce rendimientos negativos.",
+        speech: "Aquí llegamos a la gran paradoja que estamos viendo todos los días en BluePixel cuando nos sentamos con directores generales y CTOs de grandes empresas. Las inversiones en tecnología, servidores y licencias de IA están en su punto más alto de la historia: van hacia arriba. Pero la tasa real de adopción por parte de los usuarios operativos va hacia abajo. Se gastan trescientos mil o medio millón de dólares en implementar un copiloto corporativo, y tres meses después, el equipo sigue pidiéndose los datos por WhatsApp o copiando manualmente en Excel. ¿Por qué ocurre esto? Porque asumieron que un modelo inteligente se adopta solo. Olvidaron el eslabón perdido: el diseño de la experiencia de usuario."
+      }
+    },
+    {
+      id: "05",
+      eyebrow: "SOBRE BLUEPIXEL · FIGMA 1346:109",
+      title: "BluePixel: Software that Feels Right.",
+      subtitle: "Construimos, evolucionamos, escalamos y automatizamos plataformas digitales pensando primero en las personas.",
+      type: "BLUEPIXEL",
+      render: () => `
+        <div style="flex: 1; display: flex; flex-direction: column; justify-content: center; max-width: 960px; margin: 0 auto; text-align: center;">
+          <div class="tl-eyebrow" style="justify-content: center;">QUIÉNES SOMOS · MARÍA DE BUEN & BLUEPIXEL</div>
+          <h2 class="tl-display" style="font-size: clamp(2.1rem, 3.6vw, 3.3rem);">
+            No construimos pantallas bonitas que nadie usa.<br>
+            <span class="tl-cyan">Diseñamos tecnología que la gente adopta.</span>
+          </h2>
+          <p class="tl-subtitle" style="margin: 0 auto 24px auto;">
+            En BluePixel unimos el entendimiento profundo del usuario con tecnología sólida y lista para crecer. Somos el aliado de largo plazo para empresas que invierten en serio en su negocio digital.
+          </p>
+          <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin-bottom: 20px;">
+            <div class="card cyan-edge" style="padding: 18px; text-align: center;">
+              <div style="font-size: 28px; font-weight: 800; color: var(--tl-cyan);">#1</div>
+              <div style="font-size: 12px; color: var(--bp-muted);">Ranking Empresas UX/UI en México</div>
+            </div>
+            <div class="card mint-edge" style="padding: 18px; text-align: center;">
+              <div style="font-size: 28px; font-weight: 800; color: var(--tl-mint);">350+</div>
+              <div style="font-size: 12px; color: var(--bp-muted);">Proyectos realizados</div>
+            </div>
+            <div class="card coral-edge" style="padding: 18px; text-align: center;">
+              <div style="font-size: 28px; font-weight: 800; color: var(--tl-coral);">60+</div>
+              <div style="font-size: 12px; color: var(--bp-muted);">Especialistas en el equipo</div>
+            </div>
+            <div class="card cyan-edge" style="padding: 18px; text-align: center;">
+              <div style="font-size: 28px; font-weight: 800; color: var(--bp-fg);">10+</div>
+              <div style="font-size: 12px; color: var(--bp-muted);">Años en el mercado</div>
+            </div>
+          </div>
+        </div>
+      `,
+      notes: {
+        time: "1:30 min",
+        keyIdea: "Presentación de María y credenciales reales de BluePixel sin tecnicismos.",
+        speech: "En BluePixel llevamos más de diez años y más de trescientos cincuenta proyectos viendo esta historia repetirse una y otra vez. Hoy somos más de sesenta especialistas y estamos rankeados como la empresa número uno de UX/UI en México precisamente porque entendimos algo muy simple: no sirve de nada construir el motor más potente del mundo si el volante es incómodo y nadie quiere manejar el auto. Nosotros unimos el diseño centrado en las personas con la tecnología para que la gente realmente use y ame lo que se construye."
+      }
+    },
+    {
+      id: "06",
+      eyebrow: "LA FÓRMULA DEL VALOR · FIGMA 1346:232",
+      title: "Tecnología × Adopción = Impacto",
+      subtitle: "La ecuación matemática que ningún directivo puede ignorar.",
+      type: "EQUATION",
+      render: () => `
+        <div style="flex: 1; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center;">
+          <div class="tl-eyebrow">EL PRINCIPIO CARDINAL</div>
+          <h2 class="tl-display" style="font-size: clamp(2.8rem, 5vw, 4.8rem); margin-bottom: 24px;">
+            <span class="tl-cyan">Tecnología</span> × <span class="tl-coral">Adopción</span> = <span style="color: #fff;">Impacto</span>
+          </h2>
+          <div style="display: flex; gap: 40px; margin-top: 16px; flex-wrap: wrap; justify-content: center;">
+            <div style="text-align: center; max-width: 240px;">
+              <div style="font-family: 'JetBrains Mono', monospace; font-size: 32px; font-weight: 800; color: var(--tl-cyan);">100</div>
+              <div style="font-weight: 600; font-size: 15px; margin-top: 4px;">IA Poderosa</div>
+              <div style="font-size: 12px; color: var(--bp-dim); margin-top: 4px;">Modelos de última generación y servidores dedicados.</div>
+            </div>
+            <div style="font-size: 32px; font-weight: 300; color: var(--bp-dim); align-self: center;">×</div>
+            <div style="text-align: center; max-width: 240px;">
+              <div style="font-family: 'JetBrains Mono', monospace; font-size: 32px; font-weight: 800; color: var(--tl-coral);">0</div>
+              <div style="font-weight: 600; font-size: 15px; margin-top: 4px;">Del Usuario</div>
+              <div style="font-size: 12px; color: var(--bp-dim); margin-top: 4px;">Si la interfaz es confusa o genera desconfianza.</div>
+            </div>
+            <div style="font-size: 32px; font-weight: 300; color: var(--bp-dim); align-self: center;">=</div>
+            <div style="text-align: center; max-width: 240px;">
+              <div style="font-family: 'JetBrains Mono', monospace; font-size: 32px; font-weight: 800; color: #ef4444;">$0</div>
+              <div style="font-weight: 600; font-size: 15px; margin-top: 4px;">En el Negocio</div>
+              <div style="font-size: 12px; color: var(--bp-dim); margin-top: 4px;">Cero ROI, pérdida de capital y frustración operativa.</div>
+            </div>
+          </div>
+        </div>
+      `,
+      notes: {
+        time: "1:30 min",
+        keyIdea: "Fórmula de impacto: cualquier número multiplicado por cero es cero.",
+        speech: "Esta fórmula es matemática elemental de primaria, pero en el mundo corporativo parece un misterio cuántico: Tecnología multiplicada por Adopción es igual a Impacto en el negocio. Si tú compras la tecnología más avanzada calificada con un 100 perfecto, pero tu diseño de interacción genera fricción y la tasa de adopción de tus usuarios o empleados es 0, el impacto financiero final es exactamente CERO. En cambio, si tienes una tecnología modesta con calificación de 70, pero lograste un flujo tan natural que el 95% de tu organización la usa todos los días con una sonrisa, el impacto económico es arrollador. El UX no es opcional: es el multiplicador."
+      }
+    },
+    {
+      id: "07",
+      eyebrow: "LOS MULTIPLICADORES · FIGMA 1346:253",
+      title: "Trust — Flow — Delight",
+      subtitle: "Los tres pilares indispensables para que los humanos confíen y adopten la IA.",
+      type: "FRAMEWORK",
+      render: () => `
+        <div style="flex: 1; display: flex; flex-direction: column; justify-content: center;">
+          <div class="tl-eyebrow" style="text-align: center; justify-content: center;">LA ARQUITECTURA CONDUCTUAL</div>
+          <h2 class="tl-title" style="text-align: center; margin-bottom: 24px;">
+            <span class="tl-cyan">Trust</span> — <span class="tl-mint">Flow</span> — <span class="tl-coral">Delight</span>
+          </h2>
+          <div class="grid-3">
+            <div class="card cyan-edge" style="padding: 32px 24px;">
+              <div style="font-size: 28px; margin-bottom: 8px;">🛡️</div>
+              <div style="font-size: 20px; font-weight: 800; color: var(--tl-cyan);">Confianza (Trust)</div>
+              <p style="font-size: 14px; color: var(--bp-muted); margin: 8px 0 16px 0;">
+                "Si no confían en la respuesta del modelo, jamás la usarán para tomar decisiones críticas."
+              </p>
+              <div style="font-size: 12px; color: var(--bp-dim); font-family: 'JetBrains Mono', monospace;">
+                Transparencia · Fuentes citadas · Control humano
+              </div>
+            </div>
+            <div class="card mint-edge" style="padding: 32px 24px;">
+              <div style="font-size: 28px; margin-bottom: 8px;">⚡</div>
+              <div style="font-size: 20px; font-weight: 800; color: var(--tl-mint);">Integración (Flow)</div>
+              <p style="font-size: 14px; color: var(--bp-muted); margin: 8px 0 16px 0;">
+                "Si la IA te obliga a salirte de tu trabajo para ir a abrir otra pestaña, rompe el flujo."
+              </p>
+              <div style="font-size: 12px; color: var(--bp-dim); font-family: 'JetBrains Mono', monospace;">
+                In-situ · Cero fricción · Contextualidad total
+              </div>
+            </div>
+            <div class="card coral-edge" style="padding: 32px 24px;">
+              <div style="font-size: 28px; margin-bottom: 8px;">✨</div>
+              <div style="font-size: 20px; font-weight: 800; color: var(--tl-coral);">Experiencia (Delight)</div>
+              <p style="font-size: 14px; color: var(--bp-muted); margin: 8px 0 16px 0;">
+                "Usarla debe sentirse notablemente más fácil, rápido y gratificante que no usarla."
+              </p>
+              <div style="font-size: 12px; color: var(--bp-dim); font-family: 'JetBrains Mono', monospace;">
+                Ahorro de horas · Feedback claro · Empatía visual
+              </div>
+            </div>
+          </div>
+        </div>
+      `,
+      notes: {
+        time: "2:00 min",
+        keyIdea: "Los 3 multiplicadores: Confianza, Integración y Deleite.",
+        speech: "¿Cómo logramos entonces que las personas realmente adopten la IA? En BluePixel diseñamos bajo una tríada estricta: Trust, Flow y Delight. Primero: Trust. Si un ejecutivo o un médico no entiende por qué la IA le está sugiriendo un diagnóstico o un precio, desconfía; y ante la duda, prefiere ignorarla. La confianza requiere trazabilidad y fuentes claras. Segundo: Flow. La IA no debe ser un destino al que tengas que ir a buscar en otra pantalla; tiene que vivir dentro de tu flujo de trabajo diario, anticipando lo que necesitas. Y tercero: Delight. Si usar la herramienta de IA requiere redactar prompts de tres párrafos y esperar diez segundos con incertidumbre, se siente como una carga. Usarla tiene que ser tan fluido que volver al método anterior se sienta primitivo."
+      }
+    },
+    {
+      id: "08",
+      eyebrow: "EL FRAMEWORK DE DIAGNÓSTICO · FIGMA 1346:276",
+      title: "Cómo saber si mi producto va a funcionar (Las 3 Preguntas)",
+      subtitle: "El test de ácido para evaluar cualquier solución con IA antes de lanzarla al mercado.",
+      type: "DIAGNOSTIC",
+      render: () => `
+        <div style="flex: 1; display: flex; flex-direction: column; justify-content: center; align-items: center;">
+          <div class="tl-eyebrow">AUDITORÍA CONDUCTUAL</div>
+          <h2 class="tl-title" style="text-align: center; margin-bottom: 8px;">
+            Cómo saber si mi producto va a funcionar
+          </h2>
+          <p class="tl-subtitle" style="text-align: center; margin-bottom: 24px;">
+            Hazte estas tres preguntas antes de invertir un solo peso en desarrollo:
+          </p>
+          <div class="sphere-container">
+            <div class="sphere-card trust">
+              <div class="sphere-title tl-cyan">Trust</div>
+              <div class="sphere-desc">
+                ¿El usuario entiende <strong>por qué</strong> la IA hizo lo que hizo?
+              </div>
+            </div>
+            <div class="sphere-card flow">
+              <div class="sphere-title tl-mint">Flow</div>
+              <div class="sphere-desc">
+                ¿La IA aparece en el <strong>momento correcto</strong>… o tengo que ir a buscarla?
+              </div>
+            </div>
+            <div class="sphere-card delight">
+              <div class="sphere-title tl-coral">Delight</div>
+              <div class="sphere-desc">
+                ¿Usarla se siente <strong>más fácil</strong> que no usarla?
+              </div>
+            </div>
+          </div>
+          <div style="margin-top: 20px;">
+            <button class="btn-action" onclick="openLightbox('assets/talent_07_diagnostico.png')">
+              🔍 Ver lámina original de Figma en alta resolución
+            </button>
+          </div>
+        </div>
+      `,
+      notes: {
+        time: "2:00 min",
+        keyIdea: "Las 3 preguntas de evaluación rápida para cualquier producto de IA.",
+        speech: "Les dejo este checklist práctico para que lo apliquen el lunes en sus empresas y proyectos. Solo necesitan responder con honestidad tres preguntas. Pregunta uno: ¿El usuario entiende por qué la IA hizo lo que hizo? Si el sistema toma una decisión opaca tipo caja negra, estás sembrando desconfianza. Pregunta dos: ¿La IA aparece en el momento exacto en que tengo que tomar la decisión, o tengo que salirme de mi aplicación para ir a preguntarle a otro lado? Si tienes que ir a buscarla, el diseño falló. Y pregunta tres: ¿Usar esta solución se siente más fácil que el método antiguo? Si la respuesta a cualquiera de estas tres preguntas es 'no', no tienes un problema de inteligencia artificial: tienes una falla crítica de diseño conductual."
+      }
+    },
+    {
+      id: "09",
+      eyebrow: "CASO 01 · FIGMA 1346:309",
+      title: "IA Invisible: La IA no se ve… pero guía toda la experiencia.",
+      subtitle: "El mejor diseño no presume la tecnología: hace que las cosas sucedan sin esfuerzo.",
+      type: "CASE_STUDY",
+      render: () => `
+        <div class="grid-2" style="height: 100%;">
+          <div style="display: flex; flex-direction: column; justify-content: center;">
+            <div class="tl-eyebrow">EJEMPLO 01</div>
+            <h2 class="tl-title"><span class="tl-cyan">IA Invisible</span></h2>
+            <div style="font-size: 20px; font-weight: 600; color: var(--bp-fg); margin-bottom: 16px;">
+              "La IA no se ve… pero guía toda la experiencia."
+            </div>
+            <p class="tl-subtitle" style="margin-bottom: 20px;">
+              Muchas empresas creen que usar IA significa poner una ventanita de chat en una esquina. Las experiencias que realmente enamoran no te piden que escribas instrucciones: te resuelven el trabajo en silencio.
+            </p>
+            <div class="card cyan-edge">
+              <div style="font-weight: 700; color: var(--tl-cyan);">En la práctica diaria:</div>
+              <p style="font-size: 13px; color: var(--bp-muted); margin: 0;">
+                Opciones ya ordenadas por prioridad, formularios que se llenan solos y recordatorios en el momento justo, sin que tengas que pedirlo.
+              </p>
+            </div>
+          </div>
+          <div class="card" style="background: rgba(0,0,0,0.4); border: 1px solid var(--bp-line); display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 40px;">
+            <div style="width: 80px; height: 80px; border-radius: 50%; background: var(--bp-gradient-cyan); display: flex; align-items: center; justify-content: center; font-size: 36px; margin-bottom: 20px;">
+              👁️‍🗨️
+            </div>
+            <h3 style="font-size: 22px; font-weight: 700; color: #fff; margin-bottom: 10px;">Menos clics, más claridad</h3>
+            <p style="font-size: 14px; color: var(--bp-muted); max-width: 40ch;">
+              La persona siente que la herramienta la entiende y le ahorra tiempo, sin tener que aprender a hablarle a una máquina.
+            </p>
+          </div>
+        </div>
+      `,
+      notes: {
+        time: "1:45 min",
+        keyIdea: "IA invisible: la mejor tecnología desaparece y simplemente te facilita la vida.",
+        speech: "Veamos el primer caso: la IA Invisible. Hoy muchas empresas creen que innovar es ponerle una cajita de chat a su página o a su aplicación. Y casi nadie quiere ponerse a escribir instrucciones largas para hacer una tarea sencilla. La mejor experiencia con inteligencia artificial es la que ni siquiera se nota: cuando entras a tu plataforma y tus pendientes más urgentes ya están arriba, tus reportes ya vienen prearmados y el sistema te avisa antes de que te quedes sin inventario. No ves la IA, solo sientes que tu trabajo fluye mucho mejor."
+      }
+    },
+    {
+      id: "10",
+      eyebrow: "CASO 02 · FIGMA 1346:338",
+      title: "IA que Construye: De idea a producto… en minutos.",
+      subtitle: "Probar, validar y corregir mucho antes de gastar meses y millones.",
+      type: "CASE_STUDY",
+      render: () => `
+        <div class="grid-2" style="height: 100%;">
+          <div style="display: flex; flex-direction: column; justify-content: center;">
+            <div class="tl-eyebrow">EJEMPLO 02</div>
+            <h2 class="tl-title"><span class="tl-mint">IA que Construye</span></h2>
+            <div style="font-size: 20px; font-weight: 600; color: var(--bp-fg); margin-bottom: 16px;">
+              "De idea a producto… en minutos."
+            </div>
+            <p class="tl-subtitle" style="margin-bottom: 20px;">
+              Antes había que esperar meses solo para ver si una idea iba a funcionar con los clientes. Hoy podemos crear prototipos reales en días y probarlos con usuarios sintéticos antes de construir la versión final.
+            </p>
+            <div class="card mint-edge">
+              <div style="font-weight: 700; color: var(--tl-mint);">Validar antes de invertir:</div>
+              <p style="font-size: 13px; color: var(--bp-muted); margin: 0;">
+                Recorremos cada paso de la experiencia con usuarios sintéticos para descubrir dónde se confunden o abandonan los clientes, antes de gastar presupuesto de más.
+              </p>
+            </div>
+          </div>
+          <div class="card" style="background: rgba(0,0,0,0.4); border: 1px solid var(--bp-line); display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 40px;">
+            <div style="width: 80px; height: 80px; border-radius: 50%; background: linear-gradient(135deg, var(--tl-mint) 0%, #0d9488 100%); display: flex; align-items: center; justify-content: center; font-size: 36px; margin-bottom: 20px;">
+              ⚡
+            </div>
+            <h3 style="font-size: 22px; font-weight: 700; color: #fff; margin-bottom: 10px;">Aprender rápido, arriesgar menos</h3>
+            <p style="font-size: 14px; color: var(--bp-muted); max-width: 40ch;">
+              Pasar de meses de suposiciones a semanas de pruebas reales con clientes y equipo.
+            </p>
+          </div>
+        </div>
+      `,
+      notes: {
+        time: "1:30 min",
+        keyIdea: "Usar la IA para probar ideas en días en lugar de apostar a ciegas durante meses.",
+        speech: "El segundo caso es la IA que construye: pasar de una idea a un producto tangible en minutos. Antes, cualquier empresa que quería lanzar un producto digital tenía que esperar seis o nueve meses para saber si a sus clientes les iba a gustar. Hoy usamos la IA para armar prototipos reales en días y probar cada flujo con usuarios sintéticos antes de construir la plataforma completa. Así sabes exactamente qué funciona y dónde se atora la gente antes de comprometer tu presupuesto."
+      }
+    },
+    {
+      id: "11",
+      eyebrow: "CASO 03 · FIGMA 1346:346",
+      title: "IA que Responde Mejor: Buscar → entender → confiar.",
+      subtitle: "Cuando la IA se apoya en los datos reales de tu negocio y respeta el criterio humano.",
+      type: "CASE_STUDY",
+      render: () => `
+        <div class="grid-2" style="height: 100%;">
+          <div style="display: flex; flex-direction: column; justify-content: center;">
+            <div class="tl-eyebrow">EJEMPLO 03</div>
+            <h2 class="tl-title"><span class="tl-coral">IA que Responde Mejor</span></h2>
+            <div style="font-size: 20px; font-weight: 600; color: var(--bp-fg); margin-bottom: 16px;">
+              "Buscar → entender → confiar."
+            </div>
+            <p class="tl-subtitle" style="margin-bottom: 20px;">
+              En una empresa no basta con que la IA responda rápido o suene muy segura: tiene que responder con la verdad de tu negocio. Si inventa un precio o un dato, se rompe la confianza.
+            </p>
+            <div class="card coral-edge">
+              <div style="font-weight: 700; color: var(--tl-coral);">Datos reales + Criterio humano:</div>
+              <p style="font-size: 13px; color: var(--bp-muted); margin: 0;">
+                La IA consulta únicamente la información privada y autorizada de tu empresa, te muestra de dónde salió la respuesta y deja la decisión final en manos de las personas.
+              </p>
+            </div>
+          </div>
+          <div class="card" style="background: rgba(0,0,0,0.4); border: 1px solid var(--bp-line); display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 40px;">
+            <div style="width: 80px; height: 80px; border-radius: 50%; background: var(--bp-gradient-coral); display: flex; align-items: center; justify-content: center; font-size: 36px; margin-bottom: 20px;">
+              🎯
+            </div>
+            <h3 style="font-size: 22px; font-weight: 700; color: #fff; margin-bottom: 10px;">El humano siempre al mando</h3>
+            <p style="font-size: 14px; color: var(--bp-muted); max-width: 40ch;">
+              La máquina analiza y resume en segundos; tú mantienes el criterio y tomas la decisión final.
+            </p>
+          </div>
+        </div>
+      `,
+      notes: {
+        time: "1:45 min",
+        keyIdea: "Respuestas confiables basadas en datos reales y conexión directa con el Webinar del 20-Nov.",
+        speech: "El tercer caso es la IA que responde mejor: pasar de buscar, a entender, y de entender a confiar. En un negocio real, una inteligencia artificial que inventa respuestas es inaceptable. Por eso la clave está en dos cosas muy sencillas: primero, que la IA solo consulte la información real y privada de tu empresa y te muestre sus fuentes; y segundo, que el diseño nunca le quite el control a las personas. La IA te trae la evidencia y las opciones en segundos, pero el criterio humano siempre tiene la última palabra. Justamente de eso hablaremos a fondo en nuestro próximo webinar del 20 de noviembre."
+      }
+    },
+    {
+      id: "12",
+      eyebrow: "EL FUTURO DEL SOFTWARE · FIGMA 1346:355",
+      title: "Al futuro de la IA y el UX: El software ahora...",
+      subtitle: "Tres cambios que transforman cómo interactuamos con cualquier producto digital.",
+      type: "FUTURE",
+      render: () => `
+        <div style="flex: 1; display: flex; flex-direction: column; justify-content: center;">
+          <div class="tl-eyebrow" style="text-align: center; justify-content: center;">LO QUE VIENE</div>
+          <h2 class="tl-title" style="text-align: center; margin-bottom: 32px;">
+            El software ahora...<br>
+            <span class="tl-cyan">Conversa</span> · <span class="tl-mint">Predice</span> · <span class="tl-coral">Se adapta</span>
+          </h2>
+          <div class="grid-3">
+            <div class="card cyan-edge" style="text-align: center; padding: 36px 24px;">
+              <div style="font-size: 32px; margin-bottom: 12px;">💬</div>
+              <div style="font-size: 22px; font-weight: 800; color: var(--tl-cyan); margin-bottom: 8px;">Conversa</div>
+              <p style="font-size: 14px; color: var(--bp-muted);">
+                <strong>De buscar… a conversar:</strong> En lugar de perdernos en veinte menús, pedimos lo que necesitamos en nuestro propio idioma.
+              </p>
+            </div>
+            <div class="card mint-edge" style="text-align: center; padding: 36px 24px;">
+              <div style="font-size: 32px; margin-bottom: 12px;">🔮</div>
+              <div style="font-size: 22px; font-weight: 800; color: var(--tl-mint); margin-bottom: 8px;">Predice</div>
+              <p style="font-size: 14px; color: var(--bp-muted);">
+                <strong>De reaccionar… a anticipar:</strong> Detecta lo que el cliente o el equipo va a necesitar antes de que aparezca el problema.
+              </p>
+            </div>
+            <div class="card coral-edge" style="text-align: center; padding: 36px 24px;">
+              <div style="font-size: 32px; margin-bottom: 12px;">🧩</div>
+              <div style="font-size: 22px; font-weight: 800; color: var(--tl-coral); margin-bottom: 8px;">Se Adapta</div>
+              <p style="font-size: 14px; color: var(--bp-muted);">
+                <strong>De una interfaz para todos… a una experiencia para cada persona:</strong> Cada quien ve solo lo que necesita para hacer mejor su trabajo.
+              </p>
+            </div>
+          </div>
+        </div>
+      `,
+      notes: {
+        time: "1:45 min",
+        keyIdea: "Las 3 nuevas dimensiones del software: conversar, predecir y adaptarse.",
+        speech: "El software tal como lo conocimos durante treinta años está cambiando para siempre. Antes todas las personas veían la misma pantalla llena de botones iguales para todos. Hoy el software hace tres cosas nuevas: Primero, conversa: en vez de buscar en diez menús, le pides lo que necesitas con tus propias palabras. Segundo, predice: deja de esperar a que pase un problema para avisarte y se anticipa. Y tercero, se adapta: pasa de ser una pantalla igual para diez mil personas a convertirse en una experiencia hecha a la medida de cada quien."
+      }
+    },
+    {
+      id: "13",
+      eyebrow: "CIERRE Y CONTACTO · FIGMA 1358:17",
+      title: "Software that Feels Right",
+      subtitle: "Construyamos tecnología que las personas disfruten usar y que haga crecer tu negocio.",
+      type: "CLOSING",
+      render: () => `
+        <div style="flex: 1; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; max-width: 880px; margin: 0 auto;">
+          <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 16px;">
+            <div style="width: 14px; height: 14px; background: var(--tl-cyan); border-radius: 3px;"></div>
+            <span style="font-weight: 800; font-size: 18px; letter-spacing: 0.1em;">BLUEPIXEL</span>
+          </div>
+          <h2 class="tl-display" style="font-size: clamp(2.4rem, 4.2vw, 3.8rem); margin-bottom: 14px;">
+            Software that <span class="tl-cyan">Feels Right</span>
+          </h2>
+          <p class="tl-subtitle" style="margin-bottom: 28px;">
+            Quien va a ganar en esta nueva era no es la empresa con la tecnología más complicada, sino la que logre que las personas confíen en ella y disfruten usarla todos los días.
+          </p>
+          <div style="display: flex; align-items: center; gap: 18px; background: color-mix(in oklab, var(--bp-fg) 4%, transparent); border: 1px solid var(--bp-line); padding: 18px 28px; border-radius: var(--radius); margin-bottom: 22px; flex-wrap: wrap; justify-content: center;">
+            <img src="assets/maria_de_buen_foto.png" alt="María de Buen" style="width: 60px; height: 60px; border-radius: 50%; object-fit: cover; border: 2px solid var(--tl-cyan);">
+            <div style="text-align: left;">
+              <div style="font-weight: 700; font-size: 17px; color: var(--bp-fg);">María de Buen · CEO & Co-founder @BluePixel</div>
+              <div style="font-size: 12px; color: var(--bp-muted); margin-top: 2px;">#1 Ranking UX/UI México · 350+ proyectos · 60+ especialistas · 10+ años</div>
+              <div style="font-size: 12px; color: var(--tl-cyan); font-family: 'JetBrains Mono', monospace; margin-top: 4px;">
+                @mariadebuen (LinkedIn · IG · TikTok) · @bluepixelsoftware · www.bluepixel.mx
+              </div>
+              <div style="font-size: 12px; color: var(--bp-dim); font-family: 'JetBrains Mono', monospace; margin-top: 2px;">
+                maria@bluepixel.mx · WhatsApp B2B: +52 55 7481 1018
+              </div>
+            </div>
+          </div>
+          <div style="display: flex; gap: 12px;">
+            <a href="https://bluepixel.mx" target="_blank" class="btn-action primary" style="text-decoration: none; padding: 10px 20px; font-size: 13px;">
+              Visitar bluepixel.mx
+            </a>
+            <button class="btn-action" onclick="toggleNotes()" style="padding: 10px 20px; font-size: 13px;">
+              Ver Guion Completo
+            </button>
+          </div>
+        </div>
+      `,
+      notes: {
+        time: "1:15 min",
+        keyIdea: "Cierre cercano y humano en Talent Land, con todos los datos de contacto de María.",
+        speech: "Quiero cerrar con una idea muy simple para todos los que están hoy aquí en Talent Land: la tecnología más avanzada del mundo no sirve de nada si no le hace la vida más fácil a las personas. En BluePixel nos levantamos todos los días con un solo propósito: crear software que se sienta bien. Software que la gente entienda, disfrute y adopte, y que haga crecer los negocios. Me encuentran en todas las redes como arroba mariadebuen y en bluepixel.mx. Muchísimas gracias, quedo lista para sus preguntas."
+      }
+    }
+  ];
+
+  /* ───────── Estado Global de la Presentación ───────── */
+  let currentSlideIndex = 0;
+  let isFullscreen = false;
+
+  const stage = document.getElementById('slide-stage');
+  const slideCounter = document.getElementById('slide-counter');
+  const slideNameLabel = document.getElementById('slide-name-label');
+  const progressBar = document.getElementById('progress-bar');
+  const notesDrawer = document.getElementById('notes-drawer');
+  const notesContent = document.getElementById('notes-content');
+  const gridModal = document.getElementById('grid-modal');
+  const gridContainer = document.getElementById('grid-container');
+  const lightboxModal = document.getElementById('lightbox-modal');
+  const lightboxImg = document.getElementById('lightbox-img');
+
+  /* ───────── Renderizado de la Lámina Activa ───────── */
+  function renderSlide(index) {
+    if (index < 0) index = 0;
+    if (index >= SLIDES.length) index = SLIDES.length - 1;
+    currentSlideIndex = index;
+
+    const slide = SLIDES[index];
+
+    stage.innerHTML = `
+      <div class="slide-header">
+        <div class="slide-meta">
+          <span style="color: var(--tl-cyan); font-weight: 700;">TALENT LAND 2026</span>
+          <span>/</span>
+          <span>LÁMINA ${slide.id} DE ${String(SLIDES.length).padStart(2, '0')}</span>
+          <span>/</span>
+          <span>${slide.eyebrow}</span>
+        </div>
+        <div class="slide-speaker">
+          <img src="assets/maria_de_buen_foto.png" alt="María de Buen">
+          <span>María de Buen</span> · CEO @BluePixel
+        </div>
+      </div>
+
+      <div class="slide-content">
+        ${slide.render()}
+      </div>
+
+      <div class="slide-footer">
+        <div>BluePixel Design System 2027 · Conferencia Oficial</div>
+        <div>Human-first. Business Driven. AI-Powered.</div>
+      </div>
+    `;
+
+    slideCounter.textContent = `${String(index + 1).padStart(2, '0')} / ${String(SLIDES.length).padStart(2, '0')}`;
+    slideNameLabel.textContent = `${slide.id}. ${slide.title}`;
+
+    const progressPct = ((index + 1) / SLIDES.length) * 100;
+    progressBar.style.width = `${progressPct}%`;
+
+    updateNotes(slide);
+    updateGridHighlight();
+  }
+
+  /* ───────── Notas del Orador Sincronizadas ───────── */
+  function updateNotes(slide) {
+    notesContent.innerHTML = `
+      <div class="notes-meta-box">
+        <div style="display: flex; justify-content: space-between;">
+          <span style="font-weight: 700; color: var(--tl-cyan);">LÁMINA ${slide.id} · TALENT LAND</span>
+          <span style="font-family: 'JetBrains Mono', monospace; color: var(--tl-coral);">⏱️ ${slide.notes.time}</span>
+        </div>
+        <div style="font-size: 13px; font-weight: 600; color: var(--bp-fg);">${slide.title}</div>
+      </div>
+
+      <div>
+        <div style="font-size: 11px; text-transform: uppercase; font-family: 'JetBrains Mono', monospace; color: var(--tl-cyan); margin-bottom: 6px;">
+          Tesis y Objetivo de la Lámina:
+        </div>
+        <div style="font-size: 13px; color: var(--bp-fg);">${slide.notes.keyIdea}</div>
+      </div>
+
+      <div>
+        <div style="font-size: 11px; text-transform: uppercase; font-family: 'JetBrains Mono', monospace; color: var(--tl-coral); margin-bottom: 6px;">
+          Guion Verbatim (Palabra por palabra):
+        </div>
+        <div class="notes-quote">
+          "${slide.notes.speech}"
+        </div>
+      </div>
+    `;
+  }
+
+  /* ───────── Modal Cuadrícula / Overview ───────── */
+  function initGridModal() {
+    gridContainer.innerHTML = SLIDES.map((slide, i) => `
+      <div class="thumb-card ${i === currentSlideIndex ? 'active' : ''}" onclick="goToSlide(${i})">
+        <div class="thumb-num">SLIDE ${slide.id}</div>
+        <div class="thumb-title">${slide.title}</div>
+        <div style="font-size: 11px; color: var(--bp-dim); margin-top: auto;">
+          ⏱️ ${slide.notes.time} · ${slide.type}
+        </div>
+      </div>
+    `).join('');
+  }
+
+  function updateGridHighlight() {
+    const cards = gridContainer.querySelectorAll('.thumb-card');
+    cards.forEach((c, idx) => {
+      if (idx === currentSlideIndex) {
+        c.classList.add('active');
+      } else {
+        c.classList.remove('active');
+      }
+    });
+  }
+
+  function goToSlide(index) {
+    renderSlide(index);
+    gridModal.classList.remove('open');
+  }
+
+  function toggleGrid() {
+    gridModal.classList.toggle('open');
+  }
+
+  function toggleNotes() {
+    notesDrawer.classList.toggle('open');
+  }
+
+  /* ───────── Lightbox ───────── */
+  function openLightbox(src) {
+    lightboxImg.src = src;
+    lightboxModal.classList.add('open');
+  }
+
+  function closeLightbox() {
+    lightboxModal.classList.remove('open');
+    lightboxImg.src = '';
+  }
+
+  /* ───────── Controles y Navegación ───────── */
+  function nextSlide() {
+    if (currentSlideIndex < SLIDES.length - 1) {
+      renderSlide(currentSlideIndex + 1);
+    }
+  }
+
+  function prevSlide() {
+    if (currentSlideIndex > 0) {
+      renderSlide(currentSlideIndex - 1);
+    }
+  }
+
+  function toggleFullscreen() {
+    if (!document.fullscreenElement) {
+      document.documentElement.requestFullscreen().catch(() => {});
+      isFullscreen = true;
+    } else {
+      if (document.exitFullscreen) {
+        document.exitFullscreen();
+        isFullscreen = false;
+      }
+    }
+  }
+
+  function toggleTheme() {
+    const html = document.documentElement;
+    const currentTheme = html.getAttribute('data-theme') || 'dark';
+    const nextTheme = currentTheme === 'dark' ? 'light' : 'dark';
+    html.setAttribute('data-theme', nextTheme);
+
+    const icon = document.getElementById('theme-icon');
+    const text = document.getElementById('theme-text');
+    if (nextTheme === 'light') {
+      icon.textContent = '🌙';
+      text.textContent = 'Modo Oscuro';
+    } else {
+      icon.textContent = '☀️';
+      text.textContent = 'Modo Claro';
+    }
+  }
+
+  /* ───────── Atajos de Teclado ───────── */
+  window.addEventListener('keydown', (e) => {
+    // Si modal lightbox está abierto, Esc lo cierra
+    if (lightboxModal.classList.contains('open')) {
+      if (e.key === 'Escape') closeLightbox();
+      return;
+    }
+
+    // Si modal de cuadrícula está abierto, Esc lo cierra
+    if (gridModal.classList.contains('open')) {
+      if (e.key === 'Escape') gridModal.classList.remove('open');
+      return;
+    }
+
+    if (e.key === 'ArrowRight' || e.key === ' ') {
+      e.preventDefault();
+      nextSlide();
+    } else if (e.key === 'ArrowLeft') {
+      e.preventDefault();
+      prevSlide();
+    } else if (e.key === 'Home') {
+      e.preventDefault();
+      renderSlide(0);
+    } else if (e.key === 'End') {
+      e.preventDefault();
+      renderSlide(SLIDES.length - 1);
+    } else if (e.key.toLowerCase() === 'n') {
+      toggleNotes();
+    } else if (e.key.toLowerCase() === 'g') {
+      toggleGrid();
+    } else if (e.key.toLowerCase() === 'f') {
+      toggleFullscreen();
+    } else if (e.key.toLowerCase() === 't') {
+      toggleTheme();
+    }
+  });
+
+  /* Event Listeners */
+  document.getElementById('btn-next').addEventListener('click', nextSlide);
+  document.getElementById('btn-prev').addEventListener('click', prevSlide);
+  document.getElementById('btn-notes').addEventListener('click', toggleNotes);
+  document.getElementById('btn-close-notes').addEventListener('click', toggleNotes);
+  document.getElementById('btn-grid').addEventListener('click', toggleGrid);
+  document.getElementById('btn-close-grid').addEventListener('click', toggleGrid);
+  document.getElementById('btn-fs').addEventListener('click', toggleFullscreen);
+  document.getElementById('btn-theme').addEventListener('click', toggleTheme);
+  document.getElementById('btn-close-lightbox').addEventListener('click', closeLightbox);
+  lightboxModal.addEventListener('click', (e) => {
+    if (e.target === lightboxModal) closeLightbox();
+  });
+
+  /* ───────── Inicialización ───────── */
+  initGridModal();
+  renderSlide(0);
+</script>
+
+</body>
+</html>

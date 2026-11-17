@@ -1,0 +1,1518 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>El CX en la era de la IA · María De Buen | BluePixel 2027</title>
+  
+  <!-- Tipografía Oficial Onest y JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Onest:wght@200;300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    /* ───────── BPDS 2027 Tokens OKLCH ───────── */
+    :root, [data-theme="dark"] {
+      --bp-bg: oklch(0.12 0.035 248);
+      --bp-bg-2: oklch(0.16 0.045 248);
+      --bp-bg-surface: oklch(0.18 0.04 248);
+      --bp-fg: oklch(0.98 0.003 250);
+      --bp-muted: oklch(0.82 0.018 248);
+      --bp-dim: oklch(0.70 0.014 248);
+      --bp-line: color-mix(in oklab, var(--bp-fg) 10%, transparent);
+      --bp-line-strong: color-mix(in oklab, var(--bp-fg) 18%, transparent);
+      
+      /* Paleta de Firma María De Buen: Orange CX & Navy Deep */
+      --bp-accent: #e75125;
+      --bp-accent-2: #ff6b4a;
+      --bp-accent-glow: #ff8a65;
+      
+      --bp-build: #16A2CD;
+      --bp-evolve: #AFE139;
+      --bp-warning: #f59e0b;
+      --bp-danger: #ef4444;
+
+      --bp-gradient-accent: linear-gradient(135deg, #e75125 0%, #ff6b4a 100%);
+      --bp-gradient-surface: linear-gradient(180deg, var(--bp-bg) 0%, var(--bp-bg-2) 100%);
+      --radius: 0.625rem;
+      --shadow-elevated: 0 20px 40px -15px rgba(0, 0, 0, 0.5), 0 0 0 1px var(--bp-line);
+    }
+
+    [data-theme="light"] {
+      --bp-bg: #f8fafc;
+      --bp-bg-2: #f1f5f9;
+      --bp-bg-surface: #ffffff;
+      --bp-fg: #090d16;
+      --bp-muted: #334155;
+      --bp-dim: #64748b;
+      --bp-line: #e2e8f0;
+      --bp-line-strong: #cbd5e1;
+      
+      --bp-accent: #e75125;
+      --bp-accent-2: #d9481e;
+      --bp-accent-glow: #ff6b4a;
+      
+      --bp-build: #0284c7;
+      --bp-evolve: #15803d;
+      --bp-warning: #b45309;
+      --bp-danger: #b91c1c;
+
+      --bp-gradient-accent: linear-gradient(135deg, #e75125 0%, #ff6b4a 100%);
+      --bp-gradient-surface: linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
+      --shadow-elevated: 0 10px 30px -10px rgba(15, 23, 42, 0.08), 0 0 0 1px var(--bp-line);
+    }
+
+    /* ───────── Reset & Base ───────── */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    html, body {
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      background-color: var(--bp-bg);
+      color: var(--bp-fg);
+      font-family: 'Onest', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      user-select: none;
+    }
+
+    #app {
+      display: flex;
+      flex-direction: column;
+      width: 100vw;
+      height: 100vh;
+      position: relative;
+    }
+
+    /* Barra Superior */
+    .top-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 60px;
+      padding: 0 24px;
+      border-bottom: 1px solid var(--bp-line);
+      background: var(--bp-bg-2);
+      flex-shrink: 0;
+      z-index: 50;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .brand-logo {
+      width: 28px;
+      height: 28px;
+      background: var(--bp-gradient-accent);
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 14px;
+      color: #fff;
+    }
+
+    .brand-title {
+      font-size: 14px;
+      font-weight: 600;
+      letter-spacing: -0.01em;
+    }
+
+    .brand-tag {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      color: var(--bp-dim);
+      background: color-mix(in oklab, var(--bp-fg) 6%, transparent);
+      padding: 3px 8px;
+      border-radius: 4px;
+    }
+
+    .top-actions {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .btn-action {
+      background: transparent;
+      border: 1px solid var(--bp-line);
+      color: var(--bp-muted);
+      padding: 6px 12px;
+      border-radius: 6px;
+      font-size: 12px;
+      font-weight: 500;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.15s ease;
+      font-family: 'Onest', sans-serif;
+    }
+
+    .btn-action:hover, .btn-action.active {
+      background: color-mix(in oklab, var(--bp-fg) 8%, transparent);
+      color: var(--bp-fg);
+      border-color: var(--bp-line-strong);
+    }
+
+    .btn-action.primary {
+      background: var(--bp-accent);
+      color: #fff;
+      border-color: var(--bp-accent);
+    }
+
+    .btn-action.primary:hover {
+      filter: brightness(1.1);
+    }
+
+    /* Barra de Progreso */
+    .progress-track {
+      width: 100%;
+      height: 3px;
+      background: var(--bp-line);
+      position: relative;
+    }
+
+    .progress-bar {
+      height: 100%;
+      background: var(--bp-gradient-accent);
+      transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      width: 7.7%;
+    }
+
+    /* Contenedor del Slide Canvas */
+    .viewport {
+      flex: 1 1 auto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      position: relative;
+      overflow: hidden;
+      background: radial-gradient(circle at 50% 30%, color-mix(in oklab, var(--bp-accent) 6%, transparent) 0%, transparent 70%);
+    }
+
+    .slide-stage {
+      width: 100%;
+      max-width: 1380px;
+      aspect-ratio: 16 / 9;
+      background: var(--bp-bg-surface);
+      border: 1px solid var(--bp-line-strong);
+      border-radius: 14px;
+      box-shadow: var(--shadow-elevated);
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      animation: fadeIn 0.25s ease-out;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(4px) scale(0.995); }
+      to { opacity: 1; transform: translateY(0) scale(1); }
+    }
+
+    /* Interior del Slide */
+    .slide-header {
+      padding: 20px 36px 12px 36px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid var(--bp-line);
+      flex-shrink: 0;
+    }
+
+    .slide-meta {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: var(--bp-dim);
+    }
+
+    .slide-speaker {
+      font-size: 12px;
+      color: var(--bp-muted);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .slide-speaker img {
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 1.5px solid var(--bp-accent);
+    }
+
+    .slide-content {
+      flex: 1 1 auto;
+      padding: 28px 44px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      overflow-y: auto;
+    }
+
+    .slide-footer {
+      padding: 12px 36px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-top: 1px solid var(--bp-line);
+      background: color-mix(in oklab, var(--bp-bg) 40%, transparent);
+      flex-shrink: 0;
+      font-size: 12px;
+      color: var(--bp-dim);
+    }
+
+    /* Elementos Tipográficos BPDS */
+    .bp-display {
+      font-size: clamp(1.8rem, 3.2vw, 3.2rem);
+      font-weight: 300;
+      letter-spacing: -0.035em;
+      line-height: 1.12;
+      color: var(--bp-fg);
+      margin-bottom: 14px;
+    }
+
+    .bp-title {
+      font-size: clamp(1.4rem, 2.3vw, 2.1rem);
+      font-weight: 400;
+      letter-spacing: -0.025em;
+      line-height: 1.2;
+      color: var(--bp-fg);
+      margin-bottom: 12px;
+    }
+
+    .bp-subtitle {
+      font-size: clamp(0.95rem, 1.2vw, 1.15rem);
+      color: var(--bp-muted);
+      font-weight: 300;
+      line-height: 1.5;
+      max-width: 65ch;
+    }
+
+    .bp-highlight {
+      background: var(--bp-gradient-accent);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      font-weight: 600;
+    }
+
+    .bp-eyebrow {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      color: var(--bp-build);
+      margin-bottom: 8px;
+      display: block;
+    }
+
+    /* Tarjetas y Layouts */
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+      margin-top: 20px;
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+      margin-top: 20px;
+      align-items: center;
+    }
+
+    .grid-5 {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 12px;
+      margin-top: 20px;
+    }
+
+    .card {
+      background: color-mix(in oklab, var(--bp-fg) 3%, transparent);
+      border: 1px solid var(--bp-line);
+      border-radius: var(--radius);
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      transition: all 0.2s ease;
+    }
+
+    .card:hover {
+      border-color: var(--bp-line-strong);
+      transform: translateY(-2px);
+    }
+
+    .card-num {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--bp-accent);
+    }
+
+    .card-title {
+      font-size: 15px;
+      font-weight: 600;
+      letter-spacing: -0.01em;
+      color: var(--bp-fg);
+    }
+
+    .card-desc {
+      font-size: 12.5px;
+      color: var(--bp-muted);
+      line-height: 1.5;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 3px 8px;
+      border-radius: 999px;
+      font-size: 10.5px;
+      font-family: 'JetBrains Mono', monospace;
+      font-weight: 500;
+      width: fit-content;
+    }
+
+    .badge.cyan { background: rgba(22, 162, 205, 0.15); color: #16A2CD; border: 1px solid rgba(22, 162, 205, 0.3); }
+    .badge.green { background: rgba(175, 225, 57, 0.15); color: #AFE139; border: 1px solid rgba(175, 225, 57, 0.3); }
+    .badge.purple { background: rgba(168, 85, 247, 0.15); color: #c084fc; border: 1px solid rgba(168, 85, 247, 0.3); }
+
+    /* Imagen Figma interactiva */
+    .figma-preview-box {
+      position: relative;
+      border-radius: 10px;
+      overflow: hidden;
+      border: 1px solid var(--bp-line-strong);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+      cursor: pointer;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      background: #000;
+    }
+
+    .figma-preview-box:hover {
+      transform: scale(1.015);
+      box-shadow: 0 14px 40px rgba(0, 86, 224, 0.3);
+      border-color: var(--bp-accent);
+    }
+
+    .figma-preview-box img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .figma-badge-overlay {
+      position: absolute;
+      bottom: 10px;
+      right: 10px;
+      background: rgba(10, 14, 26, 0.85);
+      backdrop-filter: blur(8px);
+      border: 1px solid var(--bp-line);
+      color: var(--bp-fg);
+      font-size: 10.5px;
+      padding: 4px 10px;
+      border-radius: 6px;
+      font-family: 'JetBrains Mono', monospace;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    /* Barra Inferior */
+    .bottom-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 64px;
+      padding: 0 24px;
+      border-top: 1px solid var(--bp-line);
+      background: var(--bp-bg-2);
+      flex-shrink: 0;
+      z-index: 50;
+    }
+
+    .nav-group {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .counter {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 13px;
+      color: var(--bp-fg);
+      min-width: 70px;
+      text-align: center;
+    }
+
+    .btn-nav {
+      background: color-mix(in oklab, var(--bp-fg) 6%, transparent);
+      border: 1px solid var(--bp-line);
+      color: var(--bp-fg);
+      width: 40px;
+      height: 40px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      font-size: 18px;
+      transition: all 0.15s ease;
+    }
+
+    .btn-nav:hover:not(:disabled) {
+      background: var(--bp-accent);
+      color: #fff;
+      border-color: var(--bp-accent);
+    }
+
+    .btn-nav:disabled {
+      opacity: 0.3;
+      cursor: not-allowed;
+    }
+
+    /* Drawer de Notas del Orador */
+    .notes-drawer {
+      position: absolute;
+      right: 0;
+      top: 60px;
+      bottom: 64px;
+      width: 430px;
+      background: var(--bp-bg-surface);
+      border-left: 1px solid var(--bp-line-strong);
+      box-shadow: -10px 0 30px rgba(0, 0, 0, 0.4);
+      z-index: 60;
+      display: flex;
+      flex-direction: column;
+      transform: translateX(100%);
+      transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .notes-drawer.open {
+      transform: translateX(0);
+    }
+
+    .notes-header {
+      padding: 16px 20px;
+      border-bottom: 1px solid var(--bp-line);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-shrink: 0;
+    }
+
+    .notes-title {
+      font-size: 13px;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .notes-body {
+      padding: 24px;
+      overflow-y: auto;
+      flex: 1 1 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+      font-size: 13.5px;
+      line-height: 1.65;
+      color: var(--bp-muted);
+    }
+
+    .notes-speech {
+      background: color-mix(in oklab, var(--bp-accent) 8%, transparent);
+      border-left: 3px solid var(--bp-accent);
+      padding: 14px 16px;
+      border-radius: 0 6px 6px 0;
+      font-style: italic;
+      color: var(--bp-fg);
+    }
+
+    .notes-meta-box {
+      background: color-mix(in oklab, var(--bp-fg) 3%, transparent);
+      border: 1px solid var(--bp-line);
+      border-radius: 6px;
+      padding: 12px;
+      font-size: 12px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    /* Modal Cuadrícula */
+    .grid-modal {
+      position: absolute;
+      inset: 60px 0 64px 0;
+      background: rgba(10, 14, 26, 0.94);
+      backdrop-filter: blur(12px);
+      z-index: 80;
+      padding: 36px;
+      overflow-y: auto;
+      display: none;
+    }
+
+    .grid-modal.open {
+      display: block;
+    }
+
+    .grid-container {
+      max-width: 1280px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 20px;
+    }
+
+    .thumb-card {
+      background: var(--bp-bg-surface);
+      border: 1px solid var(--bp-line);
+      border-radius: 8px;
+      padding: 14px;
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      transition: all 0.2s ease;
+      aspect-ratio: 16 / 10;
+      position: relative;
+    }
+
+    .thumb-card:hover, .thumb-card.active {
+      border-color: var(--bp-accent);
+      transform: scale(1.02);
+      box-shadow: 0 8px 24px rgba(0, 86, 224, 0.2);
+    }
+
+    .thumb-num {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      color: var(--bp-dim);
+    }
+
+    .thumb-title {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--bp-fg);
+      line-height: 1.3;
+    }
+
+    .thumb-type {
+      margin-top: auto;
+      font-size: 10px;
+      font-family: 'JetBrains Mono', monospace;
+      color: var(--bp-build);
+    }
+
+    /* Lightbox Modal para Ver Imagen en Grande */
+    .lightbox-modal {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.92);
+      backdrop-filter: blur(10px);
+      z-index: 100;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 40px;
+    }
+
+    .lightbox-modal.open {
+      display: flex;
+    }
+
+    .lightbox-img {
+      max-width: 95vw;
+      max-height: 90vh;
+      border-radius: 8px;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8);
+      border: 1px solid var(--bp-line);
+    }
+
+    .lightbox-close {
+      position: absolute;
+      top: 24px;
+      right: 32px;
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      color: #fff;
+      padding: 8px 16px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 14px;
+    }
+
+    .luma-banner {
+      background: linear-gradient(90deg, rgba(22, 162, 205, 0.12), rgba(175, 225, 57, 0.12));
+      border: 1px solid rgba(22, 162, 205, 0.3);
+      border-radius: 8px;
+      padding: 10px 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: 16px;
+      font-size: 12px;
+    }
+
+    @media (max-width: 960px) {
+      .grid-3, .grid-5, .grid-2 { grid-template-columns: 1fr; }
+      .slide-stage { aspect-ratio: auto; min-height: 520px; }
+      .notes-drawer { width: 100%; }
+    }
+  </style>
+</head>
+<body>
+
+<div id="app">
+  <!-- Barra Superior -->
+  <header class="top-bar">
+    <div class="brand">
+      <div class="brand-logo">BP</div>
+      <div class="brand-title">Conferencias Dirección General</div>
+      <span class="brand-tag">DECK 01 · FIGMA CANON</span>
+    </div>
+
+    <div class="top-actions">
+      <button class="btn-action" id="btn-theme" title="Cambiar Tema (T)">
+        <span id="theme-icon">☀️</span> <span id="theme-text">Modo Claro</span>
+      </button>
+      <button class="btn-action" id="btn-grid" title="Ver Cuadrícula (G)">
+        <span>▦</span> Cuadrícula
+      </button>
+      <button class="btn-action" id="btn-notes" title="Notas del Orador (N)">
+        <span>📝</span> Notas de Orador
+      </button>
+      <button class="btn-action primary" id="btn-fs" title="Pantalla Completa (F)">
+        <span>⛶</span> Presentar
+      </button>
+    </div>
+  </header>
+
+  <!-- Barra de Progreso Superior -->
+  <div class="progress-track">
+    <div class="progress-bar" id="progress-bar"></div>
+  </div>
+
+  <!-- Viewport de Presentación -->
+  <main class="viewport">
+    <div class="slide-stage" id="slide-stage">
+      <!-- Inyectado dinámicamente -->
+    </div>
+  </main>
+
+  <!-- Barra Inferior de Controles -->
+  <footer class="bottom-bar">
+    <div class="nav-group">
+      <span style="font-size: 13px; color: var(--bp-muted); font-weight: 500;" id="slide-name-label">
+        El CX en la era de la IA
+      </span>
+    </div>
+
+    <div class="nav-group">
+      <button class="btn-nav" id="btn-prev" title="Lámina Anterior (←)">‹</button>
+      <div class="counter" id="slide-counter">01 / 13</div>
+      <button class="btn-nav" id="btn-next" title="Lámina Siguiente (→)">›</button>
+    </div>
+
+    <div class="nav-group">
+      <span class="badge green">● FIGMA VERIFIED</span>
+      <span style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--bp-dim);">
+        Atajos: ← → | Espacio | N | G | F
+      </span>
+    </div>
+  </footer>
+
+  <!-- Drawer Lateral: Notas del Orador -->
+  <aside class="notes-drawer" id="notes-drawer">
+    <div class="notes-header">
+      <div class="notes-title">
+        <span>🎙️</span> Guion Verbatim de María De Buen
+      </div>
+      <button class="btn-action" id="btn-close-notes" style="padding: 4px 8px;">✕</button>
+    </div>
+    <div class="notes-body" id="notes-content">
+      <!-- Inyectado dinámicamente -->
+    </div>
+  </aside>
+
+  <!-- Modal Cuadrícula / Overview -->
+  <div class="grid-modal" id="grid-modal">
+    <div style="max-width: 1280px; margin: 0 auto 24px auto; display: flex; justify-content: space-between; align-items: center;">
+      <h2 style="font-size: 20px; font-weight: 600; letter-spacing: -0.02em;">Todas las Láminas de la Conferencia (13)</h2>
+      <button class="btn-action" id="btn-close-grid">Cerrar (Esc)</button>
+    </div>
+    <div class="grid-container" id="grid-container">
+      <!-- Inyectado dinámicamente -->
+    </div>
+  </div>
+
+  <!-- Lightbox Modal para Ver Artefacto de Figma en Alta Resolución -->
+  <div class="lightbox-modal" id="lightbox-modal">
+    <button class="lightbox-close" id="btn-close-lightbox">✕ Cerrar (Esc)</button>
+    <img src="" class="lightbox-img" id="lightbox-img" alt="Figma Render">
+  </div>
+</div>
+
+<script>
+  /* ───────── Base de Datos de las 13 Láminas con Imágenes de Figma ───────── */
+  const SLIDES = [
+    {
+      id: "01",
+      eyebrow: "PORTADA OFICIAL · FIGMA 1013:7",
+      title: "El CX en la era de la IA",
+      subtitle: "Cómo la IA está redefiniendo las reglas de CX",
+      type: "PORTADA",
+      render: () => `
+        <div class="grid-2" style="height: 100%; margin-top: 0; align-items: center;">
+          <div style="display: flex; flex-direction: column; justify-content: center;">
+            <span class="bp-eyebrow">CONFERENCIA MAGISTRAL · BLUEPIXEL</span>
+            <h1 class="bp-display" style="font-size: clamp(2.3rem, 3.8vw, 3.4rem);">
+              El <span class="bp-highlight">CX</span> en la era de la IA
+            </h1>
+            <p class="bp-subtitle" style="font-size: 1.15rem; margin-bottom: 24px;">
+              Cómo la inteligencia artificial no solo optimiza el Customer Experience: lo está reescribiendo por completo.
+            </p>
+            
+            <div style="display: flex; align-items: center; gap: 14px; margin-top: 8px; background: color-mix(in oklab, var(--bp-fg) 3%, transparent); padding: 12px 18px; border-radius: 10px; border: 1px solid var(--bp-line); width: fit-content;">
+              <img src="assets/maria_de_buen_foto.png" alt="María de Buen" style="width: 52px; height: 52px; border-radius: 50%; object-fit: cover; border: 2px solid var(--bp-accent);">
+              <div>
+                <div style="font-weight: 600; font-size: 15px; color: var(--bp-fg);">María de Buen</div>
+                <div style="font-size: 12px; color: var(--bp-dim); font-family: 'JetBrains Mono', monospace;">CEO & Co-founder · BluePixel</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="figma-preview-box" onclick="openLightbox('assets/portada_cx_era_ia_figma.png')" title="Clic para ampliar portada oficial">
+            <img src="assets/portada_cx_era_ia_figma.png" alt="Portada Original Figma">
+            <div class="figma-badge-overlay">
+              <span>🔍</span> Ver lámina original en Figma
+            </div>
+          </div>
+        </div>
+      `,
+      notes: {
+        time: "1:00 min",
+        keyIdea: "Apertura y encuadre de la tesis: la IA ya no es un accesorio cosmético; reescribe las reglas del juego.",
+        speech: "Buenos días a todos. Durante los últimos quince años, cada vez que una empresa hablaba de transformar la experiencia de sus clientes, la respuesta casi automática era la misma: rediseñemos el sitio web, desarrollemos una nueva app móvil o automaticemos el call center. Pero en los últimos dos años algo se fracturó de raíz. Las herramientas cambiaron, las expectativas cambiaron y la forma en que decidimos compras cambió para siempre. Hoy vengo a mostrarles cómo las empresas que están dominando el mercado ya no usan la IA como un accesorio de soporte, sino como el motor central que reescribe por completo el Customer Experience."
+      }
+    },
+    {
+      id: "02",
+      eyebrow: "STORYTELLING DE APERTURA · FIGMA 1014:70",
+      title: "El journey del cliente es ahora un algoritmo, no un embudo.",
+      subtitle: "La mayoría de nuestras decisiones de compra ya no comienzan en una búsqueda ni en una tienda: empiezan en un scroll.",
+      type: "HOOK",
+      render: () => `
+        <div class="grid-2" style="height: 100%; margin-top: 0; align-items: center;">
+          <div>
+            <span class="bp-eyebrow">CAMBIO DE PARADIGMA</span>
+            <h2 class="bp-title" style="font-size: 1.9rem;">
+              «El journey del cliente es ahora un <span class="bp-highlight">algoritmo</span>, no un embudo.»
+            </h2>
+            <div style="display: flex; flex-direction: column; gap: 12px; margin-top: 18px;">
+              <div class="card" style="padding: 14px;">
+                <div class="card-title" style="font-size: 14px;">01 · Del buscador al scroll</div>
+                <div class="card-desc">TikTok, reels y recomendaciones hiperlocales: la compra empieza en señales de comportamiento, no en un formulario.</div>
+              </div>
+              <div class="card" style="padding: 14px;">
+                <div class="card-title" style="font-size: 14px;">02 · Interacciones no solicitadas</div>
+                <div class="card-desc">La app ya sabe qué talla usas, qué estilo prefieres y cuándo cobras, antes de que lo busques.</div>
+              </div>
+              <div class="card" style="padding: 14px;">
+                <div class="card-title" style="font-size: 14px;">03 · Cero fricción forzada</div>
+                <div class="card-desc">Las marcas ganadoras no tienen más presupuesto: diseñan con inteligencia viva.</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="figma-preview-box" onclick="openLightbox('assets/slide_02_storytelling.png')" title="Clic para ampliar lámina Figma">
+            <img src="assets/slide_02_storytelling.png" alt="Lámina Storytelling Figma">
+            <div class="figma-badge-overlay">
+              <span>🔍</span> Ver lámina Figma 1014:70
+            </div>
+          </div>
+        </div>
+      `,
+      notes: {
+        time: "3:00 min",
+        keyIdea: "Captar la atención en los primeros 180 segundos. Romper la creencia de que el cliente sigue pasos ordenados.",
+        speech: "¿Recuerdan cuando las decisiones de compra seguían un camino más o menos lógico? Había etapas claras, campañas planeadas y funnels bien estructurados. Y luego... llegó TikTok. Hoy, la mayoría de nuestras decisiones no empiezan en una tienda ni en Google. Empiezan en un scroll a medianoche. En una notificación que parece escrita solo para ti. En una app que ya sabe qué talla usas, qué estilo prefieres y qué día sueles comprar. Y lo más increíble: todo pasa sin que tú lo pidas. Las marcas que están ganando entendieron algo clave: El CX ya no se diseña con procesos estáticos. Se diseña con inteligencia."
+      }
+    },
+    {
+      id: "03",
+      eyebrow: "EL MODELO TRADICIONAL · FIGMA 1016:1043",
+      title: "El modelo tradicional asumía que el cliente seguía un camino lógico",
+      subtitle: "Teníamos control y previsibilidad aparente, pero obligábamos al usuario a hacer todo el trabajo pesado.",
+      type: "DIAGNÓSTICO",
+      render: () => `
+        <div>
+          <span class="bp-eyebrow">LA FANTASÍA DEL CONTROL</span>
+          <h2 class="bp-title">La arquitectura lineal de 1999</h2>
+          <div class="grid-2" style="margin-top: 24px; align-items: center;">
+            <div style="display: flex; flex-direction: column; gap: 12px;">
+              <div style="background: color-mix(in oklab, var(--bp-fg) 4%, transparent); border-left: 4px solid var(--bp-dim); padding: 12px 18px; border-radius: 4px;">
+                <span style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--bp-dim);">ETAPA 01</span>
+                <div style="font-weight: 600;">Awareness (10M Impresiones)</div>
+              </div>
+              <div style="background: color-mix(in oklab, var(--bp-fg) 4%, transparent); border-left: 4px solid var(--bp-build); padding: 12px 18px; border-radius: 4px;">
+                <span style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--bp-dim);">ETAPA 02</span>
+                <div style="font-weight: 600;">Consideración (1M Ingresan · 50% Ve Producto)</div>
+              </div>
+              <div style="background: color-mix(in oklab, var(--bp-fg) 4%, transparent); border-left: 4px solid var(--bp-accent); padding: 12px 18px; border-radius: 4px;">
+                <span style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--bp-dim);">ETAPA 03</span>
+                <div style="font-weight: 600;">Decisión (15% Carrito · 2% Checkout)</div>
+              </div>
+              <div style="background: color-mix(in oklab, var(--bp-fg) 4%, transparent); border-left: 4px solid var(--bp-evolve); padding: 12px 18px; border-radius: 4px;">
+                <span style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--bp-dim);">ETAPA 04</span>
+                <div style="font-weight: 600;">Compra $ (1% CVR = $500k USD/mes)</div>
+              </div>
+            </div>
+            <div class="card" style="background: color-mix(in oklab, var(--bp-danger) 8%, transparent); border-color: rgba(239, 68, 68, 0.25);">
+              <span class="badge" style="background: rgba(239, 68, 68, 0.2); color: #ef4444;">LA FALLA DEL MODELO</span>
+              <div class="card-title">El cliente hacía todo el esfuerzo</div>
+              <p class="card-desc">
+                Asumíamos que el usuario era paciente, racional y estaba dispuesto a leer páginas de preguntas frecuentes, tolerar formularios eternos y comparar precios a mano.
+              </p>
+              <p class="card-desc" style="color: var(--bp-fg); font-weight: 500;">
+                Hoy, si la experiencia no es inmediata, relevante y sin fricción... ya llegamos tarde.
+              </p>
+            </div>
+          </div>
+        </div>
+      `,
+      notes: {
+        time: "2:30 min",
+        keyIdea: "Demostrar que el embudo funcionaba no porque fuera bueno, sino porque el entorno era rígido y no había alternativas.",
+        speech: "Miremos este esquema. Durante más de dos décadas, todos construimos negocios bajo esta premisa. Pensábamos que teníamos el control: control sobre los mensajes, canales y tiempos. Sabíamos que si invertíamos X, obteníamos Y. Pero ese modelo funcionaba únicamente porque el entorno era estable y el cliente no tenía opciones. Si quería comprar, él tenía que hacer todo el trabajo pesado: comparar, buscar reseñas, llenar formularios de diez campos. Ese mundo se extinguió."
+      }
+    },
+    {
+      id: "04",
+      eyebrow: "LA RUPTURA · FIGMA 1022:2098",
+      title: "Cada cliente sigue un camino único en tiempo real",
+      subtitle: "El journey ya no es una línea recta ni un embudo: es un sistema vivo impulsado por datos e inteligencia artificial.",
+      type: "CONCEPTO",
+      render: () => `
+        <div>
+          <span class="bp-eyebrow">DE EMBUDO A GRAFO VIVO</span>
+          <h2 class="bp-title">La omnicanalidad contextual</h2>
+          <div class="grid-3" style="margin-top: 24px;">
+            <div class="card">
+              <div class="card-num">01</div>
+              <div class="card-title">Interpretar datos en vivo</div>
+              <div class="card-desc">No mira lo que pasó en el trimestre anterior. Cruza la ubicación actual, la velocidad de scroll y la temperatura ambiental.</div>
+            </div>
+            <div class="card">
+              <div class="card-num">02</div>
+              <div class="card-title">Activar la siguiente mejor acción</div>
+              <div class="card-desc">En lugar de mandar un correo masivo a las 9 AM, dispara un mensaje por el canal exacto donde el usuario está activo.</div>
+            </div>
+            <div class="card">
+              <div class="card-num">03</div>
+              <div class="card-title">De navegar a elegir</div>
+              <div class="card-desc">El usuario no busca entre 2,000 productos. La IA ya filtró, seleccionó y le puso enfrente la decisión curada.</div>
+            </div>
+          </div>
+          <div class="luma-banner">
+            <div><strong>💡 Principio BluePixel:</strong> En la era agéntica, cuando la IA entiende el contexto, el cliente no navega: solo elige.</div>
+            <span class="badge cyan">Zero-Friction</span>
+          </div>
+        </div>
+      `,
+      notes: {
+        time: "2:00 min",
+        keyIdea: "El cliente contemporáneo no quiere catálogos infinitos; quiere respuestas inmediatas y curadas.",
+        speech: "Así se ve hoy el journey de un cliente. No es un embudo, no es una línea recta... es un sistema vivo, cambiante y profundamente personal. Un día empieza con una story en Instagram. Al siguiente, con una recomendación en WhatsApp. O con un descuento que llega justo después de que habló del producto con un amigo. La IA nos ayuda a interpretar datos en tiempo real, identificar patrones y activar la siguiente mejor acción. CX ya no se trata de controlar el recorrido. Se trata de entender el contexto."
+      }
+    },
+    {
+      id: "05",
+      eyebrow: "CASO DE ESTUDIO · FIGMA 1026:2617",
+      title: "Caso Oura Ring: Anatomía del Journey Algorítmico",
+      subtitle: "Tres escenas reales donde no hubo embudo de ventas, sino contexto, relevancia milimétrica y datos invisibles.",
+      type: "CASO REAL",
+      render: () => `
+        <div>
+          <span class="bp-eyebrow">EVIDENCIA PRÁCTICA B2C</span>
+          <h2 class="bp-title">Cómo se cierra una venta en 30 segundos</h2>
+          <div class="grid-3" style="margin-top: 24px;">
+            <div class="card" style="border-top: 3px solid var(--bp-build);">
+              <span class="badge cyan">ESCENA 1 · 11:00 PM</span>
+              <div class="card-title">Autenticidad en Redes</div>
+              <div class="card-desc">Una influencer comenta con naturalidad cómo el Oura Ring mejoró su descanso. No es un anuncio forzado. No buscas el producto, pero el deseo se activó.</div>
+            </div>
+            <div class="card" style="border-top: 3px solid var(--bp-accent);">
+              <span class="badge purple">ESCENA 2 · 48H DESPUÉS</span>
+              <div class="card-title">Anuncio Cronometrado</div>
+              <div class="card-desc">Aparece una oferta de $30 USD de descuento. El algoritmo calculó tu modo de consideración sin que buscaras nada en Google.</div>
+            </div>
+            <div class="card" style="border-top: 3px solid var(--bp-evolve);">
+              <span class="badge green">ESCENA 3 · EN LA WEB</span>
+              <div class="card-title">Aterrizaje Curado</div>
+              <div class="card-desc">El color que viste, tu posible talla y el descuento listo en el carrito. Dos toques con Apple Pay y checkout cerrado. Sin fricción.</div>
+            </div>
+          </div>
+        </div>
+      `,
+      notes: {
+        time: "3:00 min",
+        keyIdea: "Desglosar la escena del Oura Ring para hacer tangible la desaparición de los funnels clásicos.",
+        speech: "Veamos esta escena en tres momentos que todos hemos vivido: Escena uno: Estás en Instagram a las 11 de la noche y alguien que sigues cuenta cómo un anillo inteligente le ayudó a regular su estrés. No sientes que te están vendiendo, pero tu cerebro registró la necesidad. Escena dos: Dos días después ves un anuncio con 30 dólares de descuento. Tú nunca buscaste Oura en Google. Pero el algoritmo calculó tu momento óptimo de consideración. Escena tres: Entras al sitio. No caes en un home genérico. Llegas a una pantalla con el acabado que te gustó, tu talla probable y el cupón aplicado. Dos toques y listo. ¿Dónde estuvo el embudo tradicional? No existió. Hubo contexto, relevancia y una IA que unió los puntos invisibles."
+      }
+    },
+    {
+      id: "06",
+      eyebrow: "CASO DE ESTUDIO · FIGMA 1067:36",
+      title: "Nike: De vender calzado a orquestar experiencias DTC",
+      subtitle: "Cómo Nike multiplicó sus ventas directas usando visión computacional y analítica predictiva de inventario.",
+      type: "CASO REAL",
+      render: () => `
+        <div class="grid-2" style="height: 100%; margin-top: 0; align-items: center;">
+          <div>
+            <span class="bp-eyebrow">TRANSFORMACIÓN DE MODELO DE NEGOCIO</span>
+            <h2 class="bp-title" style="font-size: 1.85rem;">Del 16% al 40%+ en Venta Directa (DTC)</h2>
+            <div style="display: flex; flex-direction: column; gap: 12px; margin-top: 14px;">
+              <div class="card" style="padding: 14px;">
+                <div class="card-title" style="color: var(--bp-accent); font-size: 14px;">Nike Fit (Visión Computacional)</div>
+                <div class="card-desc">Escanea tu pie con la cámara del celular y recomienda tu talla exacta por modelo, eliminando la principal causa de devolución.</div>
+              </div>
+              <div class="card" style="padding: 14px;">
+                <div class="card-title" style="color: var(--bp-build); font-size: 14px;">Zodiac & Celect (Adquisiciones)</div>
+                <div class="card-desc">IA predictiva que ajusta inventarios por ciudad y código postal antes de que se genere la demanda en tienda física.</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="figma-preview-box" onclick="openLightbox('assets/slide_06_nike.png')" title="Clic para ampliar lámina Nike">
+            <img src="assets/slide_06_nike.png" alt="Lámina Nike Figma">
+            <div class="figma-badge-overlay">
+              <span>🔍</span> Ver lámina Figma 1067:36
+            </div>
+          </div>
+        </div>
+      `,
+      notes: {
+        time: "3:00 min",
+        keyIdea: "Demostrar que la IA en CX no es solo para startups: redefinió los márgenes financieros de un titán corporativo.",
+        speech: "Si piensan que esto solo aplica a startups de Silicon Valley, miren a Nike. En 2011, solo el 16% de sus ingresos venían de venta directa al consumidor; dependían de tiendas departamentales. ¿Qué hicieron? Compraron firmas de analítica predictiva como Zodiac y Celect y desarrollaron Nike Fit. Escaneas tu pie con la cámara y una red neuronal te dice tu talla exacta, reduciendo devoluciones. Y detrás de la pantalla, la IA sabe qué modelos deben estar físicamente en Polanco o en Manhattan antes de que los clientes lleguen. En 2024, más del 40% de sus ingresos globales son ventas directas. Eso no es optimizar una pantalla; es transformar el negocio."
+      }
+    },
+    {
+      id: "07",
+      eyebrow: "LA GRAN PARADOJA · FIGMA 1016:1366",
+      title: "Pero seguimos diseñando CX como si fuera 1999",
+      subtitle: "La brecha entre la inmediatez del consumidor y la burocracia digital de las plataformas corporativas.",
+      type: "CRÍTICA",
+      render: () => `
+        <div class="grid-2" style="height: 100%; margin-top: 0; align-items: center;">
+          <div>
+            <span class="bp-eyebrow">LA CONTRADICCIÓN CORPORATIVA</span>
+            <h2 class="bp-title" style="font-size: 1.85rem;">Formularios eternos y fricción en cada canal</h2>
+            <div class="card" style="background: color-mix(in oklab, var(--bp-danger) 6%, transparent); border-color: rgba(239, 68, 68, 0.3); padding: 14px; margin-top: 14px;">
+              <span class="badge" style="background: rgba(239, 68, 68, 0.2); color: #ef4444;">LO QUE VE EL CLIENTE HOY</span>
+              <ul style="padding-left: 18px; font-size: 12.5px; color: var(--bp-muted); line-height: 1.7; margin-top: 6px;">
+                <li>Formularios de doce campos obligatorios para descargar un PDF.</li>
+                <li>Menús automáticos rígidos tipo 'Elige opción 1, 2 o 3'.</li>
+                <li>Repetir tu número de cuenta 3 veces con distintos agentes.</li>
+              </ul>
+            </div>
+            <div class="card" style="background: color-mix(in oklab, var(--bp-evolve) 6%, transparent); border-color: rgba(175, 225, 57, 0.3); padding: 14px; margin-top: 10px;">
+              <span class="badge green">DATO GENESYS 2024</span>
+              <div style="font-size: 1.8rem; font-weight: 300; font-family: 'JetBrains Mono', monospace; color: var(--bp-fg);">76%</div>
+              <div style="font-size: 12px; color: var(--bp-muted);">De los líderes de CX ya usan IA para personalizar en tiempo real.</div>
+            </div>
+          </div>
+
+          <div class="figma-preview-box" onclick="openLightbox('assets/slide_07_meme_1999.png')" title="Clic para ampliar lámina 1999">
+            <img src="assets/slide_07_meme_1999.png" alt="Lámina Meme 1999 Figma">
+            <div class="figma-badge-overlay">
+              <span>🔍</span> Ver lámina Figma 1016:1366
+            </div>
+          </div>
+        </div>
+      `,
+      notes: {
+        time: "2:30 min",
+        keyIdea: "Evidenciar la pérdida de clientes por fricción innecesaria. El costo de diseñar experiencias obsoletas.",
+        speech: "Y aquí llegamos a la gran contradicción empresarial de nuestra era: Mientras el consumidor vive en un entorno donde todo es instantáneo, entras al portal de un banco o una aseguradora... y pareciera que volvimos a 1999. Formularios eternos, captchas absurdos y tener que repetir tu nombre tres veces en la misma llamada. El dato de Genesys es demoledor: el 76% de los líderes de experiencia en el mundo ya están usando IA para personalizar en tiempo real. Cada segundo de fricción cuesta dinero; cada segundo de fluidez se convierte en margen neto."
+      }
+    },
+    {
+      id: "08",
+      eyebrow: "LOS 3 PILARES · FIGMA 1022:2434",
+      title: "La IA ya no solo optimiza el CX: lo está reescribiendo",
+      subtitle: "Los tres ejes estructurales sobre los que opera la nueva arquitectura de experiencia de cliente.",
+      type: "FRAMEWORK",
+      render: () => `
+        <div>
+          <span class="bp-eyebrow">ARQUITECTURA DE VALOR</span>
+          <h2 class="bp-title">Los 3 Pilares del Nuevo CX</h2>
+          <div class="grid-3" style="margin-top: 28px;">
+            <div class="card" style="border-top: 3px solid var(--bp-accent);">
+              <div class="card-num">01</div>
+              <div class="card-title">Hiperpersonalización en tiempo real</div>
+              <div class="card-desc">No es segmentar por demografía; es responder a lo que cada cliente necesita en este segundo exacto (Amazon, Netflix, Nike).</div>
+            </div>
+            <div class="card" style="border-top: 3px solid var(--bp-build);">
+              <div class="card-num">02</div>
+              <div class="card-title">Decisiones automatizadas</div>
+              <div class="card-desc">La IA no solo recomienda: actúa sobre precios dinámicos, disponibilidad, prevención de fraude y asignación de casos.</div>
+            </div>
+            <div class="card" style="border-top: 3px solid var(--bp-evolve);">
+              <div class="card-num">03</div>
+              <div class="card-title">Customer journeys invisibles</div>
+              <div class="card-desc">Experiencias invisibles donde el usuario no necesita configurar nada porque el sistema se anticipó (Tesla, Uber, Google Maps).</div>
+            </div>
+          </div>
+        </div>
+      `,
+      notes: {
+        time: "3:00 min",
+        keyIdea: "Explicar con claridad ejecutiva los 3 pilares conceptuales antes de entrar a los casos de cada uno.",
+        speech: "Para aterrizar esto en la operación diaria, la IA transforma el CX en tres dimensiones críticas: Primero: Hiperpersonalización en tiempo real. Olvídense de segmentar por edad o género. Eso es del siglo pasado. Significa que dos usuarios con el mismo perfil ven interfaces y opciones distintas según su contexto actual. Segundo: Decisiones automatizadas sin intervención humana. La IA no genera un reporte para que un gerente lo vea el lunes; toma la decisión de negocio en milisegundos. Y tercero: Customer journeys invisibles. El mejor diseño es el que no se nota: resuelve el problema antes de que se vuelva una tarea."
+      }
+    },
+    {
+      id: "09",
+      eyebrow: "PILAR 01 · FIGMA 1024:2530",
+      title: "Starbucks Deep Brew: Anticipar antes de pedir",
+      subtitle: "Cómo la IA une la recomendación en app con la logística física de inventarios y personal en tienda.",
+      type: "PROFUNDIZACIÓN",
+      render: () => `
+        <div class="grid-2" style="height: 100%; margin-top: 0; align-items: center;">
+          <div>
+            <span class="bp-eyebrow">CASO EMBLEMÁTICO 01</span>
+            <h2 class="bp-title" style="font-size: 1.85rem;">Hiperpersonalización Operativa</h2>
+            <div style="display: flex; flex-direction: column; gap: 12px; margin-top: 14px;">
+              <div class="card" style="padding: 14px;">
+                <span class="badge cyan">EN EL SOFTWARE (APP)</span>
+                <div class="card-title" style="font-size: 14px;">Recomendación Contextual</div>
+                <div class="card-desc">Si llueve en CDMX, no te sugiere frappuccino; te ofrece tu bebida caliente habitual según hábitos y ubicación.</div>
+              </div>
+              <div class="card" style="padding: 14px;">
+                <span class="badge green">EN LA OPERACIÓN REAL</span>
+                <div class="card-title" style="font-size: 14px;">Cadena de Suministro y Turnos</div>
+                <div class="card-desc">Calcula la demanda prevista de insumos por sucursal y programa la cantidad exacta de baristas para erradicar filas.</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="figma-preview-box" onclick="openLightbox('assets/slide_09_starbucks.png')" title="Clic para ampliar lámina Starbucks">
+            <img src="assets/slide_09_starbucks.png" alt="Lámina Starbucks Figma">
+            <div class="figma-badge-overlay">
+              <span>🔍</span> Ver lámina Figma 1024:2530
+            </div>
+          </div>
+        </div>
+      `,
+      notes: {
+        time: "2:30 min",
+        keyIdea: "Destacar que Deep Brew no es solo una app bonita: optimiza inventarios y costos laborales.",
+        speech: "Starbucks lanzó en 2019 su plataforma Deep Brew. Si hace frío, la app no te muestra un frappuccino; te sugiere tu bebida caliente preferida. Pero el verdadero retorno está en la cafetería física: calcula cuánta leche y café se consumirá ese día en esa sucursal y programa los turnos de baristas para erradicar cuellos de botella. Eso es CX integral: conectar el software con la realidad operativa."
+      }
+    },
+    {
+      id: "10",
+      eyebrow: "PILAR 02 · FIGMA 1068:230",
+      title: "Booking.com: La IA al mando de las decisiones",
+      subtitle: "Miles de microdecisiones comerciales ocurriendo sin intervención manual en cada interacción.",
+      type: "PROFUNDIZACIÓN",
+      render: () => `
+        <div class="grid-2" style="height: 100%; margin-top: 0; align-items: center;">
+          <div>
+            <span class="bp-eyebrow">CASO EMBLEMÁTICO 02</span>
+            <h2 class="bp-title" style="font-size: 1.85rem;">Decisiones Automatizadas en Escala</h2>
+            <div style="display: flex; flex-direction: column; gap: 10px; margin-top: 14px;">
+              <div class="card" style="padding: 12px 16px;">
+                <span class="badge purple">PRECIOS DINÁMICOS</span>
+                <div class="card-title" style="font-size: 13.5px;">Elasticidad en tiempo real</div>
+                <div class="card-desc">Los precios cambian segundo a segundo según demanda, inventario y competencia.</div>
+              </div>
+              <div class="card" style="padding: 12px 16px;">
+                <span class="badge cyan">CURACIÓN DE OFERTA</span>
+                <div class="card-title" style="font-size: 13.5px;">Destinos hiperrelevantes</div>
+                <div class="card-desc">Ranking curado por probabilidad de conversión para cada tipo de viajero.</div>
+              </div>
+              <div class="card" style="padding: 12px 16px;">
+                <span class="badge green">PROTECCIÓN ACTIVA</span>
+                <div class="card-title" style="font-size: 13.5px;">Antifraude sin fricción</div>
+                <div class="card-desc">Detección y freno de transacciones dudosas en milisegundos sin bloquear compras VIP.</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="figma-preview-box" onclick="openLightbox('assets/slide_10_booking.png')" title="Clic para ampliar lámina Booking">
+            <img src="assets/slide_10_booking.png" alt="Lámina Booking Figma">
+            <div class="figma-badge-overlay">
+              <span>🔍</span> Ver lámina Figma 1068:230
+            </div>
+          </div>
+        </div>
+      `,
+      notes: {
+        time: "2:30 min",
+        keyIdea: "La IA no pide permiso: toma decisiones de rentabilidad, conversión y blindaje antifraude.",
+        speech: "Cuando entras a Booking, podrías pensar que tú decides. En realidad, la IA ya decidió qué mostrarte, qué hoteles priorizar y qué precio ofrecerte según tu probabilidad de cierre. Los precios se ajustan en vivo, las ofertas se activan y los sistemas antifraude operan en silencio. En Booking, la IA no es una asistente: es el copiloto financiero de la empresa."
+      }
+    },
+    {
+      id: "11",
+      eyebrow: "PILAR 03 · FIGMA 1022:2471",
+      title: "Tesla: Experiencias invisibles sin fricción",
+      subtitle: "El 97% de los conductores nunca vuelve a tocar la configuración después del primer día.",
+      type: "PROFUNDIZACIÓN",
+      render: () => `
+        <div class="grid-2" style="height: 100%; margin-top: 0; align-items: center;">
+          <div>
+            <span class="bp-eyebrow">CASO EMBLEMÁTICO 03</span>
+            <h2 class="bp-title" style="font-size: 1.85rem;">El mejor diseño es el que no se ve</h2>
+            <div class="card" style="border-left: 4px solid var(--bp-evolve); padding: 18px; margin-top: 14px;">
+              <span class="badge green">MÉTRICA AUDITADA</span>
+              <div style="font-size: 2.8rem; font-weight: 300; font-family: 'JetBrains Mono', monospace; color: var(--bp-fg);">
+                97%
+              </div>
+              <div style="font-size: 13px; color: var(--bp-muted); line-height: 1.6;">
+                De los conductores de Tesla jamás vuelven a ajustar su configuración. La llave o teléfono vincula asientos, espejos, clima, música y rutas sin tocar una pantalla.
+              </div>
+            </div>
+            <div class="luma-banner" style="margin-top: 14px;">
+              <div><strong>Lección:</strong> Si tu usuario tiene que hacer 8 clics para lo que hace todos los días, tu diseño falló.</div>
+            </div>
+          </div>
+
+          <div class="figma-preview-box" onclick="openLightbox('assets/slide_11_tesla.png')" title="Clic para ampliar lámina Tesla">
+            <img src="assets/slide_11_tesla.png" alt="Lámina Tesla Figma">
+            <div class="figma-badge-overlay">
+              <span>🔍</span> Ver lámina Figma 1022:2471
+            </div>
+          </div>
+        </div>
+      `,
+      notes: {
+        time: "2:30 min",
+        keyIdea: "Experiencia invisible: la cúspide del diseño humano. El usuario valora que le resuelvan el problema, no picar botones.",
+        speech: "El ejemplo definitivo de una experiencia invisible es Tesla. No te recibe con menús preguntándote quién eres. Reconoce tu llave o teléfono y en tres segundos ajusta asiento, espejos, temperatura, tu música y traza la ruta al trabajo o a casa. El 97% de los usuarios nunca vuelven a entrar a los menús. La experiencia perfecta no es la que tiene la pantalla más saturada; es la que te resuelve la vida sin obligarte a interactuar."
+      }
+    },
+    {
+      id: "12",
+      eyebrow: "EL FRAMEWORK DE 5 PASOS · FIGMA 1068:221",
+      title: "Claves para crear valor inmediato con IA (L.P.A.A.O.)",
+      subtitle: "La hoja de ruta operativa de 5 capacidades para pasar de la teoría a la ejecución en tu empresa.",
+      type: "METODOLOGÍA",
+      render: () => `
+        <div>
+          <span class="bp-eyebrow">HOJA DE RUTA OPERATIVA</span>
+          <h2 class="bp-title">El Framework de las 5 Capacidades</h2>
+          <div class="grid-5" style="margin-top: 24px;">
+            <div class="card" style="padding: 16px;">
+              <span class="badge cyan">01 · LISTEN</span>
+              <div class="card-title" style="font-size: 14px;">Escucha Activa</div>
+              <div class="card-desc" style="font-size: 12px;">Del Customer Support al Customer Sensing (Heineken). Detecta tensiones antes de la queja.</div>
+            </div>
+            <div class="card" style="padding: 16px;">
+              <span class="badge purple">02 · PREDICT</span>
+              <div class="card-title" style="font-size: 14px;">Anticipación</div>
+              <div class="card-desc" style="font-size: 12px;">Sugerir en vez de esperar (Uber Michelangelo). 10M de predicciones por segundo.</div>
+            </div>
+            <div class="card" style="padding: 16px;">
+              <span class="badge green">03 · AUTOMATE</span>
+              <div class="card-title" style="font-size: 14px;">Escala Fina</div>
+              <div class="card-desc" style="font-size: 12px;">Automatiza lo predecible, libera lo humano para lo que importa (American Airlines).</div>
+            </div>
+            <div class="card" style="padding: 16px;">
+              <span class="badge cyan">04 · AUGMENT</span>
+              <div class="card-title" style="font-size: 14px;">Superpoderes</div>
+              <div class="card-desc" style="font-size: 12px;">Continuidad omnicanal real: del chat a la llamada sin reiniciar la charla (Apple Support).</div>
+            </div>
+            <div class="card" style="padding: 16px;">
+              <span class="badge green">05 · OPTIMIZE</span>
+              <div class="card-title" style="font-size: 14px;">Aprendizaje</div>
+              <div class="card-desc" style="font-size: 12px;">Aprender de cada interacción para rediseñar el sistema completo continuo (Google Maps).</div>
+            </div>
+          </div>
+        </div>
+      `,
+      notes: {
+        time: "5:00 min",
+        keyIdea: "El framework L.P.A.A.O. es la herramienta que la audiencia puede llevarse escrita a su junta de dirección.",
+        speech: "Llegados a este punto, la pregunta de cualquier director es: ¿Cómo aterrizo esto en mi empresa el lunes? Aquí tienen cinco pasos prácticos y muy concretos: Paso uno: ESCUCHAR (Listen). Dejemos de esperar al ticket de queja; entendamos lo que el cliente hace y necesita hoy. Paso dos: PREDECIR (Predict). Anticipemos la necesidad antes de que el usuario pregunte. Paso tres: AUTOMATIZAR (Automate). Automatizar lo repetitivo para que los humanos se enfoquen en lo importante. Paso cuatro: POTENCIAR (Augment). No reemplaces personas; dales mejores herramientas y contexto completo como Apple Support. Y paso cinco: OPTIMIZAR (Optimize). Aprende de cada interacción para mejorar la experiencia todos los días."
+      }
+    },
+    {
+      id: "13",
+      eyebrow: "CIERRE Y CONTACTO · FIGMA 1042:2924",
+      title: "Las mejores experiencias hoy no se notan… se sienten.",
+      subtitle: "Debemos diseñar experiencias que escuchen, predigan, automaticen, potencien y aprendan. Eso es jugar para ganar.",
+      type: "CIERRE",
+      render: () => `
+        <div style="flex: 1; display: flex; flex-direction: column; justify-content: center; max-width: 960px;">
+          <span class="bp-eyebrow">CONCLUSIÓN MAGISTRAL</span>
+          <h2 class="bp-display" style="font-size: clamp(2.1rem, 3.8vw, 3.2rem); margin-bottom: 18px;">
+            «Las mejores experiencias hoy no se notan… <span class="bp-highlight">se sienten</span>.»
+          </h2>
+          <p class="bp-subtitle" style="font-size: 1.15rem; margin-bottom: 22px; line-height: 1.55;">
+            La IA no vino a reemplazar la empatía ni el criterio humano. Vino a darnos la capacidad de diseñar momentos memorables para cada cliente, sin perder el toque personal.
+          </p>
+          <div class="card" style="background: color-mix(in oklab, var(--bp-accent) 8%, transparent); border-color: var(--bp-accent); padding: 20px 24px;">
+            <div style="font-size: 1.05rem; font-weight: 500; color: var(--bp-fg);">
+              Diseñen experiencias que escuchen, predigan, automaticen con elegancia, potencien a sus equipos y aprendan todos los días.
+            </div>
+            <div style="margin-top: 10px; font-weight: 700; color: var(--bp-accent); font-family: 'JetBrains Mono', monospace;">
+              Eso es CX con IA. Y eso es jugar para ganar.
+            </div>
+          </div>
+          <div style="margin-top: 22px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px; background: color-mix(in oklab, var(--bp-fg) 3%, transparent); border: 1px solid var(--bp-line); border-radius: 10px; padding: 14px 18px;">
+            <div style="display: flex; align-items: center; gap: 12px;">
+              <img src="assets/maria_de_buen_foto.png" alt="María de Buen" style="width: 48px; height: 48px; border-radius: 50%; object-fit: cover; border: 2px solid var(--bp-accent);">
+              <div>
+                <div style="font-size: 14px; font-weight: 700; color: var(--bp-fg);">María de Buen · CEO & Co-founder de BluePixel</div>
+                <div style="font-size: 12px; color: var(--bp-muted);">#1 Ranking UX/UI México · 350+ proyectos · 60+ especialistas · 10+ años</div>
+                <div style="font-size: 12px; color: var(--bp-dim); font-family: 'JetBrains Mono', monospace; margin-top: 2px;">
+                  @mariadebuen · @bluepixelsoftware · www.bluepixel.mx · maria@bluepixel.mx · WhatsApp B2B +52 55 7481 1018
+                </div>
+              </div>
+            </div>
+            <span class="badge green">Software that Feels Right</span>
+          </div>
+        </div>
+      `,
+      notes: {
+        time: "2:00 min",
+        keyIdea: "Cierre inspirador de autoridad B2B, invitando a la acción sin rodeos.",
+        speech: "Para concluir: la inteligencia artificial no vino a reemplazar la empatía humana ni el criterio de diseño. Vino a darnos el superpoder de orquestar momentos memorables a escala masiva. Las empresas que dominen los próximos diez años serán aquellas que tengan la valentía de rediseñar toda su relación con el cliente desde la inteligencia de datos. Diseñen experiencias que escuchen. Que predigan. Que automaticen con elegancia. Que potencien a sus equipos. Y que aprendan todos los días. Eso es CX con IA. Y eso es jugar para ganar. Muchísimas gracias."
+      }
+    }
+  ];
+
+  /* ───────── Estado y Variables ───────── */
+  let currentIndex = 0;
+  let notesOpen = false;
+  let gridOpen = false;
+
+  /* ───────── Elementos DOM ───────── */
+  const slideStage = document.getElementById("slide-stage");
+  const slideCounter = document.getElementById("slide-counter");
+  const slideNameLabel = document.getElementById("slide-name-label");
+  const progressBar = document.getElementById("progress-bar");
+  const btnPrev = document.getElementById("btn-prev");
+  const btnNext = document.getElementById("btn-next");
+  const notesDrawer = document.getElementById("notes-drawer");
+  const notesContent = document.getElementById("notes-content");
+  const btnNotes = document.getElementById("btn-notes");
+  const btnCloseNotes = document.getElementById("btn-close-notes");
+  const gridModal = document.getElementById("grid-modal");
+  const gridContainer = document.getElementById("grid-container");
+  const btnGrid = document.getElementById("btn-grid");
+  const btnCloseGrid = document.getElementById("btn-close-grid");
+  const btnTheme = document.getElementById("btn-theme");
+  const themeIcon = document.getElementById("theme-icon");
+  const themeText = document.getElementById("theme-text");
+  const btnFs = document.getElementById("btn-fs");
+  const lightboxModal = document.getElementById("lightbox-modal");
+  const lightboxImg = document.getElementById("lightbox-img");
+  const btnCloseLightbox = document.getElementById("btn-close-lightbox");
+
+  /* ───────── Renderizado del Slide Activo ───────── */
+  function renderSlide(index) {
+    if (index < 0 || index >= SLIDES.length) return;
+    currentIndex = index;
+    const slide = SLIDES[index];
+
+    // Renderizado en canvas
+    slideStage.innerHTML = `
+      <div class="slide-header">
+        <div class="slide-meta">${slide.eyebrow} · [${slide.id}/13]</div>
+        <div class="slide-speaker">
+          <img src="assets/maria_de_buen_foto.png" alt="María de Buen">
+          <span>María De Buen</span> · CEO BluePixel
+        </div>
+      </div>
+      <div class="slide-content">
+        ${slide.render()}
+      </div>
+      <div class="slide-footer">
+        <div>BluePixel 2027 · Conferencia Magistral «El CX en la era de la IA»</div>
+        <div style="font-family: 'JetBrains Mono', monospace;">SLIDE ${slide.id} · ${slide.type}</div>
+      </div>
+    `;
+
+    // Actualizar Controles
+    slideCounter.textContent = `${String(index + 1).padStart(2, '0')} / ${String(SLIDES.length).padStart(2, '0')}`;
+    slideNameLabel.textContent = `${slide.id} · ${slide.title}`;
+    progressBar.style.width = `${((index + 1) / SLIDES.length) * 100}%`;
+    btnPrev.disabled = index === 0;
+    btnNext.disabled = index === SLIDES.length - 1;
+
+    // Actualizar Notas del Orador
+    notesContent.innerHTML = `
+      <div class="notes-meta-box">
+        <div><strong>Lámina:</strong> ${slide.id} · ${slide.title}</div>
+        <div><strong>Tiempo estimado:</strong> <span style="color: var(--bp-accent); font-weight: 600;">${slide.notes.time}</span></div>
+        <div><strong>Idea Clave:</strong> ${slide.notes.keyIdea}</div>
+      </div>
+      <div>
+        <div style="font-weight: 600; font-size: 11px; text-transform: uppercase; color: var(--bp-dim); margin-bottom: 8px; font-family: 'JetBrains Mono', monospace;">
+          GUION VERBATIM SUGERIDO:
+        </div>
+        <div class="notes-speech">
+          "${slide.notes.speech}"
+        </div>
+      </div>
+      <div class="luma-banner">
+        <div><strong>🔗 Conexión Webinar Luma (20-Nov):</strong> Fundamento de por qué los algoritmos sin empatía conductual generan fricción y abandono.</div>
+      </div>
+    `;
+
+    // Actualizar estado en cuadrícula
+    document.querySelectorAll(".thumb-card").forEach((c, i) => {
+      c.classList.toggle("active", i === index);
+    });
+  }
+
+  /* ───────── Navegación ───────── */
+  function nextSlide() {
+    if (currentIndex < SLIDES.length - 1) {
+      renderSlide(currentIndex + 1);
+    }
+  }
+
+  function prevSlide() {
+    if (currentIndex > 0) {
+      renderSlide(currentIndex - 1);
+    }
+  }
+
+  btnNext.addEventListener("click", nextSlide);
+  btnPrev.addEventListener("click", prevSlide);
+
+  /* ───────── Atajos de Teclado ───────── */
+  window.addEventListener("keydown", (e) => {
+    if (e.key === "ArrowRight" || e.key === " " || e.key === "PageDown") {
+      e.preventDefault();
+      nextSlide();
+    } else if (e.key === "ArrowLeft" || e.key === "PageUp") {
+      e.preventDefault();
+      prevSlide();
+    } else if (e.key === "Home") {
+      e.preventDefault();
+      renderSlide(0);
+    } else if (e.key === "End") {
+      e.preventDefault();
+      renderSlide(SLIDES.length - 1);
+    } else if (e.key.toLowerCase() === "n") {
+      toggleNotes();
+    } else if (e.key.toLowerCase() === "g") {
+      toggleGrid();
+    } else if (e.key.toLowerCase() === "f") {
+      toggleFullscreen();
+    } else if (e.key.toLowerCase() === "t") {
+      toggleTheme();
+    } else if (e.key === "Escape") {
+      if (lightboxModal.classList.contains("open")) closeLightbox();
+      else if (gridOpen) toggleGrid();
+      else if (notesOpen) toggleNotes();
+    }
+  });
+
+  /* ───────── Lightbox Modal ───────── */
+  window.openLightbox = function(src) {
+    lightboxImg.src = src;
+    lightboxModal.classList.add("open");
+  };
+
+  function closeLightbox() {
+    lightboxModal.classList.remove("open");
+    lightboxImg.src = "";
+  }
+
+  btnCloseLightbox.addEventListener("click", closeLightbox);
+  lightboxModal.addEventListener("click", (e) => {
+    if (e.target === lightboxModal) closeLightbox();
+  });
+
+  /* ───────── Drawer de Notas ───────── */
+  function toggleNotes() {
+    notesOpen = !notesOpen;
+    notesDrawer.classList.toggle("open", notesOpen);
+    btnNotes.classList.toggle("active", notesOpen);
+  }
+
+  btnNotes.addEventListener("click", toggleNotes);
+  btnCloseNotes.addEventListener("click", toggleNotes);
+
+  /* ───────── Cuadrícula / Overview ───────── */
+  function initGrid() {
+    gridContainer.innerHTML = SLIDES.map((s, i) => `
+      <div class="thumb-card ${i === currentIndex ? 'active' : ''}" onclick="selectFromGrid(${i})">
+        <div class="thumb-num">SLIDE ${s.id}</div>
+        <div class="thumb-title">${s.title}</div>
+        <div class="thumb-type">${s.type} · ${s.notes.time}</div>
+      </div>
+    `).join("");
+  }
+
+  function toggleGrid() {
+    gridOpen = !gridOpen;
+    gridModal.classList.toggle("open", gridOpen);
+    btnGrid.classList.toggle("active", gridOpen);
+    if (gridOpen) initGrid();
+  }
+
+  btnGrid.addEventListener("click", toggleGrid);
+  btnCloseGrid.addEventListener("click", toggleGrid);
+
+  window.selectFromGrid = function(i) {
+    renderSlide(i);
+    toggleGrid();
+  };
+
+  /* ───────── Toggle de Tema Claro/Oscuro ───────── */
+  function toggleTheme() {
+    const html = document.documentElement;
+    const currentTheme = html.getAttribute("data-theme") || "dark";
+    const newTheme = currentTheme === "dark" ? "light" : "dark";
+    html.setAttribute("data-theme", newTheme);
+    themeIcon.textContent = newTheme === "dark" ? "☀️" : "🌙";
+    themeText.textContent = newTheme === "dark" ? "Modo Claro" : "Modo Oscuro";
+  }
+
+  btnTheme.addEventListener("click", toggleTheme);
+
+  /* ───────── Pantalla Completa ───────── */
+  function toggleFullscreen() {
+    if (!document.fullscreenElement) {
+      document.documentElement.requestFullscreen().catch(() => {});
+    } else {
+      document.exitFullscreen().catch(() => {});
+    }
+  }
+
+  btnFs.addEventListener("click", toggleFullscreen);
+
+  // Inicialización
+  initGrid();
+  renderSlide(0);
+</script>
+</body>
+</html>
