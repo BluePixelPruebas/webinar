@@ -87,12 +87,14 @@
 ---
 
 ### 🔹 LÁMINA 08 · DIAGNÓSTICO (Figma 1346:276)
-* **En Pantalla:** Cómo saber si mi producto va a funcionar (3 preguntas exactas).
+* **En Pantalla:** Cómo saber si mi producto va a funcionar · Preguntas complementarias de auditoría para Trust, Flow y Delight + Gráfico de las 3 esferas de Figma.
 * **Guion de María:**
-  > *"Les dejo estas tres preguntas de diagnóstico para que las lleven a sus empresas:*  
-  > *Uno: ¿El usuario entiende por qué la IA hizo lo que hizo? Si el sistema es una caja negra opaca, generas desconfianza.*  
-  > *Dos: ¿La IA aparece en el momento correcto… o tengo que salirme a buscarla a otro lado? Si tienes que buscarla, el diseño falló.*  
-  > *Y tres: ¿Usarla se siente más fácil que no usarla? Si la respuesta a cualquiera de estas tres preguntas es 'no', el producto no va a funcionar."*
+  > *"Les dejo este checklist de diagnóstico para que lo lleven a sus empresas.*  
+  > *En la pantalla ven las tres preguntas indispensables que siempre nos hacemos: Trust, Flow y Delight. Pero cuando nos sentamos con directores y equipos de producto, las llevamos un paso más allá:*  
+  > *Primero, en Confianza: No basta con que el algoritmo funcione. ¿El usuario puede validar la fuente y siente que tiene el control, o tiene miedo de presionar el botón porque no sabe qué va a pasar? Si no hay trazabilidad, no hay adopción.*  
+  > *Segundo, en Integración: ¿La IA le ahorra clics dentro del sistema donde ya trabaja todos los días, o la diseñaron como una pestaña separada que la gente olvida abrir a los tres días? Si rompe el flujo, se abandona.*  
+  > *Y tercero, en Experiencia: ¿El valor es tan evidente que volver a hacerlo a mano se siente primitivo y pesado?*  
+  > *Si la respuesta a cualquiera de estas preguntas es 'no', el problema no es la inteligencia artificial: es la experiencia."*
 
 ---
 
