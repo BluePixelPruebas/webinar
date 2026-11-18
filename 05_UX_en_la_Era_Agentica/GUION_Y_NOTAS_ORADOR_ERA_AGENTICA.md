@@ -60,11 +60,10 @@
 
 ---
 
-### 🔹 LÁMINA 05 · BLUEPIXEL (Figma 1346:109)
-* **En Pantalla:** We Build, Evolve, Scale and Automate digital platforms · A long-term technology partner for companies making strategic investments in digital.
+### 🔹 LÁMINA 05 · QUIÉNES SOMOS (Figma 1346:109)
+* **En Pantalla:** No construimos pantallas bonitas que nadie usa. Diseñamos tecnología que la gente adopta · En BluePixel unimos el entendimiento profundo del usuario con tecnología sólida y lista para crecer · #1 Ranking Empresas UX/UI en México · 350+ Proyectos realizados · 60+ Especialistas en el equipo · 10+ Años en el mercado.
 * **Guion de María:**
-  > *"En BluePixel llevamos más de diez años haciendo exactamente esto. Nacimos en el diseño UX/UI y nos convertimos en el socio tecnológico de empresas que hacen inversiones serias en digital.*  
-  > *Hoy somos más de 60 especialistas y hemos construido más de 350 plataformas. Y aprendimos una lección muy clara: si construyes el motor más potente del mundo pero el auto es incómodo de manejar, nadie se va a subir. Nosotros nos aseguramos de que la tecnología sea sólida y de que las personas realmente quieran usarla."*
+  > *"En BluePixel llevamos más de diez años y más de trescientos cincuenta proyectos viendo esta historia repetirse una y otra vez. Hoy somos más de sesenta especialistas y estamos rankeados como la empresa número uno de UX/UI en México precisamente porque entendimos algo muy simple: no sirve de nada construir el motor más potente del mundo si el volante es incómodo y nadie quiere manejar el auto. Nosotros unimos el diseño centrado en las personas con la tecnología para que la gente realmente use y ame lo que se construye."*
 
 ---
 
