@@ -125,36 +125,36 @@
 
 ---
 
-### 🔹 LÁMINA 09 · PATRÓN 01: IA INVISIBLE (Figma 1346:309)
-* **Visual:** Experiencia limpia y silenciosa donde la ayuda llega sin pantallas extra.
+### 🔹 LÁMINA 09 · PATRÓN 01: IA INVISIBLE (Figma 1346:309 & 1306:137)
+* **Visual:** Experiencia limpia y silenciosa donde la ayuda llega sin pantallas extra. Ejemplo Spotify / TikTok.
 * **Tiempo:** 1:45 min
-* **Tesis:** Superar la obsesión superficial por las cajitas de chat; el mejor UX es el que no se nota.
+* **Tesis:** Superar la obsesión superficial por las cajitas de chat; diseñar sistemas que cambian en tiempo real.
 * **Guion Verbatim:**
-  > *"Veamos el primer gran patrón de diseño: la IA Invisible. Hoy parece que todos los equipos tienen una sola idea fija: 'Pongámosle una ventanita de chat a nuestra aplicación'. Y eso suele ser un error enorme.*  
-  > *El mejor diseño de experiencia con inteligencia artificial no es el que te pone a platicar con un muñequito digital; es el que hace que la complejidad desaparezca. Es el sistema que, cuando entras a trabajar por la mañana, ya organizó tus pendientes por prioridad de negocio, ya preparó el borrador del reporte para tu cliente y ya revisó que tus números cuadren.*  
-  > *Tú no ves la IA, pero sientes que tu herramienta de pronto te ahorra horas todos los días. Eso es diseñar con inteligencia de verdad."*
+  > *"Veamos el primer gran patrón de diseño: la IA Invisible. Hoy parece que todos los equipos tienen una sola idea fija: 'Pongámosle una ventanita de chat a nuestra aplicación'. Y eso casi siempre es un error.*  
+  > *Piensen en Spotify o en TikTok: cada persona ve algo completamente distinto; el contenido cambia, el orden cambia y la experiencia cambia según lo que haces, sin que tengas que pedirlo ni configurarlo. La IA no se ve, pero guía toda la experiencia.*  
+  > *Ya no estamos diseñando interfaces fijas: estamos diseñando sistemas vivos que se adaptan a cada persona en tiempo real y resuelven el trabajo en silencio. Eso es diseñar con inteligencia de verdad."*
 
 ---
 
-### 🔹 LÁMINA 10 · PATRÓN 02: IA QUE CONSTRUYE (Figma 1346:338)
-* **Visual:** Metodología IMPATH™ con usuarios sintéticos y validación rápida antes de invertir.
+### 🔹 LÁMINA 10 · PATRÓN 02: IA QUE CONSTRUYE (Figma 1346:338 & 1303:27)
+* **Visual:** Prototipado agéntico y validación rápida. Ejemplo Lovable de Figma y usuarios sintéticos IMPATH™.
 * **Tiempo:** 1:30 min
-* **Tesis:** De meses de espera a semanas con pruebas reales y simulación de usuarios.
+* **Tesis:** De meses de espera a semanas con pruebas reales y simulación de usuarios desde una conversación natural.
 * **Guion Verbatim:**
-  > *"El segundo patrón es la IA que construye. Cuando los fundadores y directivos nos buscan en BluePixel, el mayor temor siempre es el tiempo y el riesgo: '¿Cuánto tardaremos en ver resultados?'. Tradicionalmente, lanzar una plataforma empresarial tomaba de nueve a doce meses antes de saber si la gente la iba a usar.*  
-  > *Hoy usamos la IA para validar en semanas: creamos prototipos navegables en días y aplicamos nuestra metodología IMPATH™ con usuarios sintéticos (también llamados gemelos digitales) que recorren los flujos reales para detectar dónde se confunde la gente antes de construir la versión final.*  
-  > *Así sabes exactamente dónde puedes perder clientes o dinero antes de comprometer tu presupuesto."*
+  > *"El segundo patrón es la IA que construye: pasar de una idea a un producto tangible en minutos. ¿Quién de ustedes ha usado herramientas como Lovable? Escribes en lenguaje natural: 'Quiero una plataforma para gestionar clientes con dashboards', y en minutos tienes un producto navegable funcionando.*  
+  > *La tecnología detrás es impresionante, pero lo verdaderamente revolucionario es la interfaz: es una conversación. No necesitas aprender a programar; cuando la tecnología se adapta al lenguaje humano, la velocidad y la adopción explotan.*  
+  > *En BluePixel combinamos esto con nuestra metodología IMPATH™: simulamos usuarios sintéticos que recorren los flujos para encontrar fricciones antes de escribir código final, ahorrando meses de desarrollo a ciegas."*
 
 ---
 
-### 🔹 LÁMINA 11 · PATRÓN 03: IA QUE RESPONDE MEJOR (Figma 1346:346)
-* **Visual:** Respuestas basadas en información real de la empresa y criterio humano al mando.
+### 🔹 LÁMINA 11 · PATRÓN 03: IA QUE RESPONDE MEJOR (Figma 1346:346 & 1303:51)
+* **Visual:** Respuestas basadas en información real de la empresa y criterio humano al mando. Ejemplo Perplexity y Arquitectura RAG.
 * **Tiempo:** 1:45 min
 * **Conexión:** Puente directo hacia el Webinar de Luma del 20-Nov (*«UX en la era agéntica: cómo mantener el criterio humano frente a los sesgos de la IA»*).
 * **Guion Verbatim:**
-  > *"El tercer patrón es la IA que responde mejor: pasar de buscar a entender, y de entender a confiar. En una empresa, una IA que inventa datos es un riesgo inaceptable. Si un asistente le promete un descuento que no existe a un cliente o cambia una condición legal, el golpe al negocio es inmediato.*  
-  > *Por eso conectamos la IA únicamente con la información real y privada de la empresa, en su propio entorno seguro. Pero lo más importante es el diseño de la experiencia: el profesional humano siempre mantiene el control. La IA reúne la evidencia, muestra los riesgos y propone una ruta; la persona valida y toma la decisión final.*  
-  > *Esta es exactamente la tesis de nuestro próximo webinar del 20 de noviembre: cómo mantener el criterio humano frente a los sesgos de la IA."*
+  > *"El tercer patrón es la IA que responde mejor: pasar de buscar a entender, y de entender a confiar. Miren el ejemplo de Perplexity compitiendo contra Google: no ganó por tener un modelo más complejo, sino porque es súper transparente: te responde, pero te muestra de dónde viene cada dato. No solo te da respuestas: te da contexto.*  
+  > *En el mundo corporativo a esto le llamamos arquitectura RAG (Retrieval-Augmented Generation): conectar la IA exclusivamente a las bases de datos y documentos privados de la empresa para blindarla contra alucinaciones y datos inventados.*  
+  > *Y el factor decisivo es el diseño: la IA reúne la evidencia y resume en segundos, pero el criterio humano siempre tiene el control final. Justamente esta es la tesis de nuestro próximo webinar del 20 de noviembre: cómo mantener el criterio humano frente a los sesgos de la IA."*
 
 ---
 
