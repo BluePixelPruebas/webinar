@@ -182,10 +182,20 @@
       border-radius: var(--radius-lg);
       box-shadow: var(--shadow-elevation);
       position: relative;
-      overflow: hidden;
+      overflow-y: auto;
+      overflow-x: hidden;
       display: flex;
       flex-direction: column;
-      padding: 44px 56px;
+      padding: 28px 44px;
+    }
+
+    .slide-canvas::-webkit-scrollbar {
+      width: 5px;
+    }
+
+    .slide-canvas::-webkit-scrollbar-thumb {
+      background: var(--bp-line-strong);
+      border-radius: 4px;
     }
 
     .tl-eyebrow {
@@ -780,42 +790,44 @@
         title: "Cómo saber si mi producto va a funcionar",
         subtitle: "3 preguntas de diagnóstico para auditar la adopción antes de lanzar.",
         render: () => `
-          <div class="grid-2">
+          <div class="grid-2" style="align-items: center; gap: 32px;">
             <div style="display: flex; flex-direction: column; justify-content: center;">
-              <span class="tl-eyebrow">DIAGNÓSTICO</span>
-              <h2 class="tl-title">Cómo saber si mi producto <span class="highlight-cyan">va a funcionar</span></h2>
-              <p class="tl-subtitle" style="margin-bottom: 20px;">
+              <span class="tl-eyebrow" style="margin-bottom: 6px;">DIAGNÓSTICO</span>
+              <h2 class="tl-title" style="font-size: clamp(1.4rem, 2.3vw, 2rem); margin-bottom: 6px; line-height: 1.15;">
+                Cómo saber si mi producto <span class="highlight-cyan">va a funcionar</span>
+              </h2>
+              <p class="tl-subtitle" style="font-size: 13px; margin-bottom: 12px; line-height: 1.4;">
                 Criterios de auditoría conductual que complementan la evaluación en tu empresa:
               </p>
-              <div style="display: flex; flex-direction: column; gap: 12px;">
-                <div class="card" style="padding: 16px 20px; border-left: 3px solid var(--tl-cyan);">
-                  <div style="font-size: 13px; font-weight: 800; color: var(--tl-cyan); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 4px;">
+              <div style="display: flex; flex-direction: column; gap: 8px;">
+                <div class="card" style="padding: 10px 14px; border-left: 3px solid var(--tl-cyan); gap: 4px;">
+                  <div style="font-size: 11px; font-weight: 800; color: var(--tl-cyan); text-transform: uppercase; letter-spacing: 0.05em;">
                     Trust · Control y Certeza
                   </div>
-                  <div style="font-size: 14px; color: var(--bp-fg); line-height: 1.45;">
+                  <div style="font-size: 13px; color: var(--bp-fg); line-height: 1.35;">
                     ¿El usuario puede validar la fuente y siente que tiene el control final, o teme que la IA decida a ciegas?
                   </div>
                 </div>
-                <div class="card" style="padding: 16px 20px; border-left: 3px solid var(--tl-mint);">
-                  <div style="font-size: 13px; font-weight: 800; color: var(--tl-mint); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 4px;">
+                <div class="card" style="padding: 10px 14px; border-left: 3px solid var(--tl-mint); gap: 4px;">
+                  <div style="font-size: 11px; font-weight: 800; color: var(--tl-mint); text-transform: uppercase; letter-spacing: 0.05em;">
                     Flow · Integración en el Trabajo
                   </div>
-                  <div style="font-size: 14px; color: var(--bp-fg); line-height: 1.45;">
+                  <div style="font-size: 13px; color: var(--bp-fg); line-height: 1.35;">
                     ¿Le ahorra clics dentro de su herramienta diaria o se convirtió en otra pestaña más que debe recordar abrir?
                   </div>
                 </div>
-                <div class="card" style="padding: 16px 20px; border-left: 3px solid var(--tl-coral);">
-                  <div style="font-size: 13px; font-weight: 800; color: var(--tl-coral); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 4px;">
+                <div class="card" style="padding: 10px 14px; border-left: 3px solid var(--tl-coral); gap: 4px;">
+                  <div style="font-size: 11px; font-weight: 800; color: var(--tl-coral); text-transform: uppercase; letter-spacing: 0.05em;">
                     Delight · Reducción de Esfuerzo
                   </div>
-                  <div style="font-size: 14px; color: var(--bp-fg); line-height: 1.45;">
+                  <div style="font-size: 13px; color: var(--bp-fg); line-height: 1.35;">
                     ¿El valor es tan rápido y claro que volver al método anterior se siente primitivo y pesado?
                   </div>
                 </div>
               </div>
             </div>
-            <div class="figma-preview-card">
-              <img src="assets/talent_07_diagnostico.png" alt="Diagnóstico Trust Flow Delight">
+            <div class="figma-preview-card" style="max-height: 380px;">
+              <img src="assets/talent_07_diagnostico.png" alt="Diagnóstico Trust Flow Delight" style="max-height: 360px; object-fit: contain;">
             </div>
           </div>
         `,
