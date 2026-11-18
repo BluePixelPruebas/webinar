@@ -76,13 +76,13 @@
 
 ---
 
-### 🔹 LÁMINA 07 · LOS MULTIPLICADORES (Figma 1346:253)
-* **En Pantalla:** Trust — Flow — Delight · Confianza · Integración · Experiencia. Si no confían… no la usan.
+### 🔹 LÁMINA 07 · LOS MULTIPLICADORES: TRUST — FLOW — DELIGHT (Figma 1346:253)
+* **En Pantalla:** LA ARQUITECTURA CONDUCTUAL · Trust — Flow — Delight · 🛡️ Confianza (Trust) · ⚡ Integración (Flow) · ✨ Experiencia (Delight).
 * **Guion de María:**
-  > *"¿Cómo logramos que la gente realmente use la tecnología? En BluePixel diseñamos bajo tres multiplicadores: Trust, Flow y Delight.*  
-  > *Primero: Confianza. Si las personas no entienden por qué la IA les sugiere algo, desconfían. Y ante la duda, no la usan.*  
-  > *Segundo: Integración. La IA tiene que vivir en tu flujo de trabajo diario; no puede ser un destino al que tengas que ir a buscar.*  
-  > *Y tercero: Experiencia. Usarla se tiene que sentir más fácil que no usarla. Y la adopción… es lo que genera impacto en el negocio."*
+  > *"¿Cómo logramos entonces que las personas realmente adopten la IA? En BluePixel diseñamos bajo una tríada estricta: Trust, Flow y Delight.*  
+  > *Primero: Trust. Si un ejecutivo o un médico no entiende por qué la IA le está sugiriendo un diagnóstico o un precio, desconfía; y ante la duda, prefiere ignorarla. La confianza requiere trazabilidad y fuentes claras.*  
+  > *Segundo: Flow. La IA no debe ser un destino al que tengas que ir a buscar en otra pantalla; tiene que vivir dentro de tu flujo de trabajo diario, anticipando lo que necesitas.*  
+  > *Y tercero: Delight. Si usar la herramienta de IA requiere redactar prompts de tres párrafos y esperar diez segundos con incertidumbre, se siente como una carga. Usarla tiene que ser tan fluido que volver al método anterior se sienta primitivo."*
 
 ---
 
@@ -109,15 +109,13 @@
 
 ---
 
-### 🔹 LÁMINA 10 · CASO 02: LOVABLE (Figma 1303:27)
-* **En Pantalla:** IA que construye: De idea a producto… en minutos (Lovable).
+### 🔹 LÁMINA 10 · CASO 02: LOVABLE & PROTOTIPADO RÁPIDO (Figma 1303:27)
+* **En Pantalla:** EJEMPLO 02 · LOVABLE & PROTOTIPADO RÁPIDO · IA que Construye: "De idea a producto... en minutos." · Herramientas como Lovable o prototipado agéntico: escribes en lenguaje natural «Quiero una plataforma para gestionar clientes con dashboards» y en minutos tienes un producto navegable · Validar antes de gastar meses: Usamos IA y usuarios sintéticos (IMPATH™) para probar la interacción y detectar fricciones en días · Es una conversación.
 * **Guion de María:**
-  > *"Caso 2 — Lovable.*  
-  > *¿Quién de ustedes ha usado Lovable? (Pausa)*  
-  > *Pues hoy existen herramientas como Lovable que parecen magia... en donde puedes escribir algo como: 'Quiero una plataforma para gestionar clientes con dashboards.' Y en minutos… tienes un producto funcionando.*  
+  > *"El segundo caso es la IA que construye: pasar de una idea a un producto tangible en minutos. ¿Quién de ustedes ha usado herramientas como Lovable? Escribes: 'Quiero una plataforma para gestionar clientes con dashboards', y en minutos tienes un producto funcionando.*  
   > *(Pausa)*  
-  > *La inteligencia artificial detrás de esto es impresionante. Pero lo verdaderamente revolucionario… es la interfaz. Es una conversación. No necesitas aprender a programar. Solo necesitas saber lo que quieres.*  
-  > *Cuando la tecnología se adapta al lenguaje humano… la adopción explota."*
+  > *La inteligencia artificial detrás es impresionante, pero lo verdaderamente revolucionario es la interfaz: es una conversación. No necesitas aprender a programar, solo saber lo que quieres.*  
+  > *Cuando la tecnología se adapta al lenguaje humano, la velocidad y la adopción explotan."*
 
 ---
 
