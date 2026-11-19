@@ -473,8 +473,10 @@
         <span class="brand-title">«UX en la era agéntica»: La relevancia del diseño UX/UI para crecimiento empresarial</span>
       </div>
       <div class="controls-group">
+        <button class="btn-action primary" id="btn-notes" title="Abrir o cerrar el Guion de María (Tecla N)" style="display: inline-flex; align-items: center; gap: 6px; padding: 6px 14px; font-size: 12px; font-weight: 700; border-radius: 999px; cursor: pointer;">
+          <span>🎙️</span> Ver Guion (N)
+        </button>
         <button class="btn-icon" id="btn-theme" title="Alternar tema claro/oscuro (T)">☀️</button>
-        <button class="btn-icon" id="btn-notes" title="Guion de María (N)">📝</button>
         <button class="btn-icon" id="btn-grid" title="Ver cuadrícula (G)">⊞</button>
         <button class="btn-icon" id="btn-fullscreen" title="Pantalla completa (F)">⛶</button>
         <span class="slide-counter" id="slide-counter">01 / 13</span>
@@ -541,6 +543,14 @@
                   <div style="font-weight: 700; font-size: 15px;">María de Buen</div>
                   <div style="font-size: 12px; color: var(--bp-muted);">CEO @BluePixel · Software that Feels Right</div>
                 </div>
+              </div>
+              <div style="display: flex; align-items: center; gap: 12px; margin-top: 22px; flex-wrap: wrap;">
+                <button class="btn-action primary" onclick="toggleNotes()" style="display: inline-flex; align-items: center; gap: 8px; padding: 12px 22px; font-size: 14px; font-weight: 700; cursor: pointer; border-radius: var(--radius); box-shadow: 0 4px 16px rgba(0, 210, 255, 0.25);">
+                  <span>🎙️</span> Ver Guion de María
+                </button>
+                <button class="btn-action" onclick="openGrid()" style="padding: 12px 18px; font-size: 13px; font-weight: 600; cursor: pointer; border-radius: var(--radius);">
+                  ⊞ Ver las 13 Láminas
+                </button>
               </div>
             </div>
             <div class="figma-preview-card">
