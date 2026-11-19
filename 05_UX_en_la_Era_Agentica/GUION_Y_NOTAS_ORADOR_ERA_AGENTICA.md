@@ -133,7 +133,7 @@
 ---
 
 ### 🔹 LÁMINA 12 · EL FUTURO DEL SOFTWARE (Figma 1231:245)
-* **En Pantalla:** El software ahora: Conversa · Predice · Se adapta.
+* **En Pantalla:** El software ahora: Conversa · Predice · Se adapta · 💭 Conversa (De buscar... a conversar: En lugar de perdernos en veinte menús, pedimos lo que necesitamos en nuestro propio idioma) · 🔮 Predice (De reaccionar... a anticipar: Detecta lo que el cliente o el equipo va a necesitar antes de que aparezca el problema) · 🧩 Se Adapta (De una interfaz para todos... a una experiencia para cada persona: Cada quien ve solo lo que necesita para hacer mejor su trabajo).
 * **Guion de María:**
   > *"Durante décadas... el software se diseñó alrededor de interfaces: Menús, botones, pantallas. Aprendimos a usar software… aprendiendo dónde hacer clic.*  
   > *(Pausa breve — cambio de tono)*  
@@ -147,8 +147,8 @@
 
 ---
 
-### 🔹 LÁMINA 13 · CIERRE (Figma 1335:189)
-* **En Pantalla:** Software that Feels Right · /mariadebuen · www.bluepixel.mx.
+### 🔹 LÁMINA 13 · CIERRE (Figma 1358:17 & 1335:189)
+* **En Pantalla:** Software that Feels Right · Quien va a ganar en esta nueva era no es la empresa con la tecnología más complicada, sino la que logre que las personas confíen en ella y disfruten usarla todos los días · María de Buen · CEO & Co-founder @BluePixel · #1 Ranking UX/UI México · 350+ proyectos · 60+ especialistas · 10+ años · @mariadebuen · maria@bluepixel.mx · WhatsApp B2B: +52 55 7481 1018 · Visitar bluepixel.mx · Ver Guion Completo.
 * **Guion de María:**
   > *"Hoy estamos viviendo uno de los momentos más importantes en la historia de la tecnología. (Pausa)*  
   > *La inteligencia artificial está cambiando todo: Cómo trabajamos. Cómo creamos. Cómo tomamos decisiones. (Pausa)*  
@@ -160,6 +160,7 @@
   > *No se trata de construir tecnología impresionante. (Pausa) Se trata de construir cosas que la gente realmente quiera usar.*  
   > *(Última pausa — bajo un poco la voz)*  
   > *Porque la inteligencia artificial impresiona… pero la experiencia… es la que cambia el negocio. (Pausa)*  
+  > *Quien va a ganar en esta nueva era no es la empresa con la tecnología más complicada, sino la que logre que las personas confíen en ella y disfruten usarla todos los días.*  
   > *'La tecnología puede hacer más… pero las personas… siguen sintiendo lo mismo.'*  
   > *Software that Feels Right.*  
   > *Muchas gracias a todos."*
