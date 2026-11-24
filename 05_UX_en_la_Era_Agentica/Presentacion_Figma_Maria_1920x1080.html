@@ -1,0 +1,847 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>UX y AI: El nuevo motor del crecimiento empresarial · María de Buen (Figma Talent Land 1920×1080 Completo)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Alexandria:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<style>
+  @page {
+    size: 1920px 1080px;
+    margin: 0 !important;
+  }
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+    color-adjust: exact !important;
+  }
+  html, body {
+    background: #151B24 !important;
+    color: #FFFFFF;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    margin: 0 !important;
+    padding: 0 !important;
+    width: 1920px;
+  }
+
+  .slide {
+    width: 1920px;
+    height: 1080px;
+    position: relative;
+    overflow: hidden;
+    background: radial-gradient(circle at 22% 50%, #263545 0%, #151B24 72%);
+    page-break-after: always;
+    break-after: page;
+  }
+  .slide:last-of-type {
+    page-break-after: avoid !important;
+    break-after: avoid !important;
+  }
+
+  .bg-img {
+    position: absolute;
+    inset: 0;
+    width: 1920px;
+    height: 1080px;
+    object-fit: cover;
+    z-index: 1;
+  }
+
+  .layer {
+    position: relative;
+    z-index: 5;
+    width: 100%;
+    height: 100%;
+  }
+
+  /* Colores oficiales del Figma Talent Land de María */
+  .c-cyan   { color: #58D5E8; }
+  .c-mint   { color: #BBE3C6; }
+  .c-orange { color: #F89B4B; }
+  .c-white  { color: #FFFFFF; }
+  .c-muted  { color: #94A3B8; }
+
+  .font-alex { font-family: 'Alexandria', sans-serif; }
+  .font-inter { font-family: 'Inter', sans-serif; }
+  .font-mono { font-family: 'JetBrains Mono', monospace; }
+
+  /* Logo superior canónico */
+  .bp-top-logo-center {
+    position: absolute;
+    top: 78px;
+    left: 849px;
+    width: 221px;
+    height: 28px;
+    z-index: 10;
+  }
+  .bp-top-logo-left {
+    position: absolute;
+    top: 78px;
+    left: 120px;
+    width: 221px;
+    height: 28px;
+    z-index: 10;
+  }
+
+  /* Tarjetas estilo Figma Talent Land */
+  .tl-card {
+    background: rgba(13, 18, 26, 0.86);
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    border-radius: 20px;
+    backdrop-filter: blur(16px);
+    padding: 28px 32px;
+  }
+  .tl-card-cyan {
+    border-top: 5px solid #58D5E8;
+    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.45);
+  }
+  .tl-card-mint {
+    border-top: 5px solid #BBE3C6;
+    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.45);
+  }
+  .tl-card-orange {
+    border-top: 5px solid #F89B4B;
+    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.45);
+  }
+  .tl-card-left-cyan {
+    border-left: 5px solid #58D5E8;
+  }
+  .tl-card-left-mint {
+    border-left: 5px solid #BBE3C6;
+  }
+  .tl-card-left-orange {
+    border-left: 5px solid #F89B4B;
+  }
+
+  .pill-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 22px;
+    border-radius: 999px;
+    font-size: 16px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+</style>
+</head>
+<body>
+
+  <!-- =====================================================================
+       LÁMINA 01 · PORTADA (Frame 1346:3 de Talent Land_María de Buen)
+       Mejora: Cubre únicamente el logo de Talent Land (x:95..395) conservando la línea y el logo original BLUEPIXEL (x:411..916)
+       ===================================================================== -->
+  <section class="slide" id="slide-01">
+    <img src="assets/talent_01_cover.png" class="bg-img" alt="Portada Base">
+    <div style="position: absolute; left: 95px; top: 105px; width: 300px; height: 105px; background: #1D2630; z-index: 3; display: flex; align-items: center; padding-left: 18px;">
+      <div class="pill-badge" style="background: rgba(88, 213, 232, 0.14); border: 1.5px solid rgba(88, 213, 232, 0.55); color: #58D5E8; padding: 10px 18px; font-size: 14.5px;">
+        <span style="width: 9px; height: 9px; border-radius: 50%; background: #58D5E8; display: inline-block;"></span>
+        WEBINAR · 3 DIC · 19:00 H
+      </div>
+    </div>
+    <div class="layer">
+      <div style="position: absolute; left: 126px; top: 738px; max-width: 880px; background: rgba(15, 22, 32, 0.82); border-left: 4px solid #58D5E8; padding: 14px 22px; border-radius: 0 12px 12px 0;">
+        <p style="font-size: 23px; font-weight: 500; color: #E2E8F0; line-height: 1.38;">
+          Cómo convertir inversiones en tecnología en experiencias que las personas <strong class="c-cyan">realmente adopten</strong>.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- =====================================================================
+       LÁMINA 02 · HOOK OPENAI 1 (Frame 1346:30 de Talent Land_María de Buen)
+       ===================================================================== -->
+  <section class="slide" id="slide-02">
+    <img src="assets/talent_02_hook.png" class="bg-img" alt="Hook OpenAI">
+    <div class="layer">
+      <div style="position: absolute; top: 150px; left: 0; width: 1920px; text-align: center;">
+        <div class="pill-badge" style="background: rgba(88, 213, 232, 0.1); border: 1px solid rgba(88, 213, 232, 0.35); color: #58D5E8; margin-bottom: 18px;">
+          NOVIEMBRE 2022 · 1 MILLÓN DE USUARIOS EN 5 DÍAS
+        </div>
+        <h2 class="font-alex" style="font-size: 56px; font-weight: 600; color: #FFFFFF; letter-spacing: -0.02em;">
+          ¿Fue la IA lo que cambió el mundo… <span class="c-cyan">o fue la experiencia?</span>
+        </h2>
+      </div>
+      <div style="position: absolute; bottom: 95px; left: 310px; width: 1300px; text-align: center;">
+        <div class="tl-card" style="padding: 24px 40px; border-color: rgba(88, 213, 232, 0.3);">
+          <p style="font-size: 26px; color: #F1F5F9; line-height: 1.45;">
+            La IA ya existía desde hacía años. Lo que cambió todo fue ponerla en una <strong class="c-cyan">simple caja de texto</strong>: <span class="c-orange">sin manual, sin entrenamiento y sin curva de aprendizaje.</span>
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =====================================================================
+       LÁMINA 03 · HOOK OPENAI 2: MANO ROBÓTICA & HUMANA (Frame 1346:49 con image 22 + image 3)
+       ===================================================================== -->
+  <section class="slide" id="slide-03">
+    <!-- Elipse de brillo central (1346:50) -->
+    <div style="position: absolute; left: 512px; top: 92px; width: 896px; height: 896px; border-radius: 50%; background: radial-gradient(circle, rgba(88, 213, 232, 0.25) 0%, transparent 70%); z-index: 1;"></div>
+    <!-- Imagen original image 22 de Figma (Mano Robot + Mano Humana) -->
+    <img src="assets/tl_hook2_img22.png" style="position: absolute; left: -40px; top: -63px; width: 2000px; height: 1333px; object-fit: cover; z-index: 2; opacity: 0.94;" alt="Conexión IA y Humano">
+    <!-- Isotipo central OpenAI image 3 (x:770, y:348, w:381, h:385) -->
+    <img src="assets/tl_openai_logo.png" style="position: absolute; left: 770px; top: 348px; width: 381px; height: 385px; object-fit: contain; z-index: 4; filter: drop-shadow(0 18px 36px rgba(0,0,0,0.55));" alt="OpenAI">
+    <div class="layer">
+      <img src="assets/bluepixel_logo_slide.svg" class="bp-top-logo-left" alt="BluePixel">
+      <div style="position: absolute; top: 135px; left: 260px; width: 1400px; text-align: center;">
+        <div class="tl-card" style="display: inline-block; padding: 20px 42px; background: rgba(13, 18, 26, 0.88); border-color: rgba(88, 213, 232, 0.4);">
+          <h2 class="font-alex" style="font-size: 46px; font-weight: 600; color: #FFFFFF;">
+            La tecnología ya estaba ahí. <span class="c-cyan">El puente fue el diseño UX.</span>
+          </h2>
+        </div>
+      </div>
+      <div style="position: absolute; bottom: 72px; left: 260px; width: 1400px; text-align: center;">
+        <div class="tl-card" style="padding: 22px 38px; background: rgba(13, 18, 26, 0.9); border-left: 5px solid #F89B4B;">
+          <p style="font-size: 25px; color: #F1F5F9; line-height: 1.42;">
+            “Por primera vez, cualquier persona podía conversar con un modelo complejo sin saber programar. <strong class="c-orange">La adopción explotó cuando desapareció la fricción.</strong>”
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =====================================================================
+       LÁMINA 04 · INTERACCIÓN EXCEL (Frame 1346:69 de Talent Land_María de Buen)
+       ===================================================================== -->
+  <section class="slide" id="slide-04">
+    <img src="assets/talent_03_excel.png" class="bg-img" alt="Interacción Excel">
+    <div class="layer">
+      <div style="position: absolute; left: 808px; top: 715px; width: 980px;">
+        <div class="tl-card tl-card-left-cyan" style="padding: 24px 30px; background: rgba(15, 23, 34, 0.9);">
+          <div style="font-size: 16px; font-weight: 700; color: #58D5E8; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 10px;">
+            ⚡ EL CAMBIO DE PARADIGMA (DE FÓRMULAS A INTENCIÓN)
+          </div>
+          <div style="background: rgba(255,255,255,0.06); border: 1px solid rgba(88, 213, 232, 0.35); border-radius: 12px; padding: 16px 22px; font-size: 25px; font-weight: 600; color: #FFFFFF; margin-bottom: 12px;">
+            💬 “Analiza estos datos y dime qué está pasando.”
+          </div>
+          <p style="font-size: 20px; color: #CBD5E1;">
+            Es exactamente la misma capacidad tecnológica… pero una <strong class="c-orange">experiencia completamente distinta</strong>.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =====================================================================
+       LÁMINA 05 · PARADOJA DE ADOPCIÓN (Frame 1346:89 de Talent Land_María de Buen)
+       ===================================================================== -->
+  <section class="slide" id="slide-05">
+    <img src="assets/talent_04_paradoja.png" class="bg-img" alt="Paradoja de Adopción">
+    <div class="layer">
+      <div style="position: absolute; bottom: 52px; left: 200px; width: 1520px; display: grid; grid-template-columns: 1fr 1fr; gap: 28px;">
+        <div class="tl-card" style="padding: 18px 26px; border-left: 4px solid #F89B4B; display: flex; align-items: center; gap: 18px;">
+          <span style="font-size: 32px;">❌</span>
+          <div>
+            <div style="font-size: 18px; font-weight: 700; color: #F89B4B;">IA con comandos complejos y errores</div>
+            <div style="font-size: 16px; color: #CBD5E1;">El equipo se frustra al tercer intento y regresa a sus hojas de cálculo.</div>
+          </div>
+        </div>
+        <div class="tl-card" style="padding: 18px 26px; border-left: 4px solid #58D5E8; display: flex; align-items: center; gap: 18px;">
+          <span style="font-size: 32px;">✅</span>
+          <div>
+            <div style="font-size: 18px; font-weight: 700; color: #58D5E8;">“Ayúdame con esto” (UX centrada en la persona)</div>
+            <div style="font-size: 16px; color: #CBD5E1;">La misma inteligencia artificial, pero diseñada para adoptarse todos los días.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =====================================================================
+       LÁMINA 06 · EVIDENCIA DE CAMPO (Frame 1346:109 pero SIN tono comercial de venta)
+       ===================================================================== -->
+  <section class="slide" id="slide-06">
+    <img src="assets/talent_05_bluepixel.png" class="bg-img" style="opacity: 0.18; filter: blur(6px); clip-path: inset(200px 0 0 0);" alt="Fondo BluePixel">
+    <div class="layer">
+      <img src="assets/bluepixel_logo_slide.svg" class="bp-top-logo-center" alt="BluePixel">
+
+      <div style="position: absolute; top: 185px; left: 160px; width: 1600px; text-align: center;">
+        <div class="pill-badge" style="background: rgba(88, 213, 232, 0.12); border: 1px solid rgba(88, 213, 232, 0.4); color: #58D5E8; margin-bottom: 24px;">
+          EVIDENCIA DE CAMPO · DE DÓNDE VIENE ESTE ANÁLISIS
+        </div>
+        <h2 class="font-alex" style="font-size: 68px; font-weight: 600; line-height: 1.15; color: #FFFFFF; margin-bottom: 24px;">
+          El reto nunca fue hacer pantallas bonitas.<br>
+          <span class="c-cyan">Es lograr que la tecnología realmente se use.</span>
+        </h2>
+        <p style="font-size: 28px; color: #CBD5E1; max-width: 1280px; margin: 0 auto 56px auto; line-height: 1.45; font-weight: 300;">
+          Lo que vemos hoy con la IA no es teoría: es el mismo patrón de adopción humana que hemos medido en la trinchera durante más de una década construyendo y escalando plataformas digitales.
+        </p>
+
+        <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 28px; text-align: center;">
+          <div class="tl-card tl-card-cyan" style="padding: 40px 24px;">
+            <div class="font-alex c-cyan" style="font-size: 72px; font-weight: 700; line-height: 1;">350+</div>
+            <div style="font-size: 24px; font-weight: 700; color: #FFFFFF; margin-top: 16px;">Plataformas analizadas</div>
+            <div style="font-size: 17px; color: #94A3B8; margin-top: 8px;">Patrones reales de adopción y uso en producción</div>
+          </div>
+          <div class="tl-card tl-card-mint" style="padding: 40px 24px;">
+            <div class="font-alex c-mint" style="font-size: 72px; font-weight: 700; line-height: 1;">10+</div>
+            <div style="font-size: 24px; font-weight: 700; color: #FFFFFF; margin-top: 16px;">Años de evidencia</div>
+            <div style="font-size: 17px; color: #94A3B8; margin-top: 8px;">Midiendo qué flujos funcionan y cuáles se abandonan</div>
+          </div>
+          <div class="tl-card tl-card-orange" style="padding: 40px 24px;">
+            <div class="font-alex c-orange" style="font-size: 72px; font-weight: 700; line-height: 1;">60+</div>
+            <div style="font-size: 24px; font-weight: 700; color: #FFFFFF; margin-top: 16px;">Especialistas en producto</div>
+            <div style="font-size: 17px; color: #94A3B8; margin-top: 8px;">UX conductual, datos, arquitectura e IA</div>
+          </div>
+          <div class="tl-card" style="padding: 40px 24px; border-top: 5px solid #FFFFFF;">
+            <div class="font-alex c-white" style="font-size: 72px; font-weight: 700; line-height: 1;">#1</div>
+            <div style="font-size: 24px; font-weight: 700; color: #FFFFFF; margin-top: 16px;">Referente UX/UI en México</div>
+            <div style="font-size: 17px; color: #94A3B8; margin-top: 8px;">Ranking Sortlist · Laboratorio BluePixel</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =====================================================================
+       LÁMINA 07 · ECUACIÓN + PILAR 01: EL FILTRO DE ADOPCIÓN (Frame 1346:232)
+       ===================================================================== -->
+  <section class="slide" id="slide-07">
+    <img src="assets/talent_06_ecuacion.png" class="bg-img" alt="Ecuación Impacto">
+    <div class="layer">
+      <div style="position: absolute; bottom: 52px; left: 140px; width: 1640px;">
+        <div class="tl-card" style="padding: 26px 36px; background: rgba(14, 20, 29, 0.92); border: 1px solid rgba(88, 213, 232, 0.35);">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 18px;">
+            <div style="font-size: 18px; font-weight: 800; color: #58D5E8; letter-spacing: 0.08em; text-transform: uppercase;">
+              PILAR 01 · EL FILTRO DE ADOPCIÓN (3 COMPUERTAS ANTES DE APROBAR UNA INICIATIVA DE IA)
+            </div>
+            <div style="font-size: 17px; color: #94A3B8; font-family: 'JetBrains Mono', monospace;">
+              100 (IA) × 0 (Adopción) = $0 Retorno
+            </div>
+          </div>
+          <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;">
+            <div style="background: rgba(255,255,255,0.04); padding: 18px 22px; border-radius: 14px; border-left: 5px solid #58D5E8;">
+              <div style="font-size: 21px; font-weight: 700; color: #58D5E8; margin-bottom: 6px;">1. Fricción Operativa Real</div>
+              <p style="font-size: 17.5px; color: #E2E8F0; line-height: 1.4;">
+                ¿Automatiza una tarea que hoy causa dolor y horas perdidas, o es solo un feature decorativo que añade clics?
+              </p>
+            </div>
+            <div style="background: rgba(255,255,255,0.04); padding: 18px 22px; border-radius: 14px; border-left: 5px solid #BBE3C6;">
+              <div style="font-size: 21px; font-weight: 700; color: #BBE3C6; margin-bottom: 6px;">2. En el Flujo Diario</div>
+              <p style="font-size: 17.5px; color: #E2E8F0; line-height: 1.4;">
+                ¿Vive dentro del software donde el equipo ya trabaja todos los días, o los obliga a ir a otra pestaña que olvidarán?
+              </p>
+            </div>
+            <div style="background: rgba(255,255,255,0.04); padding: 18px 22px; border-radius: 14px; border-left: 5px solid #F89B4B;">
+              <div style="font-size: 21px; font-weight: 700; color: #F89B4B; margin-bottom: 6px;">3. Retorno Medible</div>
+              <p style="font-size: 17.5px; color: #E2E8F0; line-height: 1.4;">
+                ¿Ahorra tiempo operativo verificable o requiere más esfuerzo humano para supervisar y corregir a la máquina?
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =====================================================================
+       LÁMINA 08 · LOS MULTIPLICADORES (Frame 1346:253 de Talent Land_María de Buen)
+       ===================================================================== -->
+  <section class="slide" id="slide-08">
+    <img src="assets/talent_07_multiplicadores.png" class="bg-img" alt="Los Multiplicadores">
+    <div class="layer">
+      <div style="position: absolute; bottom: 38px; left: 140px; width: 1640px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px;">
+        <div class="tl-card tl-card-cyan" style="padding: 20px 26px;">
+          <div class="font-mono c-cyan" style="font-size: 15px; font-weight: 700; margin-bottom: 6px;">■ 01 · TRUST (CONFIANZA)</div>
+          <p style="font-size: 18px; color: #E2E8F0; line-height: 1.4;">
+            Si no entienden por qué la IA hizo lo que hizo, no confían. Y si no confían, no la usan.
+          </p>
+        </div>
+        <div class="tl-card tl-card-mint" style="padding: 20px 26px;">
+          <div class="font-mono c-mint" style="font-size: 15px; font-weight: 700; margin-bottom: 6px;">■ 02 · FLOW (INTEGRACIÓN)</div>
+          <p style="font-size: 18px; color: #E2E8F0; line-height: 1.4;">
+            La IA tiene que aparecer en el momento correcto… no obligarte a salir a buscarla a otro lado.
+          </p>
+        </div>
+        <div class="tl-card tl-card-orange" style="padding: 20px 26px;">
+          <div class="font-mono c-orange" style="font-size: 15px; font-weight: 700; margin-bottom: 6px;">■ 03 · DELIGHT (EXPERIENCIA)</div>
+          <p style="font-size: 18px; color: #E2E8F0; line-height: 1.4;">
+            Usarla se tiene que sentir más fácil que no usarla. Si cuesta trabajo, se abandona.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =====================================================================
+       LÁMINA 09 · DIAGNÓSTICO 3 ESFERAS (Frame 1346:276 de Talent Land_María de Buen)
+       ===================================================================== -->
+  <section class="slide" id="slide-09">
+    <img src="assets/talent_07_diagnostico.png" class="bg-img" alt="Diagnóstico 3 Esferas">
+    <div class="layer">
+      <div style="position: absolute; bottom: 26px; left: 115px; width: 1690px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;">
+        <div class="tl-card tl-card-left-cyan" style="padding: 16px 22px; background: rgba(14, 21, 30, 0.94);">
+          <div style="font-size: 13.5px; font-weight: 800; color: #58D5E8; letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 4px;">
+            AUDITORÍA DE NEGOCIO · CONTROL Y CERTEZA
+          </div>
+          <p style="font-size: 17px; color: #F1F5F9; line-height: 1.35;">
+            ¿El usuario puede validar la fuente y siente que tiene el control final, o teme que la IA decida a ciegas?
+          </p>
+        </div>
+        <div class="tl-card tl-card-left-mint" style="padding: 16px 22px; background: rgba(14, 21, 30, 0.94);">
+          <div style="font-size: 13.5px; font-weight: 800; color: #BBE3C6; letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 4px;">
+            AUDITORÍA DE NEGOCIO · INTEGRACIÓN DIARIA
+          </div>
+          <p style="font-size: 17px; color: #F1F5F9; line-height: 1.35;">
+            ¿Le ahorra clics dentro de su herramienta diaria o se convirtió en otra pestaña más que debe recordar abrir?
+          </p>
+        </div>
+        <div class="tl-card tl-card-left-orange" style="padding: 16px 22px; background: rgba(14, 21, 30, 0.94);">
+          <div style="font-size: 13.5px; font-weight: 800; color: #F89B4B; letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 4px;">
+            AUDITORÍA DE NEGOCIO · REDUCCIÓN DE ESFUERZO
+          </div>
+          <p style="font-size: 17px; color: #F1F5F9; line-height: 1.35;">
+            ¿El valor es tan rápido y claro que volver al método anterior se siente primitivo y pesado?
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =====================================================================
+       LÁMINA 10 · EJEMPLO TRUST / FLOW / DELIGHT (Frame 1346:304 con image 23 original)
+       ===================================================================== -->
+  <section class="slide" id="slide-10">
+    <!-- Imagen original image 23 de Figma (x:-40, y:0, w:2000, h:1250) -->
+    <img src="assets/tl_ejemplo_img23.png" style="position: absolute; left: -40px; top: 0; width: 2000px; height: 1250px; object-fit: cover; z-index: 1;" alt="Ejemplo Trust Flow Delight">
+    <div style="position: absolute; inset: 0; background: linear-gradient(180deg, rgba(13, 18, 26, 0.72) 0%, rgba(13, 18, 26, 0.18) 35%, rgba(13, 18, 26, 0.85) 100%); z-index: 2;"></div>
+    <div class="layer">
+      <!-- Los 3 títulos originales de Figma (y:67, 96px Inter Bold) -->
+      <div style="position: absolute; left: 117px; top: 67px; width: 550px; text-align: center; font-size: 88px; font-weight: 700; color: #58D5E8; text-shadow: 0 8px 30px rgba(0,0,0,0.6);">
+        Trust
+      </div>
+      <div style="position: absolute; left: 685px; top: 67px; width: 550px; text-align: center; font-size: 88px; font-weight: 700; color: #BBE3C6; text-shadow: 0 8px 30px rgba(0,0,0,0.6);">
+        Flow
+      </div>
+      <div style="position: absolute; left: 1253px; top: 67px; width: 547px; text-align: center; font-size: 88px; font-weight: 700; color: #F89B4B; text-shadow: 0 8px 30px rgba(0,0,0,0.6);">
+        Delight
+      </div>
+
+      <!-- Ejemplo real en la banca / apps cotidianas (Parte inferior) -->
+      <div style="position: absolute; bottom: 48px; left: 117px; width: 1686px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px;">
+        <div class="tl-card tl-card-cyan" style="padding: 24px 28px; background: rgba(13, 18, 26, 0.9);">
+          <div style="font-size: 15px; font-weight: 800; color: #58D5E8; letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 8px;">
+            1. CERTEZA AL INSTANTE
+          </div>
+          <p style="font-size: 20px; color: #F1F5F9; line-height: 1.4;">
+            El escudo biométrico o la fuente visible te confirma en un segundo que tu operación está protegida y bajo tu control.
+          </p>
+        </div>
+        <div class="tl-card tl-card-mint" style="padding: 24px 28px; background: rgba(13, 18, 26, 0.9);">
+          <div style="font-size: 15px; font-weight: 800; color: #BBE3C6; letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 8px;">
+            2. UN SOLO GESTO EN FLUJO
+          </div>
+          <p style="font-size: 20px; color: #F1F5F9; line-height: 1.4;">
+            Sin tokens físicos ni copiar códigos entre 3 aplicaciones: ocurre exactamente dentro de la pantalla que ya tienes abierta.
+          </p>
+        </div>
+        <div class="tl-card tl-card-orange" style="padding: 24px 28px; background: rgba(13, 18, 26, 0.9);">
+          <div style="font-size: 15px; font-weight: 800; color: #F89B4B; letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 8px;">
+            3. SENSACIÓN DE FLUIDEZ
+          </div>
+          <p style="font-size: 20px; color: #F1F5F9; line-height: 1.4;">
+            Lo que antes tomaba 4 minutos de fricción hoy toma 2 segundos. Eso es lo que convierte una función técnica en hábito diario.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =====================================================================
+       LÁMINA 11 · CASO 01: IA INVISIBLE (Frame 1346:309 con Mac Studio Netflix + Logo Netflix originales de Figma)
+       ===================================================================== -->
+  <section class="slide" id="slide-11">
+    <div style="position: absolute; top: -21px; left: 431px; width: 1058px; height: 1058px; border-radius: 50%; background: radial-gradient(circle, rgba(88, 213, 232, 0.22) 0%, transparent 70%);"></div>
+    <div class="layer">
+      <img src="assets/bluepixel_logo_slide.svg" class="bp-top-logo-left" alt="BluePixel">
+
+      <!-- Título exacto de Figma (x:815, y:69) -->
+      <div style="position: absolute; top: 58px; left: 0; width: 1920px; text-align: center;">
+        <div style="font-size: 64px; font-weight: 300; color: #FFFFFF;">IA Invisible</div>
+      </div>
+
+      <!-- Rectángulo translúcido original de Figma (x:120, y:174, w:1680, h:456) -->
+      <div style="position: absolute; left: 120px; top: 174px; width: 1680px; height: 456px; border-radius: 28px; background: linear-gradient(180deg, rgba(255, 255, 255, 0.07) 0%, rgba(255, 255, 255, 0.02) 100%); border: 1px solid rgba(255, 255, 255, 0.14);"></div>
+
+      <!-- Logo Netflix original image 20 de Figma (x:786, y:196, w:348, h:146) -->
+      <img src="assets/tl_caso1_logo.png" style="position: absolute; left: 786px; top: 192px; width: 348px; height: 146px; object-fit: contain; z-index: 6;" alt="Netflix">
+
+      <!-- Mockup Mac Studio original de Figma (x:491, y:327, w:939, h:531) -->
+      <img src="assets/tl_caso1_macstudio.png" style="position: absolute; left: 491px; top: 315px; width: 939px; height: 550px; object-fit: contain; z-index: 7; filter: drop-shadow(0 24px 48px rgba(0,0,0,0.6));" alt="Mac Studio Netflix">
+
+      <!-- Tarjetas laterales con las notas de María para enriquecer el slide sin tapar el Mac Studio -->
+      <div class="tl-card tl-card-left-cyan" style="position: absolute; left: 120px; top: 350px; width: 355px; padding: 24px 24px; z-index: 8;">
+        <div style="font-size: 14px; font-weight: 800; color: #58D5E8; letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 8px;">
+          HIPERPERSONALIZACIÓN
+        </div>
+        <p style="font-size: 19px; color: #F1F5F9; line-height: 1.42;">
+          “No eliges el contenido… <strong class="c-cyan">el contenido se adapta a ti.</strong> Cada persona ve portadas, orden y recomendaciones distintas.”
+        </p>
+      </div>
+
+      <div class="tl-card tl-card-left-orange" style="position: absolute; right: 120px; top: 350px; width: 355px; padding: 24px 24px; z-index: 8;">
+        <div style="font-size: 14px; font-weight: 800; color: #F89B4B; letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 8px;">
+          IMPACTO EN PRODUCTO
+        </div>
+        <p style="font-size: 19px; color: #F1F5F9; line-height: 1.42;">
+          Antes había 1 interfaz fija para todos. Hoy hay <strong class="c-orange">millones de experiencias vivas</strong> dentro del mismo producto.
+        </p>
+      </div>
+
+      <!-- Remate inferior exacto de Figma (y:925) -->
+      <div style="position: absolute; top: 918px; left: 0; width: 1920px; text-align: center;">
+        <div style="font-size: 60px; font-weight: 700; color: #FFFFFF;">
+          La IA no se ve… <span class="c-cyan">pero guía toda la experiencia</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =====================================================================
+       LÁMINA 12 · CASO 02: IA QUE CONSTRUYE (Frame 1346:338 con ZenBook Duo 14 + Logo Lovable + Pilar 03 IMPATH™)
+       ===================================================================== -->
+  <section class="slide" id="slide-12">
+    <div style="position: absolute; top: -21px; left: 431px; width: 1058px; height: 1058px; border-radius: 50%; background: radial-gradient(circle, rgba(187, 227, 198, 0.2) 0%, transparent 70%);"></div>
+    <div class="layer">
+      <img src="assets/bluepixel_logo_slide.svg" class="bp-top-logo-left" alt="BluePixel">
+
+      <!-- Título exacto de Figma (x:727, y:79) -->
+      <div style="position: absolute; top: 58px; left: 0; width: 1920px; text-align: center;">
+        <div style="font-size: 64px; font-weight: 300; color: #FFFFFF;">IA que construye</div>
+      </div>
+
+      <!-- Rectángulo translúcido original de Figma (x:120, y:196, w:1680, h:434) -->
+      <div style="position: absolute; left: 120px; top: 184px; width: 1680px; height: 434px; border-radius: 28px; background: linear-gradient(180deg, rgba(255, 255, 255, 0.07) 0%, rgba(255, 255, 255, 0.02) 100%); border: 1px solid rgba(255, 255, 255, 0.14);"></div>
+
+      <!-- Logo Lovable original image 20 de Figma (x:779, y:213, w:362, h:153) -->
+      <img src="assets/tl_caso2_logo.png" style="position: absolute; left: 779px; top: 198px; width: 362px; height: 135px; object-fit: contain; z-index: 6;" alt="Lovable">
+
+      <!-- Mockup ZenBook Duo 14 original de Figma con ContentOS de María (x:425, y:316, w:1070, h:607) -->
+      <img src="assets/tl_caso2_zenbook.png" style="position: absolute; left: 445px; top: 305px; width: 1030px; height: 590px; object-fit: contain; z-index: 7; filter: drop-shadow(0 24px 48px rgba(0,0,0,0.65));" alt="ZenBook Duo 14 Lovable">
+
+      <!-- Tarjeta izquierda: La interfaz es una conversación -->
+      <div class="tl-card tl-card-left-mint" style="position: absolute; left: 120px; top: 340px; width: 345px; padding: 22px 24px; z-index: 8;">
+        <div style="font-size: 14px; font-weight: 800; color: #BBE3C6; letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 8px;">
+          ES UNA CONVERSACIÓN
+        </div>
+        <p style="font-size: 18.5px; color: #F1F5F9; line-height: 1.42;">
+          Escribes lo que necesitas en lenguaje natural y en minutos tienes un producto navegable. <strong class="c-mint">Lo revolucionario es la interfaz.</strong>
+        </p>
+      </div>
+
+      <!-- Tarjeta derecha: Pilar 03 Validar antes de codificar (Usuarios sintéticos IMPATH™) -->
+      <div class="tl-card tl-card-left-cyan" style="position: absolute; right: 120px; top: 340px; width: 345px; padding: 22px 24px; z-index: 8;">
+        <div style="font-size: 14px; font-weight: 800; color: #58D5E8; letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 8px;">
+          VALIDAR ANTES DE CODIFICAR
+        </div>
+        <p style="font-size: 18px; color: #F1F5F9; line-height: 1.4;">
+          <strong>1.</strong> Prototipo funcional en días.<br>
+          <strong>2.</strong> Prueba con <strong class="c-cyan">usuarios sintéticos (IMPATH™)</strong>.<br>
+          <strong>3.</strong> Invertir en código solo con certeza.
+        </p>
+      </div>
+
+      <!-- Remate inferior exacto de Figma (y:935) -->
+      <div style="position: absolute; top: 918px; left: 0; width: 1920px; text-align: center;">
+        <div style="font-size: 60px; font-weight: 700; color: #FFFFFF;">
+          De idea a producto… <span class="c-mint">en minutos</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =====================================================================
+       LÁMINA 13 · CASO 03: IA QUE RESPONDE MEJOR (Frame 1346:346 con Hand & iPhone 16 Pro + Logo Perplexity originales)
+       ===================================================================== -->
+  <section class="slide" id="slide-13">
+    <div style="position: absolute; top: -21px; left: 431px; width: 1058px; height: 1058px; border-radius: 50%; background: radial-gradient(circle, rgba(248, 155, 75, 0.2) 0%, transparent 70%);"></div>
+    <div class="layer">
+      <img src="assets/bluepixel_logo_slide.svg" class="bp-top-logo-left" alt="BluePixel">
+
+      <!-- Título exacto de Figma (x:649, y:79) -->
+      <div style="position: absolute; top: 58px; left: 0; width: 1920px; text-align: center;">
+        <div style="font-size: 64px; font-weight: 300; color: #FFFFFF;">IA que responde mejor</div>
+      </div>
+
+      <!-- Rectángulo translúcido original de Figma (x:120, y:196, w:1680, h:434) -->
+      <div style="position: absolute; left: 120px; top: 184px; width: 1680px; height: 434px; border-radius: 28px; background: linear-gradient(180deg, rgba(255, 255, 255, 0.07) 0%, rgba(255, 255, 255, 0.02) 100%); border: 1px solid rgba(255, 255, 255, 0.14);"></div>
+
+      <!-- Logo Perplexity original image 20 de Figma (x:730, y:197, w:476, h:199) -->
+      <img src="assets/tl_caso3_logo.png" style="position: absolute; left: 730px; top: 185px; width: 460px; height: 155px; object-fit: contain; z-index: 6;" alt="Perplexity">
+
+      <!-- Mockup Hand and iPhone 16 Pro original de Figma (x:358, y:183, w:1219, h:914) -->
+      <img src="assets/tl_caso3_iphone.png" style="position: absolute; left: 410px; top: 225px; width: 1100px; height: 825px; object-fit: contain; z-index: 7; filter: drop-shadow(0 24px 48px rgba(0,0,0,0.65));" alt="Hand and iPhone 16 Pro Perplexity">
+
+      <!-- Tarjetas laterales con las notas de María -->
+      <div class="tl-card tl-card-left-orange" style="position: absolute; left: 120px; top: 350px; width: 390px; padding: 24px 26px; z-index: 8;">
+        <div style="font-size: 14px; font-weight: 800; color: #F89B4B; letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 8px;">
+          POR QUÉ LE GANA TERRENO A GOOGLE
+        </div>
+        <p style="font-size: 19px; color: #F1F5F9; line-height: 1.42;">
+          No ganó por tener un algoritmo más incomprensible. <strong class="c-orange">Ganó por ser súper clara:</strong> te responde y te muestra exactamente de dónde viene cada dato.
+        </p>
+      </div>
+
+      <div class="tl-card tl-card-left-cyan" style="position: absolute; right: 120px; top: 350px; width: 390px; padding: 24px 26px; z-index: 8;">
+        <div style="font-size: 14px; font-weight: 800; color: #58D5E8; letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 8px;">
+          LA REGLA DE ORO (TRUST)
+        </div>
+        <p style="font-size: 19px; color: #F1F5F9; line-height: 1.42;">
+          “No solo te da respuestas. <strong class="c-cyan">Te da contexto.</strong> Porque en un mundo lleno de IA, la confianza es la base indispensable.”
+        </p>
+      </div>
+
+      <!-- Remate inferior exacto de Figma (y:935) con pastilla oscura para legibilidad sobre la muñeca -->
+      <div style="position: absolute; bottom: 34px; left: 460px; width: 1000px; text-align: center; z-index: 9;">
+        <div style="display: inline-block; background: rgba(13, 18, 26, 0.88); border: 1px solid rgba(255,255,255,0.16); padding: 12px 44px; border-radius: 999px; backdrop-filter: blur(12px);">
+          <span style="font-size: 54px; font-weight: 700; color: #FFFFFF;">
+            Buscar → <span class="c-cyan">entender</span> → <span class="c-orange">confiar</span>
+          </span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =====================================================================
+       LÁMINA 14 · EL FUTURO DE LA IA Y EL UX (Frame 1346:355 con los 3 medallones originales de Figma)
+       ===================================================================== -->
+  <section class="slide" id="slide-14">
+    <div class="layer">
+      <img src="assets/bluepixel_logo_slide.svg" class="bp-top-logo-left" alt="BluePixel">
+
+      <!-- Título exacto de Figma (x:199, y:141) -->
+      <div style="position: absolute; top: 125px; left: 199px; width: 1522px; text-align: center;">
+        <h2 class="font-alex" style="font-size: 82px; font-weight: 600; color: #FFFFFF; line-height: 1.15;">
+          Al futuro de la IA y el UX
+        </h2>
+        <div style="font-size: 48px; font-weight: 400; color: #CBD5E1; margin-top: 28px;">
+          El software ahora...
+        </div>
+      </div>
+
+      <!-- Medallón 1: Conversa (x:314, y:445, w:311, h:311) -->
+      <div style="position: absolute; left: 314px; top: 430px; width: 311px; height: 311px; border-radius: 50%; border: 3px solid #58D5E8; display: flex; align-items: center; justify-content: center; box-shadow: 0 0 50px rgba(88, 213, 232, 0.25);">
+        <img src="assets/tl_futuro_conversa_icon.png" style="width: 269px; height: 269px; border-radius: 50%; object-fit: cover;" alt="Conversa">
+      </div>
+      <div style="position: absolute; left: 220px; top: 765px; width: 500px; text-align: center;">
+        <div style="font-size: 52px; font-weight: 600; color: #58D5E8; margin-bottom: 10px;">Conversa</div>
+        <p style="font-size: 20px; color: #CBD5E1; line-height: 1.4;">
+          En lugar de perdernos en veinte menús, pedimos lo que necesitamos en nuestro propio idioma.
+        </p>
+      </div>
+
+      <!-- Medallón 2: Predice (x:805, y:445, w:311, h:311) -->
+      <div style="position: absolute; left: 805px; top: 430px; width: 311px; height: 311px; border-radius: 50%; border: 3px solid #BBE3C6; display: flex; align-items: center; justify-content: center; box-shadow: 0 0 50px rgba(187, 227, 198, 0.25);">
+        <img src="assets/tl_futuro_predice_icon.png" style="width: 269px; height: 269px; border-radius: 50%; object-fit: cover;" alt="Predice">
+      </div>
+      <div style="position: absolute; left: 710px; top: 765px; width: 500px; text-align: center;">
+        <div style="font-size: 52px; font-weight: 600; color: #BBE3C6; margin-bottom: 10px;">Predice</div>
+        <p style="font-size: 20px; color: #CBD5E1; line-height: 1.4;">
+          Detecta lo que el cliente o el equipo va a necesitar antes de que aparezca el problema.
+        </p>
+      </div>
+
+      <!-- Medallón 3: Se adapta (x:1296, y:445, w:311, h:311) -->
+      <div style="position: absolute; left: 1296px; top: 430px; width: 311px; height: 311px; border-radius: 50%; border: 3px solid #F89B4B; display: flex; align-items: center; justify-content: center; box-shadow: 0 0 50px rgba(248, 155, 75, 0.25);">
+        <img src="assets/tl_futuro_adapta_icon.png" style="width: 269px; height: 269px; border-radius: 50%; object-fit: cover;" alt="Se adapta">
+      </div>
+      <div style="position: absolute; left: 1200px; top: 765px; width: 500px; text-align: center;">
+        <div style="font-size: 52px; font-weight: 600; color: #F89B4B; margin-bottom: 10px;">Se adapta</div>
+        <p style="font-size: 20px; color: #CBD5E1; line-height: 1.4;">
+          Cada persona ve exactamente la interfaz y las decisiones que necesita para hacer mejor su trabajo.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- =====================================================================
+       LÁMINA 15 · CONVERSAR: MINDTRIP (Frame 1346:317 con image 29 + medallón originales de Figma)
+       ===================================================================== -->
+  <section class="slide" id="slide-15">
+    <div style="position: absolute; top: -21px; left: 431px; width: 1058px; height: 1058px; border-radius: 50%; background: radial-gradient(circle, rgba(88, 213, 232, 0.22) 0%, transparent 70%);"></div>
+    <div class="layer">
+      <img src="assets/bluepixel_logo_slide.svg" class="bp-top-logo-left" alt="BluePixel">
+
+      <!-- Medallón original de Figma (x:402, y:95, w:123, h:123) -->
+      <div style="position: absolute; left: 402px; top: 88px; width: 123px; height: 123px; border-radius: 50%; border: 2.5px solid #58D5E8; display: flex; align-items: center; justify-content: center;">
+        <img src="assets/tl_futuro_conversa_icon.png" style="width: 106px; height: 106px; border-radius: 50%; object-fit: cover;" alt="Conversa">
+      </div>
+
+      <!-- Título exacto de Figma (x:569, y:116) -->
+      <div style="position: absolute; left: 560px; top: 108px; font-size: 68px; font-weight: 500; color: #FFFFFF;">
+        De buscar... <span class="c-cyan">a conversar</span>
+      </div>
+
+      <!-- Imagen original image 29 (Mindtrip Mexico City) en x:220, y:265, w:1480 -->
+      <div style="position: absolute; left: 220px; top: 255px; width: 1480px; height: 785px; border-radius: 24px; overflow: hidden; box-shadow: 0 24px 60px rgba(0,0,0,0.65); border: 1px solid rgba(255,255,255,0.18);">
+        <img src="assets/tl_conversar_img29.png" style="width: 100%; height: 100%; object-fit: cover; object-position: top;" alt="Mindtrip Conversar">
+      </div>
+    </div>
+  </section>
+
+  <!-- =====================================================================
+       LÁMINA 16 · PREDECIR: WAZE (Frame 1346:324 con image 31 + medallón originales de Figma)
+       ===================================================================== -->
+  <section class="slide" id="slide-16">
+    <div style="position: absolute; top: -21px; left: 431px; width: 1058px; height: 1058px; border-radius: 50%; background: radial-gradient(circle, rgba(187, 227, 198, 0.22) 0%, transparent 70%);"></div>
+    <div class="layer">
+      <img src="assets/bluepixel_logo_slide.svg" class="bp-top-logo-left" alt="BluePixel">
+
+      <!-- Medallón original de Figma (x:369, y:95, w:123, h:123) -->
+      <div style="position: absolute; left: 369px; top: 88px; width: 123px; height: 123px; border-radius: 50%; border: 2.5px solid #BBE3C6; display: flex; align-items: center; justify-content: center;">
+        <img src="assets/tl_futuro_predice_icon.png" style="width: 106px; height: 106px; border-radius: 50%; object-fit: cover;" alt="Predice">
+      </div>
+
+      <!-- Título exacto de Figma (x:529, y:116) -->
+      <div style="position: absolute; left: 525px; top: 108px; font-size: 68px; font-weight: 500; color: #FFFFFF;">
+        De reaccionar… <span class="c-mint">a anticipar</span>
+      </div>
+
+      <!-- Imagen original image 31 (Waze notification) en x:618, y:280, w:684, h:774 -->
+      <img src="assets/tl_predecir_img31.png" style="position: absolute; left: 618px; top: 280px; width: 684px; height: 774px; object-fit: contain; filter: drop-shadow(0 24px 60px rgba(0,0,0,0.65));" alt="Waze Predecir">
+
+      <!-- Nota de contexto B2B al costado -->
+      <div class="tl-card tl-card-left-mint" style="position: absolute; right: 120px; top: 480px; width: 440px; padding: 26px 28px;">
+        <div style="font-size: 15px; font-weight: 800; color: #BBE3C6; letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 10px;">
+          UX PREDICTIVO
+        </div>
+        <p style="font-size: 21px; color: #F1F5F9; line-height: 1.45;">
+          El usuario no tuvo que abrir la app ni buscar la ruta. El sistema cruzó su calendario con el tráfico en vivo y <strong class="c-mint">le avisó a qué hora salir</strong>.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- =====================================================================
+       LÁMINA 17 · ADAPTARSE: EXPERIENCIA PERSONALIZADA (Frame 1346:331 con image 32 + medallón originales de Figma)
+       ===================================================================== -->
+  <section class="slide" id="slide-17">
+    <div style="position: absolute; top: -21px; left: 431px; width: 1058px; height: 1058px; border-radius: 50%; background: radial-gradient(circle, rgba(248, 155, 75, 0.22) 0%, transparent 70%);"></div>
+    <div class="layer">
+      <!-- Medallón original de Figma (x:143, y:70, w:143, h:143) -->
+      <div style="position: absolute; left: 143px; top: 70px; width: 143px; height: 143px; border-radius: 50%; border: 2.5px solid #F89B4B; display: flex; align-items: center; justify-content: center;">
+        <img src="assets/tl_futuro_adapta_icon.png" style="width: 124px; height: 124px; border-radius: 50%; object-fit: cover;" alt="Se adapta">
+      </div>
+
+      <!-- Título exacto de Figma (x:361, y:75) -->
+      <div style="position: absolute; left: 340px; top: 68px; width: 1420px; font-size: 62px; font-weight: 500; color: #FFFFFF; line-height: 1.2;">
+        De una interfaz para todos…<br>
+        <span class="c-orange">a una experiencia para cada persona</span>
+      </div>
+
+      <!-- Imagen original image 32 (TikTok María de Buen) en x:699, y:265, w:522 -->
+      <div style="position: absolute; left: 699px; top: 260px; width: 522px; height: 790px; border-radius: 28px; overflow: hidden; box-shadow: 0 24px 60px rgba(0,0,0,0.7); border: 2px solid rgba(255,255,255,0.18);">
+        <img src="assets/tl_adaptarse_img32.png" style="width: 100%; height: 100%; object-fit: cover; object-position: top;" alt="Adaptarse TikTok María">
+      </div>
+
+      <!-- Nota lateral derecha -->
+      <div class="tl-card tl-card-left-orange" style="position: absolute; right: 120px; top: 460px; width: 510px; padding: 28px 30px;">
+        <div style="font-size: 15px; font-weight: 800; color: #F89B4B; letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 10px;">
+          DISEÑAR COMPORTAMIENTOS
+        </div>
+        <p style="font-size: 21px; color: #F1F5F9; line-height: 1.45;">
+          Ya no diseñamos pantallas estáticas. Diseñamos cómo un sistema entiende el contexto de cada persona y <strong class="c-orange">le entrega valor inmediato sin fricción</strong>.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- =====================================================================
+       LÁMINA 18 · CIERRE 1: ALIANZA HUMANO + IA (Frame 1346:386 con image 21 original de Figma)
+       ===================================================================== -->
+  <section class="slide" id="slide-18">
+    <img src="assets/tl_cierre1_img21.png" class="bg-img" alt="Alianza Humano e IA">
+    <div style="position: absolute; inset: 0; background: linear-gradient(180deg, rgba(13, 18, 26, 0.65) 0%, rgba(13, 18, 26, 0.15) 45%, rgba(13, 18, 26, 0.88) 100%); z-index: 2;"></div>
+    <div class="layer">
+      <img src="assets/bluepixel_logo_slide.svg" class="bp-top-logo-center" alt="BluePixel">
+
+      <div style="position: absolute; bottom: 64px; left: 180px; width: 1560px; text-align: center;">
+        <div class="tl-card" style="padding: 36px 56px; background: rgba(13, 18, 26, 0.88); border: 1.5px solid rgba(88, 213, 232, 0.45);">
+          <div style="font-size: 17px; font-weight: 800; color: #58D5E8; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 14px;">
+            LA REGLA DE ORO EN LA ERA AGÉNTICA
+          </div>
+          <h2 class="font-alex" style="font-size: 48px; font-weight: 600; color: #FFFFFF; line-height: 1.28;">
+            “Quien va a ganar en esta nueva era no es la empresa con la tecnología más complicada, sino la que logre que las personas <span class="c-cyan">confíen en ella y disfruten usarla todos los días</span>.”
+          </h2>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =====================================================================
+       LÁMINA 19 · CIERRE 2: QR REDES MARÍA + PRÓXIMO PASO B2B (Frame 1358:17 con LogoNegro + image 34 + image 35 + iconos sociales)
+       ===================================================================== -->
+  <section class="slide" id="slide-19">
+    <div class="layer">
+      <!-- LogoNegro | Software that Feels Right (x:673, y:62, w:575) con el píxel azul #16A2CD y texto blanco originales -->
+      <img src="assets/LogoNegro.svg" style="position: absolute; left: 673px; top: 58px; width: 575px; height: 145px; object-fit: contain;" alt="BluePixel Software that Feels Right">
+
+      <!-- QR Izquierdo original image 34 (TikTok @mariadebuen) -->
+      <div style="position: absolute; left: 461px; top: 245px; width: 381px; height: 495px; border-radius: 24px; overflow: hidden; box-shadow: 0 20px 50px rgba(0,0,0,0.6); border: 2px solid rgba(88, 213, 232, 0.35);">
+        <img src="assets/tl_cierre2_img34.png" style="width: 100%; height: 100%; object-fit: cover;" alt="TikTok María de Buen">
+      </div>
+
+      <!-- QR Derecho original image 35 (Instagram @mariadebuen) -->
+      <div style="position: absolute; left: 1071px; top: 245px; width: 389px; height: 495px; border-radius: 24px; overflow: hidden; box-shadow: 0 20px 50px rgba(0,0,0,0.6); border: 2px solid rgba(248, 155, 75, 0.35);">
+        <img src="assets/tl_cierre2_img35.png" style="width: 100%; height: 100%; object-fit: cover;" alt="Instagram María de Buen">
+      </div>
+
+      <!-- Bloque de Conversión B2B para el Webinar (y:768..915) -->
+      <div class="tl-card" style="position: absolute; left: 288px; top: 766px; width: 1344px; padding: 20px 36px; background: rgba(88, 213, 232, 0.1); border: 2px solid rgba(88, 213, 232, 0.45); display: flex; align-items: center; justify-content: space-between;">
+        <div>
+          <div style="font-size: 14px; font-weight: 800; color: #58D5E8; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 4px;">
+            PRÓXIMO PASO PARA TU EMPRESA · WEBINAR 3 DE DICIEMBRE
+          </div>
+          <div style="font-size: 25px; font-weight: 700; color: #FFFFFF;">
+            Diagnóstico Ejecutivo de Fricción Operativa & Adopción (30 min sin costo)
+          </div>
+          <div style="font-size: 18px; color: #CBD5E1; margin-top: 2px;">
+            Evalúa con María de Buen y el equipo de BluePixel dónde integrar IA o evolucionar tu plataforma digital.
+          </div>
+        </div>
+        <div style="background: #58D5E8; color: #0F172A; font-size: 20px; font-weight: 800; padding: 16px 28px; border-radius: 14px; white-space: nowrap;">
+          bluepixel.mx/contacto ➔
+        </div>
+      </div>
+
+      <!-- Barra inferior original de Figma (Frame 1618873057 en x:288, y:945, w:1344, h:75) -->
+      <div style="position: absolute; left: 288px; top: 948px; width: 1344px; height: 75px; display: flex; align-items: center; justify-content: space-between;">
+        <div style="display: flex; align-items: center; gap: 22px;">
+          <div style="display: flex; align-items: center; gap: 14px;">
+            <img src="assets/tl_social_img26.png" style="width: 48px; height: 48px; object-fit: contain;" alt="TikTok">
+            <img src="assets/tl_social_img25.png" style="width: 48px; height: 48px; object-fit: contain;" alt="Instagram">
+            <img src="assets/tl_social_img24.png" style="width: 48px; height: 48px; object-fit: contain;" alt="LinkedIn">
+          </div>
+          <span class="font-alex" style="font-size: 54px; font-weight: 300; color: #FFFFFF;">/mariadebuen</span>
+        </div>
+
+        <div style="width: 2px; height: 64px; background: rgba(255,255,255,0.35);"></div>
+
+        <div class="font-alex" style="font-size: 54px; font-weight: 300; color: #58D5E8;">
+          www.bluepixel.mx
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const targetSlide = params.get('slide');
+    if (targetSlide) {
+      document.documentElement.style.overflow = 'hidden';
+      document.body.style.overflow = 'hidden';
+      document.querySelectorAll('.slide').forEach(el => {
+        if (el.id !== 'slide-' + targetSlide.padStart(2, '0')) {
+          el.style.display = 'none';
+        }
+      });
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,709 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>«UX y AI: El nuevo motor del crecimiento empresarial» · María de Buen (19 Láminas Figma Talent Land)</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Onest:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --font-sans: 'Onest', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+
+      --bp-bg: oklch(0.12 0.025 255);
+      --bp-surface: oklch(0.17 0.035 255);
+      --bp-surface-elevated: oklch(0.22 0.045 255);
+      --bp-line: oklch(0.28 0.04 255);
+      --bp-line-subtle: oklch(0.22 0.03 255);
+
+      --bp-fg: oklch(0.98 0.01 255);
+      --bp-muted: oklch(0.80 0.02 255);
+      --bp-dim: oklch(0.55 0.02 255);
+
+      --tl-cyan: oklch(0.82 0.17 215);
+      --tl-mint: oklch(0.80 0.16 165);
+      --tl-coral: oklch(0.75 0.20 28);
+      --tl-navy: oklch(0.18 0.05 250);
+
+      --bp-gradient-mesh: radial-gradient(circle at 10% 20%, oklch(0.22 0.08 240 / 0.5) 0%, transparent 45%),
+                           radial-gradient(circle at 90% 80%, oklch(0.22 0.09 310 / 0.35) 0%, transparent 50%),
+                           radial-gradient(circle at 50% 50%, oklch(0.15 0.04 255 / 0.8) 0%, transparent 100%);
+
+      --radius: 14px;
+      --radius-sm: 8px;
+      --radius-lg: 20px;
+      --shadow-elevation: 0 16px 40px -12px rgba(0, 0, 0, 0.45);
+      --ease-smooth: cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    [data-theme="light"] {
+      --bp-bg: oklch(0.97 0.01 250);
+      --bp-surface: oklch(1 0 0);
+      --bp-surface-elevated: oklch(0.95 0.015 250);
+      --bp-line: oklch(0.88 0.015 250);
+      --bp-line-subtle: oklch(0.92 0.01 250);
+      --bp-fg: oklch(0.18 0.03 255);
+      --bp-muted: oklch(0.38 0.02 255);
+      --bp-dim: oklch(0.55 0.02 255);
+      --tl-cyan: oklch(0.52 0.19 225);
+      --tl-mint: oklch(0.50 0.16 165);
+      --tl-coral: oklch(0.58 0.20 28);
+      --bp-gradient-mesh: radial-gradient(circle at 10% 20%, oklch(0.92 0.05 220 / 0.5) 0%, transparent 45%),
+                           radial-gradient(circle at 90% 80%, oklch(0.92 0.06 310 / 0.3) 0%, transparent 50%);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: var(--font-sans);
+      background-color: var(--bp-bg);
+      color: var(--bp-fg);
+      overflow: hidden;
+      height: 100vh;
+      width: 100vw;
+      user-select: none;
+      -webkit-font-smoothing: antialiased;
+      transition: background-color 0.3s var(--ease-smooth), color 0.3s var(--ease-smooth);
+    }
+
+    #app {
+      display: flex;
+      flex-direction: column;
+      width: 100vw;
+      height: 100vh;
+      position: relative;
+    }
+
+    .top-bar {
+      height: 60px;
+      padding: 0 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid var(--bp-line);
+      background: color-mix(in oklab, var(--bp-bg) 85%, transparent);
+      backdrop-filter: blur(16px);
+      z-index: 50;
+      flex-shrink: 0;
+    }
+
+    .brand-group {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .logo-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: color-mix(in oklab, var(--tl-cyan) 12%, transparent);
+      color: var(--tl-cyan);
+      border: 1px solid color-mix(in oklab, var(--tl-cyan) 30%, transparent);
+      padding: 4px 10px;
+      border-radius: var(--radius-sm);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .brand-title {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--bp-muted);
+    }
+
+    .controls-group {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .btn-icon {
+      background: var(--bp-surface);
+      border: 1px solid var(--bp-line);
+      color: var(--bp-fg);
+      width: 36px;
+      height: 36px;
+      border-radius: var(--radius-sm);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      font-size: 14px;
+      transition: all 0.2s var(--ease-smooth);
+    }
+
+    .btn-icon:hover {
+      background: var(--bp-surface-elevated);
+      border-color: var(--tl-cyan);
+      color: var(--tl-cyan);
+      transform: translateY(-1px);
+    }
+
+    .btn-icon.active {
+      background: var(--tl-cyan);
+      color: oklch(0.12 0.025 255);
+      border-color: var(--tl-cyan);
+    }
+
+    .slide-counter {
+      font-family: var(--font-mono);
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--bp-muted);
+      padding: 0 8px;
+    }
+
+    .stage-container {
+      flex: 1;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px 32px 24px;
+      background: var(--bp-gradient-mesh);
+    }
+
+    .slide-canvas {
+      width: 100%;
+      max-width: 1420px;
+      height: 100%;
+      max-height: 820px;
+      background: #151B24;
+      border: 1px solid var(--bp-line);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-elevation);
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .bottom-bar {
+      height: 52px;
+      padding: 0 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-top: 1px solid var(--bp-line);
+      background: color-mix(in oklab, var(--bp-bg) 90%, transparent);
+      z-index: 50;
+      flex-shrink: 0;
+    }
+
+    .progress-track {
+      flex: 1;
+      height: 4px;
+      background: var(--bp-line);
+      border-radius: 2px;
+      margin: 0 24px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .progress-fill {
+      position: absolute;
+      left: 0;
+      top: 0;
+      height: 100%;
+      background: var(--tl-cyan);
+      transition: width 0.3s var(--ease-smooth);
+    }
+
+    .key-hints {
+      display: flex;
+      gap: 12px;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: var(--bp-dim);
+    }
+
+    .key-hint kbd {
+      background: var(--bp-surface);
+      border: 1px solid var(--bp-line);
+      padding: 2px 5px;
+      border-radius: 4px;
+      color: var(--bp-muted);
+    }
+
+    .notes-drawer {
+      position: absolute;
+      right: 0;
+      top: 60px;
+      bottom: 52px;
+      width: 440px;
+      background: var(--bp-surface);
+      border-left: 1px solid var(--bp-line);
+      box-shadow: -10px 0 30px rgba(0,0,0,0.5);
+      z-index: 90;
+      transform: translateX(100%);
+      transition: transform 0.3s var(--ease-smooth);
+      display: flex;
+      flex-direction: column;
+      padding: 24px;
+      overflow-y: auto;
+    }
+
+    .notes-drawer.open { transform: translateX(0); }
+
+    .notes-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid var(--bp-line);
+      padding-bottom: 12px;
+      margin-bottom: 16px;
+    }
+
+    .notes-speech {
+      font-size: 14px;
+      line-height: 1.7;
+      color: var(--bp-fg);
+      background: color-mix(in oklab, var(--bp-surface-elevated) 60%, transparent);
+      padding: 16px;
+      border-radius: var(--radius-sm);
+      border-left: 3px solid var(--tl-cyan);
+    }
+
+    .grid-modal {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.88);
+      backdrop-filter: blur(12px);
+      z-index: 100;
+      display: none;
+      flex-direction: column;
+      padding: 36px;
+      overflow-y: auto;
+    }
+
+    .grid-modal.open { display: flex; }
+
+    .grid-thumbnails {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 18px;
+      margin-top: 24px;
+    }
+
+    .thumb-card {
+      background: var(--bp-surface);
+      border: 1px solid var(--bp-line);
+      border-radius: var(--radius-sm);
+      padding: 12px;
+      cursor: pointer;
+      transition: all 0.2s var(--ease-smooth);
+    }
+
+    .thumb-card:hover {
+      border-color: var(--tl-cyan);
+      transform: translateY(-2px);
+    }
+
+    .thumb-card.active {
+      border-color: var(--tl-cyan);
+      box-shadow: 0 0 0 2px var(--tl-cyan);
+    }
+
+    .thumb-card img {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      object-fit: cover;
+      border-radius: 6px;
+      margin-bottom: 8px;
+      border: 1px solid var(--bp-line-subtle);
+    }
+
+    .btn-action {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--bp-surface-elevated);
+      color: var(--bp-fg);
+      border: 1px solid var(--bp-line);
+      padding: 10px 18px;
+      border-radius: var(--radius-sm);
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      text-decoration: none;
+      transition: all 0.2s var(--ease-smooth);
+    }
+
+    .btn-action:hover {
+      border-color: var(--tl-cyan);
+      color: var(--tl-cyan);
+    }
+
+    .btn-action.primary {
+      background: var(--tl-cyan);
+      color: oklch(0.12 0.025 255);
+      border-color: var(--tl-cyan);
+    }
+  </style>
+</head>
+<body>
+  <div id="app">
+    <header class="top-bar">
+      <div class="brand-group">
+        <span class="logo-badge">BluePixel · María de Buen</span>
+        <span class="brand-title">UX y AI: El nuevo motor del crecimiento empresarial · 19 Láminas Oficiales Figma Talent Land + Mejoras Webinar</span>
+      </div>
+      <div class="controls-group">
+        <button class="btn-action" id="btn-grid-pill" onclick="openGrid()" title="Ver las 19 láminas en cuadrícula (G)" style="display: inline-flex; align-items: center; gap: 6px; padding: 6px 14px; font-size: 12px; font-weight: 700; border-radius: 999px; cursor: pointer; border-color: var(--tl-cyan); color: var(--tl-cyan);">
+          <span>⊞</span> Ver las 19 Láminas (G)
+        </button>
+        <button class="btn-action primary" id="btn-notes" title="Abrir o cerrar el Guion de María (Tecla N)" style="display: inline-flex; align-items: center; gap: 6px; padding: 6px 14px; font-size: 12px; font-weight: 700; border-radius: 999px; cursor: pointer;">
+          <span>🎙️</span> Ver Guion (N)
+        </button>
+        <button class="btn-icon" id="btn-theme" title="Alternar tema claro/oscuro (T)">☀️</button>
+        <button class="btn-icon" id="btn-grid" title="Ver cuadrícula (G)">⊞</button>
+        <button class="btn-icon" id="btn-fullscreen" title="Pantalla completa (F)">⛶</button>
+        <span class="slide-counter" id="slide-counter">01 / 19</span>
+      </div>
+    </header>
+
+    <main class="stage-container" id="stage-container">
+      <div class="slide-canvas" id="slide-canvas"></div>
+    </main>
+
+    <footer class="bottom-bar">
+      <button class="btn-icon" id="btn-prev" title="Anterior (←)">←</button>
+      <div class="progress-track">
+        <div class="progress-fill" id="progress-fill" style="width: 5.26%;"></div>
+      </div>
+      <button class="btn-icon" id="btn-next" title="Siguiente (→)">→</button>
+      <div class="key-hints">
+        <span class="key-hint"><kbd>→</kbd> Avanzar</span>
+        <span class="key-hint"><kbd>N</kbd> Guion de María</span>
+        <span class="key-hint"><kbd>G</kbd> 19 Láminas</span>
+        <span class="key-hint"><kbd>F</kbd> Fullscreen</span>
+      </div>
+    </footer>
+
+    <aside class="notes-drawer" id="notes-drawer">
+      <div class="notes-header">
+        <h4 style="font-size: 13px; font-weight: 800; color: var(--tl-cyan); letter-spacing: 0.05em;">🎙️ GUION VERBATIM DE MARÍA</h4>
+        <button class="btn-icon" id="btn-close-notes" style="width: 28px; height: 28px;">✕</button>
+      </div>
+      <div id="notes-content"></div>
+    </aside>
+
+    <div class="grid-modal" id="grid-modal">
+      <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--bp-line); padding-bottom: 16px;">
+        <h3 style="font-size: 20px; font-weight: 800;">Presentación Completa de María · Talent Land + Mejoras Webinar (19 Láminas 1920×1080)</h3>
+        <button class="btn-icon" id="btn-close-grid">✕</button>
+      </div>
+      <div class="grid-thumbnails" id="grid-thumbnails"></div>
+    </div>
+  </div>
+
+  <script>
+    const SLIDES = [
+      {
+        id: "01",
+        figmaId: "1346:3",
+        eyebrow: "PORTADA · FIGMA 1346:3",
+        title: "UX y AI: El nuevo motor del crecimiento empresarial",
+        notes: {
+          time: "1:00 min",
+          keyIdea: "Apertura en la voz de María: la tecnología puede hacer más, pero el ser humano decide si se usa.",
+          speech: "Muchas gracias, qué gusto estar con ustedes hoy.<br><br>Hoy estamos viviendo uno de los momentos más importantes en la historia de la tecnología. La inteligencia artificial está cambiando todo: cómo trabajamos, cómo creamos, cómo tomamos decisiones.<br><br>(Pausa)<br><br>Pero hay algo que no está cambiando: las personas. Las personas siguen buscando lo mismo: claridad, simplicidad, confianza y experiencias que se sientan bien.<br><br>Y por eso, la pregunta hoy no es quién tiene la mejor inteligencia artificial. La pregunta es: ¿quién va a diseñar las experiencias que hagan que esa inteligencia realmente se use? Porque en esta nueva era… la tecnología ya no es el diferenciador. La experiencia lo es."
+        }
+      },
+      {
+        id: "02",
+        figmaId: "1346:30",
+        eyebrow: "HOOK 1 · FIGMA 1346:30",
+        title: "Noviembre 2022: ¿Fue la IA lo que cambió el mundo… o fue la experiencia?",
+        notes: {
+          time: "1:15 min",
+          keyIdea: "Noviembre de 2022: OpenAI lanza ChatGPT y llega a 1 millón de usuarios en 5 días.",
+          speech: "En noviembre de 2022 pasó algo muy curioso en el mundo de la tecnología. ¿Alguien se acuerda qué pasó?...<br><br>(Pausa)<br><br>OpenAI lanzó ChatGPT. Y de pronto… millones de personas empezaron a usar inteligencia artificial.<br><br>Pero lo interesante es que la inteligencia artificial ya existía desde hacía años. No era nueva. Lo que cambió todo fue algo mucho más simple: la experiencia."
+        }
+      },
+      {
+        id: "03",
+        figmaId: "1346:49",
+        eyebrow: "HOOK 2 · FIGMA 1346:49 (IMAGE 22)",
+        title: "La tecnología ya estaba ahí. El puente fue el diseño UX",
+        notes: {
+          time: "1:00 min",
+          keyIdea: "La mano robótica y la mano humana: la caja de texto eliminó la curva de aprendizaje.",
+          speech: "Por primera vez, millones de personas podían usar inteligencia artificial escribiendo una pregunta en una simple caja de texto. Sin manual. Sin entrenamiento. Sin curva de aprendizaje.<br><br>¿El resultado? ChatGPT se convirtió en la aplicación que más rápido ha crecido en la historia del software: 1 millón de usuarios en 5 días.<br><br>Y eso nos deja una pregunta muy interesante… ¿Fue la inteligencia artificial lo que cambió el mundo… o fue el diseño de la experiencia?"
+        }
+      },
+      {
+        id: "04",
+        figmaId: "1346:69",
+        eyebrow: "INTERACCIÓN · FIGMA 1346:69",
+        title: "¿Quién de aquí sabe usar Excel?",
+        notes: {
+          time: "1:45 min",
+          keyIdea: "De fórmulas complejas a intención en lenguaje natural: 'Analiza estos datos y dime qué está pasando'.",
+          speech: "¿Cuántos de ustedes saben usar Excel? (Esperar manos)<br><br>Ahora… ¿cuántos realmente sienten que lo dominan? (Sonrío — bajan manos)<br><br>Excel es una de las herramientas más poderosas que existen. Puedes hacer análisis, modelos, proyecciones… Pero la realidad es que la mayoría de las personas usa solo una pequeña parte de lo que puede hacer.<br><br>Ahora imaginen lo mismo… Pero en lugar de construir fórmulas, tablas dinámicas y modelos… solo pudieran escribir: “Analiza estos datos y dime qué está pasando.”<br><br>Es la misma capacidad... pero una experiencia completamente distinta. La tecnología nunca había sido tan poderosa… pero el impacto no viene de lo que puede hacer. Viene de qué tan fácil es usarla."
+        }
+      },
+      {
+        id: "05",
+        figmaId: "1346:89",
+        eyebrow: "PARADOJA · FIGMA 1346:89",
+        title: "El problema de adopción de la IA · El eslabón perdido: UX",
+        notes: {
+          time: "1:45 min",
+          keyIdea: "Inversión en tecnología ↑ Adopción de usuarios ↓. Lo único que cambia la adopción es la experiencia.",
+          speech: "Les voy a pedir que se pongan en los zapatos del usuario:<br><br>Imaginen que mañana lanzamos una nueva herramienta de inteligencia artificial en su empresa. Súper poderosa. Puede automatizar procesos, analizar datos, tomar decisiones.<br><br>Pero para usarla… tienes que aprender comandos, entender cómo funciona el modelo. Y cada vez que te equivocas… te da un error.<br><br>¿Cuántos de ustedes la usarían todos los días? Nadie.<br><br>Ahora imaginen lo mismo… pero solo tienen que escribir: “Ayúdame con esto.” Es la misma inteligencia artificial. Lo único que cambió… fue la experiencia."
+        }
+      },
+      {
+        id: "06",
+        figmaId: "1346:109",
+        eyebrow: "EVIDENCIA DE CAMPO · FIGMA 1346:109 (NO COMERCIAL)",
+        title: "El reto nunca fue hacer pantallas bonitas. Es lograr que la tecnología realmente se use.",
+        notes: {
+          time: "1:15 min",
+          keyIdea: "Presentar las 350+ plataformas y 10+ años como el laboratorio empírico de donde nace esta metodología (sin tono comercial).",
+          speech: "Todo lo que vamos a ver hoy no sale de un libro ni de una tendencia de moda. Sale de lo que nos ha tocado medir en la trinchera durante más de diez años.<br><br>Después de analizar, diseñar y llevar a producción más de trescientas cincuenta plataformas digitales con un equipo de más de sesenta especialistas, vimos este patrón repetirse una y otra vez: no sirve de nada construir el motor más potente del mundo si el volante es incómodo y nadie quiere manejar el auto. Cuando entiendes por qué la gente adopta o abandona un producto, cambia por completo la forma en que inviertes en tecnología."
+        }
+      },
+      {
+        id: "07",
+        figmaId: "1346:232",
+        eyebrow: "INSIGHT CENTRAL + PILAR 01 · FIGMA 1346:232",
+        title: "Tecnología × Adopción = Impacto (El Filtro de Adopción: 3 Compuertas)",
+        notes: {
+          time: "1:45 min",
+          keyIdea: "Ecuación central + El Filtro de Adopción (3 compuertas antes de aprobar una iniciativa de IA).",
+          speech: "Esta fórmula es matemática elemental: Tecnología multiplicada por Adopción es igual a Impacto.<br><br>Si tienes una IA poderosa con calificación de 100, pero la adopción del usuario es 0, el impacto en tu negocio es exactamente CERO.<br><br>Por eso aplicamos siempre el Filtro de Adopción en 3 compuertas antes de aprobar cualquier iniciativa: 1) ¿Resuelve una fricción operativa real o añade clics? 2) ¿Vive dentro del flujo diario donde el equipo ya trabaja? y 3) ¿Entrega un retorno medible sin requerir más tiempo humano para corregir a la máquina?"
+        }
+      },
+      {
+        id: "08",
+        figmaId: "1346:253",
+        eyebrow: "LOS MULTIPLICADORES · FIGMA 1346:253",
+        title: "Trust — Flow — Delight: Si no confían… no la usan.",
+        notes: {
+          time: "1:30 min",
+          keyIdea: "Los 3 multiplicadores de la adopción: Confianza (Trust), Integración (Flow) y Experiencia (Delight).",
+          speech: "¿Qué compone la adopción? Tres multiplicadores: Trust, Flow y Delight.<br><br>Primero, Trust (Confianza): si las personas no entienden por qué la IA hizo lo que hizo, no confían. Y si no confían… no la usan.<br>Segundo, Flow (Integración): la IA tiene que aparecer en el momento correcto, no obligarte a salir a buscarla.<br>Tercero, Delight (Experiencia): usarla se tiene que sentir más fácil que no usarla. Y la adopción… es lo que genera impacto."
+        }
+      },
+      {
+        id: "09",
+        figmaId: "1346:276",
+        eyebrow: "DIAGNÓSTICO 3 ESFERAS · FIGMA 1346:276",
+        title: "Cómo saber si mi producto va a funcionar",
+        notes: {
+          time: "1:45 min",
+          keyIdea: "Las 3 esferas de diagnóstico de María + 3 preguntas complementarias de auditoría de negocio.",
+          speech: "Les dejo este diagnóstico directo para evaluar si su producto o iniciativa de IA va a funcionar:<br><br>En Trust: ¿El usuario entiende por qué la IA hizo lo que hizo? ¿Puede validar la fuente y sentir que tiene el control final?<br><br>En Flow: ¿La IA aparece en el momento correcto… o tengo que ir a buscarla? ¿Le ahorra clics dentro de su herramienta diaria?<br><br>En Delight: ¿Usarla se siente más fácil que no usarla? ¿El valor es tan rápido que volver al método anterior se siente pesado?"
+        }
+      },
+      {
+        id: "10",
+        figmaId: "1346:304",
+        eyebrow: "EJEMPLO EN ACCIÓN · FIGMA 1346:304 (IMAGE 23)",
+        title: "Ejemplo práctico: Trust · Flow · Delight en un solo gesto",
+        notes: {
+          time: "1:15 min",
+          keyIdea: "El ejemplo visual del escudo en el móvil (image 23 de Figma): seguridad visible, un solo gesto en flujo y cero fricción.",
+          speech: "Piensen en una acción cotidiana en su celular, como autorizar una operación bancaria o desbloquear información sensible.<br><br>¿Por qué funciona? Porque ves el escudo de seguridad al instante (eso es Trust), ocurre dentro de la misma pantalla con tu huella o rostro sin mandarte a copiar códigos de un token externo (eso es Flow), y toma dos segundos en lugar de cuatro minutos (eso es Delight)."
+        }
+      },
+      {
+        id: "11",
+        figmaId: "1346:309",
+        eyebrow: "CASO 01 · FIGMA 1346:309 (MAC STUDIO + NETFLIX)",
+        title: "IA Invisible: La IA no se ve… pero guía toda la experiencia",
+        notes: {
+          time: "1:30 min",
+          keyIdea: "Caso 1 con el Mac Studio y Netflix original de Figma: el contenido y las portadas se adaptan a cada persona.",
+          speech: "Veamos tres casos reales. Caso 1: IA Invisible.<br><br>En plataformas como Netflix, Spotify o TikTok, cada persona ve algo completamente distinto. La portada que te aparece a ti no es la misma que me aparece a mí: el orden cambia, el contenido cambia, la experiencia cambia según lo que haces y lo que te interesa.<br><br>No eliges el contenido… el contenido se adapta a ti. Antes había un producto estático; hoy hay millones de experiencias vivas dentro del mismo producto. La IA no se ve… pero guía toda la experiencia."
+        }
+      },
+      {
+        id: "12",
+        figmaId: "1346:338",
+        eyebrow: "CASO 02 + PILAR 03 · FIGMA 1346:338 (ZENBOOK DUO 14 + LOVABLE)",
+        title: "IA que construye: De idea a producto… en minutos (Validar antes de codificar)",
+        notes: {
+          time: "1:45 min",
+          keyIdea: "Caso 2 con la ZenBook Duo 14 (ContentOS en Lovable) + Pilar 03: Validar con usuarios sintéticos (IMPATH™) antes de programar.",
+          speech: "Caso 2: IA que construye. De idea a producto… en minutos.<br><br>Aquí ven en pantalla un ejemplo real construido con Lovable. Escribes en lenguaje natural qué plataforma necesitas y en minutos tienes un producto funcional y navegable. La IA detrás es impresionante, pero lo verdaderamente revolucionario es la interfaz: es una conversación.<br><br>En el negocio, esto cambia la regla financiera: meses de desarrollo no deberían ser tu primera prueba. Hoy construimos el prototipo funcional en días, lo ponemos a prueba con usuarios sintéticos mediante nuestra metodología IMPATH™ para detectar dónde se atoran, y solo invertimos en código pesado cuando tenemos certeza total de adopción."
+        }
+      },
+      {
+        id: "13",
+        figmaId: "1346:346",
+        eyebrow: "CASO 03 · FIGMA 1346:346 (IPHONE 16 PRO + PERPLEXITY)",
+        title: "IA que responde mejor: Buscar → entender → confiar",
+        notes: {
+          time: "1:30 min",
+          keyIdea: "Caso 3 con el iPhone 16 Pro y Perplexity original de Figma: transparencia y fuentes verificables.",
+          speech: "Caso 3: IA que responde mejor — Perplexity.<br><br>Una herramienta que compite directamente con Google. Pero no ganó terreno por tener un modelo más misterioso; ganó por algo mucho más simple: es súper clara.<br><br>Como ven en la pantalla del teléfono, te responde directamente la pregunta sobre el futuro del diseñador UX/UI, pero al lado de cada párrafo te muestra exactamente la fuente de donde viene la información. Te permite validar, explorar y confiar.<br><br>No solo te da respuestas. Te da contexto. Buscar → entender → confiar."
+        }
+      },
+      {
+        id: "14",
+        figmaId: "1346:355",
+        eyebrow: "EL FUTURO DE LA IA Y EL UX · FIGMA 1346:355 (3 MEDALLONES)",
+        title: "Al futuro de la IA y el UX · El software ahora: Conversa · Predice · Se adapta",
+        notes: {
+          time: "1:30 min",
+          keyIdea: "Transición hacia el futuro con los 3 medallones originales del Figma de María: Conversa, Predice, Se adapta.",
+          speech: "Durante décadas, el software se diseñó alrededor de interfaces rígidas: menús, botones, pantallas. Aprendimos a usar software aprendiendo dónde hacer clic.<br><br>Pero la inteligencia artificial está cambiando eso por completo. El software ahora:<br>1. Conversa.<br>2. Predice.<br>3. Se adapta.<br><br>Veamos cómo se ve cada uno en la práctica."
+        }
+      },
+      {
+        id: "15",
+        figmaId: "1346:317",
+        eyebrow: "CONVERSAR · FIGMA 1346:317 (MINDTRIP IMAGE 29)",
+        title: "De buscar... a conversar",
+        notes: {
+          time: "1:00 min",
+          keyIdea: "Slide 15 con la captura original de Mindtrip (image 29): pasar de llenar 20 filtros a conversar sobre tu viaje a Ciudad de México.",
+          speech: "Primero: De buscar… a conversar.<br><br>En lugar de abrir diez pestañas, filtrar fechas, comparar hoteles y armar un itinerario a mano, hoy entras a plataformas como Mindtrip, le dices qué tipo de experiencia buscas en Ciudad de México y el sistema conversa contigo, te arma el mapa, los museos y los restaurantes al instante."
+        }
+      },
+      {
+        id: "16",
+        figmaId: "1346:324",
+        eyebrow: "PREDECIR · FIGMA 1346:324 (WAZE IMAGE 31)",
+        title: "De reaccionar… a anticipar",
+        notes: {
+          time: "1:00 min",
+          keyIdea: "Slide 16 con la captura original de Waze (image 31): el sistema te avisa a qué hora salir antes de que abras la app.",
+          speech: "Segundo: De reaccionar… a anticipar.<br><br>Miren esta notificación de Waze a las 7:10 de la mañana: '¿Vas hacia Jackson Street? Sal a las 9:10 para llegar a tiempo'. El usuario ni siquiera abrió la aplicación. El software cruzó su agenda con el tráfico real y se anticipó al problema."
+        }
+      },
+      {
+        id: "17",
+        figmaId: "1346:331",
+        eyebrow: "ADAPTARSE · FIGMA 1346:331 (IMAGE 32)",
+        title: "De una interfaz para todos… a una experiencia para cada persona",
+        notes: {
+          time: "1:15 min",
+          keyIdea: "Slide 17 con la captura original del TikTok de María ('El arte de optimizar tu empresa' - image 32): diseñar comportamientos.",
+          speech: "Y tercero: De una interfaz para todos… a una experiencia para cada persona.<br><br>Ya no se trata de diseñar pantallas iguales para todo el mundo. Se trata de diseñar comportamientos: cómo un sistema entiende a cada persona, su rol en la empresa y su momento, y le entrega exactamente lo que necesita."
+        }
+      },
+      {
+        id: "18",
+        figmaId: "1346:386",
+        eyebrow: "CIERRE 1 · FIGMA 1346:386 (IMAGE 21)",
+        title: "La alianza entre tecnología y empatía humana",
+        notes: {
+          time: "1:00 min",
+          keyIdea: "Slide 18 con la imagen original de cierre (image 21 - apretón de manos humano y robot sobre fondo lavanda).",
+          speech: "Quiero que se queden con esta imagen:<br><br>En esta nueva era de inteligencia artificial, quien va a ganar no es la empresa que tenga la tecnología más complicada, sino la que logre que las personas confíen en ella y disfruten usarla todos los días.<br><br>Porque las herramientas cambian… pero las personas seguimos sintiendo igual."
+        }
+      },
+      {
+        id: "19",
+        figmaId: "1358:17",
+        eyebrow: "CIERRE 2 · FIGMA 1358:17 (QR REDES + DIAGNÓSTICO B2B)",
+        title: "Software that Feels Right · /mariadebuen · www.bluepixel.mx",
+        notes: {
+          time: "1:15 min",
+          keyIdea: "Slide 19 con el LogoNegro | Software that Feels Right, los 2 códigos QR originales de María (image 34 y 35), iconos sociales y el llamado a la acción del Diagnóstico Ejecutivo B2B.",
+          speech: "Aquí tienen mis códigos QR para que sigamos la conversación en TikTok, Instagram y LinkedIn como @mariadebuen, y nuestro sitio www.bluepixel.mx.<br><br>Y para quienes hoy lideran una plataforma digital o están evaluando dónde integrar inteligencia artificial en su operación sin pagar dos veces, abrimos espacios para un Diagnóstico Ejecutivo de Fricción Operativa y Adopción de 30 minutos sin costo con nuestro equipo.<br><br>Diseñemos tecnología que la gente adopte. Software that Feels Right. ¡Muchas gracias!"
+        }
+      }
+    ];
+
+    let currentSlide = 0;
+    const canvas = document.getElementById('slide-canvas');
+    const counter = document.getElementById('slide-counter');
+    const progress = document.getElementById('progress-fill');
+    const notesDrawer = document.getElementById('notes-drawer');
+    const notesContent = document.getElementById('notes-content');
+    const gridModal = document.getElementById('grid-modal');
+    const gridThumbnails = document.getElementById('grid-thumbnails');
+
+    function renderCurrentSlide() {
+      const slide = SLIDES[currentSlide];
+      canvas.innerHTML = `
+        <div style="width: 100%; height: 100%; position: relative; display: flex; align-items: center; justify-content: center; background: #151B24;">
+          <img src="assets/slide_final_${slide.id}.png" alt="Lámina ${slide.id}" style="width: 100%; height: 100%; object-fit: contain; display: block;">
+          ${currentSlide === 0 ? `
+            <button class="btn-action primary" onclick="toggleNotes()" style="position: absolute; bottom: 24px; right: 28px; display: inline-flex; align-items: center; gap: 8px; padding: 12px 22px; font-size: 14px; font-weight: 800; cursor: pointer; border-radius: 999px; box-shadow: 0 8px 28px rgba(0, 210, 255, 0.4);">
+              <span>🎙️</span> Ver Guion de María
+            </button>
+          ` : ''}
+        </div>
+      `;
+      counter.textContent = `${String(currentSlide + 1).padStart(2, '0')} / ${String(SLIDES.length).padStart(2, '0')}`;
+      progress.style.width = `${((currentSlide + 1) / SLIDES.length) * 100}%`;
+      updateNotes();
+    }
+
+    function updateNotes() {
+      const slide = SLIDES[currentSlide];
+      notesContent.innerHTML = `
+        <div style="margin-bottom: 14px; display: flex; justify-content: space-between; align-items: center;">
+          <span style="font-family: var(--font-mono); font-size: 12px; color: var(--tl-cyan); font-weight: 700;">LÁMINA ${slide.id} / 19 · ${slide.notes.time}</span>
+          <span style="font-family: var(--font-mono); font-size: 11px; color: var(--bp-dim);">Figma ${slide.figmaId}</span>
+        </div>
+        <div style="font-size: 15px; font-weight: 800; color: var(--bp-fg); margin-bottom: 12px; line-height: 1.3;">${slide.title}</div>
+        <div style="font-size: 11px; font-weight: 700; color: var(--bp-muted); text-transform: uppercase; margin-bottom: 6px;">Tesis / Idea Clave:</div>
+        <div style="font-size: 13px; color: var(--bp-fg); margin-bottom: 16px; font-weight: 500; line-height: 1.45;">${slide.notes.keyIdea}</div>
+        <div style="font-size: 11px; font-weight: 700; color: var(--bp-muted); text-transform: uppercase; margin-bottom: 6px;">Guion Verbatim (Voz de María):</div>
+        <div class="notes-speech">${slide.notes.speech}</div>
+      `;
+    }
+
+    function nextSlide() { if (currentSlide < SLIDES.length - 1) { currentSlide++; renderCurrentSlide(); } }
+    function prevSlide() { if (currentSlide > 0) { currentSlide--; renderCurrentSlide(); } }
+    function goToSlide(index) { if (index >= 0 && index < SLIDES.length) { currentSlide = index; renderCurrentSlide(); closeGrid(); } }
+    function toggleNotes() { notesDrawer.classList.toggle('open'); document.getElementById('btn-notes').classList.toggle('active', notesDrawer.classList.contains('open')); }
+    function openGrid() {
+      gridThumbnails.innerHTML = SLIDES.map((s, idx) => `
+        <div class="thumb-card ${idx === currentSlide ? 'active' : ''}" onclick="goToSlide(${idx})">
+          <img src="assets/slide_final_${s.id}.png" alt="Lámina ${s.id}">
+          <div style="font-family: var(--font-mono); font-size: 11px; color: var(--tl-cyan); font-weight: 700; margin-bottom: 3px;">LÁMINA ${s.id} · ${s.eyebrow}</div>
+          <div style="font-size: 12.5px; font-weight: 700; color: var(--bp-fg); line-height: 1.25;">${s.title}</div>
+        </div>
+      `).join('');
+      gridModal.classList.add('open');
+    }
+    function closeGrid() { gridModal.classList.remove('open'); }
+    function toggleFullscreen() { if (!document.fullscreenElement) document.documentElement.requestFullscreen().catch(err => console.log(err)); else document.exitFullscreen(); }
+    function toggleTheme() {
+      const html = document.documentElement;
+      const current = html.getAttribute('data-theme') || 'dark';
+      const next = current === 'dark' ? 'light' : 'dark';
+      html.setAttribute('data-theme', next);
+      document.getElementById('btn-theme').textContent = next === 'dark' ? '☀️' : '🌙';
+    }
+
+    document.getElementById('btn-next').addEventListener('click', nextSlide);
+    document.getElementById('btn-prev').addEventListener('click', prevSlide);
+    document.getElementById('btn-notes').addEventListener('click', toggleNotes);
+    document.getElementById('btn-close-notes').addEventListener('click', toggleNotes);
+    document.getElementById('btn-grid').addEventListener('click', openGrid);
+    document.getElementById('btn-close-grid').addEventListener('click', closeGrid);
+    document.getElementById('btn-fullscreen').addEventListener('click', toggleFullscreen);
+    document.getElementById('btn-theme').addEventListener('click', toggleTheme);
+
+    window.addEventListener('keydown', (e) => {
+      if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
+      switch (e.key) {
+        case 'ArrowRight': case ' ': case 'PageDown': e.preventDefault(); nextSlide(); break;
+        case 'ArrowLeft': case 'PageUp': e.preventDefault(); prevSlide(); break;
+        case 'n': case 'N': toggleNotes(); break;
+        case 'g': case 'G': if (gridModal.classList.contains('open')) closeGrid(); else openGrid(); break;
+        case 'f': case 'F': toggleFullscreen(); break;
+        case 't': case 'T': toggleTheme(); break;
+        case 'Escape': if (gridModal.classList.contains('open')) closeGrid(); if (notesDrawer.classList.contains('open')) toggleNotes(); break;
+      }
+    });
+
+    renderCurrentSlide();
+  </script>
+</body>
+</html>

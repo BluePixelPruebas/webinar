@@ -1,0 +1,952 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Entre Founders: De datos a decisiones, El ROI del UX | Alan Torres & Jorge de Buen · BluePixel</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Onest:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    /* ───────── BPDS 2027 & Figma 1008:5 Editorial Palette ───────── */
+    :root, [data-theme="dark"] {
+      --bp-bg: oklch(0.11 0.032 248);
+      --bp-bg-2: oklch(0.15 0.04 248);
+      --bp-bg-surface: oklch(0.17 0.038 248);
+      --bp-stage-bg: radial-gradient(circle at 50% 35%, #131f38 0%, #090e1a 100%);
+      --bp-fg: oklch(0.98 0.003 250);
+      --bp-muted: oklch(0.82 0.016 248);
+      --bp-dim: oklch(0.65 0.014 248);
+      --bp-line: color-mix(in oklab, var(--bp-fg) 12%, transparent);
+      --bp-line-strong: color-mix(in oklab, var(--bp-fg) 22%, transparent);
+
+      --ux-cyan: #00d2ff;
+      --ux-blue: #2563eb;
+      --ux-coral: #ff6b4a;
+      --ux-mint: #2dd4bf;
+      --ux-red: #ef4444;
+      --ux-green: #22c55e;
+
+      --grad-cyan: linear-gradient(135deg, #00d2ff 0%, #2563eb 100%);
+      --grad-coral: linear-gradient(135deg, #ff6b4a 0%, #e75125 100%);
+      --grad-hero: linear-gradient(135deg, #00d2ff 0%, #2dd4bf 55%, #ff6b4a 100%);
+
+      --radius: 1rem;
+      --radius-sm: 0.6rem;
+      --shadow-elevated: 0 24px 48px -12px rgba(0, 0, 0, 0.65), 0 0 0 1px var(--bp-line);
+    }
+
+    [data-theme="light"] {
+      --bp-bg: #f8fafc;
+      --bp-bg-2: #eef2f6;
+      --bp-bg-surface: #ffffff;
+      --bp-stage-bg: radial-gradient(circle at 50% 35%, #ffffff 0%, #e8eef5 100%);
+      --bp-fg: #0b1220;
+      --bp-muted: #334155;
+      --bp-dim: #64748b;
+      --bp-line: #cbd5e1;
+      --bp-line-strong: #94a3b8;
+
+      --ux-cyan: #0284c7;
+      --ux-blue: #1d4ed8;
+      --ux-coral: #ea580c;
+      --ux-mint: #0d9488;
+      --ux-red: #dc2626;
+      --ux-green: #16a34a;
+
+      --grad-cyan: linear-gradient(135deg, #0284c7 0%, #1d4ed8 100%);
+      --grad-coral: linear-gradient(135deg, #ea580c 0%, #c2410c 100%);
+      --grad-hero: linear-gradient(135deg, #0284c7 0%, #0d9488 55%, #ea580c 100%);
+
+      --shadow-elevated: 0 20px 40px -15px rgba(15, 23, 42, 0.12), 0 0 0 1px var(--bp-line);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body {
+      width: 100%; height: 100%; overflow: hidden;
+      font-family: 'Onest', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: var(--bp-bg); color: var(--bp-fg);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    #app { display: flex; flex-direction: column; width: 100vw; height: 100vh; }
+
+    /* ───────── Header ───────── */
+    .top-bar {
+      height: 58px; padding: 0 24px;
+      display: flex; align-items: center; justify-content: space-between;
+      border-bottom: 1px solid var(--bp-line);
+      background: color-mix(in oklab, var(--bp-bg) 88%, transparent);
+      backdrop-filter: blur(16px); z-index: 50; flex-shrink: 0;
+    }
+    .brand-group { display: flex; align-items: center; gap: 12px; min-width: 0; }
+    .logo-bp { display: flex; align-items: center; gap: 7px; font-weight: 800; font-size: 15px; }
+    .logo-bp-box { width: 13px; height: 13px; border-radius: 3px; background: var(--grad-cyan); flex-shrink: 0; }
+    .brand-divider { color: var(--bp-dim); }
+    .brand-title { font-size: 13px; font-weight: 500; color: var(--bp-muted); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .brand-tag {
+      font-family: 'JetBrains Mono', monospace; font-size: 10px; text-transform: uppercase;
+      padding: 3px 9px; border-radius: 9999px;
+      background: color-mix(in oklab, var(--ux-cyan) 14%, transparent);
+      color: var(--ux-cyan); border: 1px solid color-mix(in oklab, var(--ux-cyan) 30%, transparent);
+      flex-shrink: 0;
+    }
+    .top-actions { display: flex; align-items: center; gap: 8px; flex-shrink: 0; }
+    .btn-action {
+      background: var(--bp-bg-surface); border: 1px solid var(--bp-line); color: var(--bp-fg);
+      padding: 7px 12px; border-radius: var(--radius-sm); font-family: inherit;
+      font-size: 12px; font-weight: 600; cursor: pointer;
+      display: inline-flex; align-items: center; gap: 6px; transition: all 0.15s ease;
+    }
+    .btn-action:hover { border-color: var(--ux-cyan); transform: translateY(-1px); }
+    .btn-action.active { background: color-mix(in oklab, var(--ux-cyan) 18%, var(--bp-bg-surface)); border-color: var(--ux-cyan); color: var(--ux-cyan); }
+
+    .progress-track { width: 100%; height: 3px; background: var(--bp-line); flex-shrink: 0; }
+    .progress-fill { height: 100%; background: var(--grad-hero); transition: width 0.35s ease; width: 0%; }
+
+    /* ───────── Stage ───────── */
+    .workspace { flex: 1 1 auto; min-height: 0; display: flex; overflow: hidden; }
+    .stage-container { flex: 1 1 auto; min-width: 0; height: 100%; background: var(--bp-stage-bg); position: relative; overflow: hidden; }
+
+    .slide {
+      position: absolute; inset: 0;
+      padding: clamp(24px, 4.2vh, 50px) clamp(24px, 4.8vw, 72px);
+      display: flex; flex-direction: column; justify-content: center;
+      opacity: 0; visibility: hidden; transform: translateX(34px);
+      transition: opacity 0.38s ease, transform 0.42s cubic-bezier(0.22, 1, 0.36, 1), visibility 0.38s;
+      overflow-y: auto;
+    }
+    .slide.active { opacity: 1; visibility: visible; transform: translateX(0); z-index: 2; }
+    .slide.prev { opacity: 0; transform: translateX(-34px); }
+    .slide-inner { width: 100%; max-width: 1240px; margin: 0 auto; position: relative; }
+    .slide-watermark {
+      position: absolute; top: 16px; right: 26px;
+      font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--bp-dim); letter-spacing: 0.08em;
+    }
+
+    .eyebrow {
+      font-family: 'JetBrains Mono', monospace; font-size: 12px; font-weight: 600;
+      text-transform: uppercase; letter-spacing: 0.12em; color: var(--ux-cyan); margin-bottom: 12px;
+    }
+    .eyebrow.coral { color: var(--ux-coral); }
+    .eyebrow.mint { color: var(--ux-mint); }
+
+    h1.hero-title { font-size: clamp(2.4rem, 5vw, 4.5rem); font-weight: 900; line-height: 1.04; letter-spacing: -0.035em; }
+    h2.slide-title { font-size: clamp(1.85rem, 3.5vw, 3.1rem); font-weight: 800; line-height: 1.08; letter-spacing: -0.03em; margin-bottom: 16px; }
+    .text-gradient { background: var(--grad-hero); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .lead { font-size: clamp(1.05rem, 1.45vw, 1.3rem); line-height: 1.55; color: var(--bp-muted); max-width: 64ch; }
+
+    /* ───────── Editorial Layouts from Figma 1008:5 ───────── */
+    .cover-editorial {
+      display: grid; grid-template-columns: 1.25fr 0.75fr; gap: 36px; align-items: stretch;
+    }
+    .cover-slab {
+      background: linear-gradient(145deg, color-mix(in oklab, var(--ux-blue) 22%, var(--bp-bg-surface)), var(--bp-bg-surface));
+      border: 1px solid var(--bp-line-strong); border-radius: 26px;
+      padding: clamp(30px, 4.5vw, 54px); box-shadow: var(--shadow-elevated);
+      display: flex; flex-direction: column; justify-content: center;
+    }
+    .cover-rule { width: 100%; height: 2px; background: var(--grad-hero); margin: 26px 0; border-radius: 2px; }
+    .cover-speakers-col {
+      display: flex; flex-direction: column; justify-content: space-between; gap: 20px;
+      background: var(--bp-bg-surface); border: 1px solid var(--bp-line); border-radius: 26px; padding: 30px;
+    }
+    .speaker-box { display: flex; align-items: center; gap: 16px; padding: 14px; border-radius: 16px; background: color-mix(in oklab, var(--bp-fg) 4%, transparent); border: 1px solid var(--bp-line); }
+    .avatar-mono {
+      width: 58px; height: 58px; border-radius: 50%; display: grid; place-items: center;
+      font-weight: 800; font-size: 19px; color: #fff; flex-shrink: 0;
+      background: var(--grad-cyan);
+    }
+    .avatar-mono.coral { background: var(--grad-coral); }
+
+    /* 2x2 Geometric Circles (Figma 1008:37 & 1008:46) */
+    .split-circles { display: grid; grid-template-columns: 1.15fr 0.85fr; gap: 44px; align-items: center; }
+    .circles-quad {
+      display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px;
+      padding: 28px; border-radius: 28px;
+      background: linear-gradient(155deg, color-mix(in oklab, var(--ux-cyan) 14%, transparent), color-mix(in oklab, var(--ux-coral) 10%, transparent));
+      border: 1px solid var(--bp-line);
+    }
+    .geo-circle {
+      aspect-ratio: 1/1; border-radius: 50%;
+      background: var(--bp-bg-surface); border: 1px solid var(--bp-line-strong);
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      padding: 16px; text-align: center; box-shadow: var(--shadow-elevated);
+    }
+    .geo-circle strong { font-size: clamp(1.3rem, 2.2vw, 1.9rem); font-weight: 900; color: var(--ux-cyan); }
+    .geo-circle.coral strong { color: var(--ux-coral); }
+    .geo-circle.mint strong { color: var(--ux-mint); }
+    .geo-circle span { font-size: 12.5px; color: var(--bp-muted); margin-top: 4px; line-height: 1.25; }
+
+    /* Forrester Stat Split (Figma 1008:28) */
+    .forrester-split { display: grid; grid-template-columns: 0.85fr 1.15fr; gap: 44px; align-items: center; }
+    .forrester-card {
+      background: linear-gradient(160deg, rgba(0, 210, 255, 0.18), rgba(37, 99, 235, 0.14));
+      border: 1px solid color-mix(in oklab, var(--ux-cyan) 40%, transparent);
+      border-radius: 28px; padding: 36px; display: flex; flex-direction: column; gap: 24px;
+    }
+    .big-stat-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .big-stat-box {
+      background: var(--bp-bg-surface); border: 1px solid var(--bp-line); border-radius: 18px; padding: 22px 18px;
+    }
+    .big-stat-box .num { font-size: clamp(2.4rem, 4.5vw, 3.6rem); font-weight: 900; line-height: 1; }
+    .big-stat-box .lbl { font-size: 13.5px; color: var(--bp-muted); margin-top: 8px; line-height: 1.35; }
+
+    /* 3-Column Numbered Grid (Figma 1008:61 & 1008:349) */
+    .three-cols { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 28px; }
+    .num-col-card {
+      background: var(--bp-bg-surface); border: 1px solid var(--bp-line);
+      border-radius: 22px; padding: 30px 26px; display: flex; flex-direction: column; gap: 16px;
+    }
+    .num-col-card .big-n { font-size: clamp(3rem, 5vw, 4.4rem); font-weight: 900; line-height: 1; color: var(--ux-cyan); letter-spacing: -0.04em; }
+    .num-col-card.coral .big-n { color: var(--ux-coral); }
+    .num-col-card.mint .big-n { color: var(--ux-mint); }
+    .num-col-card .rule { width: 100%; height: 2px; background: var(--bp-line-strong); }
+    .num-col-card h3 { font-size: clamp(1.25rem, 1.9vw, 1.65rem); font-weight: 800; line-height: 1.2; }
+    .num-col-card p { font-size: 14.5px; color: var(--bp-muted); line-height: 1.5; }
+
+    /* Interactive UX Exercises (Figma 1008:381, 386, 390, 395) */
+    .compare-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 22px; }
+    .compare-grid.two { grid-template-columns: repeat(2, 1fr); }
+    .mock-card {
+      background: var(--bp-bg-surface); border: 1px solid var(--bp-line);
+      border-radius: 20px; padding: 22px; display: flex; flex-direction: column; gap: 14px;
+    }
+    .mock-card.bad { border-color: color-mix(in oklab, var(--ux-red) 45%, transparent); }
+    .mock-card.good { border-color: color-mix(in oklab, var(--ux-mint) 55%, transparent); box-shadow: 0 0 32px rgba(45, 212, 191, 0.12); }
+    .mock-badge {
+      display: inline-flex; width: fit-content; align-items: center; gap: 6px;
+      font-family: 'JetBrains Mono', monospace; font-size: 11px; font-weight: 700;
+      padding: 4px 10px; border-radius: 999px;
+      background: color-mix(in oklab, var(--bp-fg) 8%, transparent); color: var(--bp-muted);
+    }
+    .mock-card.bad .mock-badge { background: rgba(239, 68, 68, 0.16); color: #f87171; }
+    .mock-card.good .mock-badge { background: rgba(45, 212, 191, 0.16); color: var(--ux-mint); }
+
+    .mock-screen {
+      min-height: 165px; border-radius: 14px; padding: 18px;
+      background: color-mix(in oklab, var(--bp-bg) 70%, var(--bp-bg-surface));
+      border: 1px solid var(--bp-line);
+      display: flex; flex-direction: column; justify-content: center; gap: 10px;
+    }
+    .skel { height: 11px; border-radius: 6px; background: color-mix(in oklab, var(--bp-fg) 12%, transparent); }
+    .skel.w70 { width: 70%; } .skel.w50 { width: 50%; } .skel.w90 { width: 90%; }
+    .spinner-ring {
+      width: 34px; height: 34px; border-radius: 50%; margin: 0 auto;
+      border: 3px solid var(--bp-line-strong); border-top-color: var(--ux-cyan);
+      animation: spin 1.1s linear infinite;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    /* Funnel de Conversión (Figma 1008:284) */
+    .funnel-wrap { display: flex; flex-direction: column; gap: 10px; margin-top: 20px; }
+    .funnel-row { display: grid; grid-template-columns: 1fr 340px; gap: 22px; align-items: center; }
+    .funnel-bar-track { display: flex; justify-content: center; }
+    .funnel-bar {
+      height: 54px; border-radius: 12px; display: flex; align-items: center; justify-content: center;
+      font-size: 20px; font-weight: 900; color: #fff;
+      background: linear-gradient(90deg, #0284c7, #00d2ff);
+      box-shadow: 0 8px 20px rgba(0, 210, 255, 0.18);
+    }
+    .funnel-bar.mid { background: linear-gradient(90deg, #0ea5e9, #2dd4bf); color: #052028; }
+    .funnel-bar.warn { background: linear-gradient(90deg, #f97316, #ff6b4a); }
+    .funnel-bar.end { background: linear-gradient(90deg, #dc2626, #ef4444); }
+    .funnel-label {
+      background: var(--bp-bg-surface); border: 1px solid var(--bp-line);
+      border-radius: 12px; padding: 12px 16px; display: flex; align-items: center; gap: 12px;
+    }
+    .funnel-icon { font-size: 20px; }
+
+    /* Checkout Antes vs Después (Figma 1008:76) */
+    .checkout-split { display: grid; grid-template-columns: 0.92fr 1.08fr; gap: 24px; margin-top: 18px; }
+    .chk-panel {
+      background: var(--bp-bg-surface); border: 1px solid var(--bp-line);
+      border-radius: 20px; padding: 22px; display: flex; flex-direction: column; gap: 14px;
+    }
+    .chk-panel.after { border-color: color-mix(in oklab, var(--ux-mint) 55%, transparent); }
+    .chk-panel.before { border-color: color-mix(in oklab, var(--ux-red) 45%, transparent); }
+    .fake-input {
+      padding: 10px 12px; border-radius: 10px; font-size: 13px;
+      background: color-mix(in oklab, var(--bp-fg) 5%, transparent);
+      border: 1px solid var(--bp-line-strong); color: var(--bp-muted);
+    }
+    .fake-input.err { border-color: #ef4444; background: rgba(239, 68, 68, 0.08); color: var(--bp-fg); }
+    .inline-err {
+      padding: 9px 12px; border-radius: 10px; font-size: 12.5px; font-weight: 600;
+      background: rgba(239, 68, 68, 0.14); border: 1px solid rgba(239, 68, 68, 0.4); color: #fca5a5;
+    }
+    [data-theme="light"] .inline-err { color: #b91c1c; }
+    .pay-pills { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+    .pay-pill {
+      padding: 10px 8px; border-radius: 10px; text-align: center; font-size: 12px; font-weight: 700;
+      border: 1px solid var(--bp-line-strong); background: color-mix(in oklab, var(--bp-fg) 4%, transparent);
+    }
+    .pay-pill.selected { border-color: var(--ux-mint); background: rgba(45, 212, 191, 0.14); color: var(--ux-mint); }
+
+    /* Contact / Closing (Figma 1008:364) */
+    .closing-grid { display: grid; grid-template-columns: 1.05fr 0.95fr; gap: 28px; margin-top: 22px; }
+    .contact-card {
+      background: var(--bp-bg-surface); border: 1px solid var(--bp-line);
+      border-radius: 22px; padding: 26px; display: flex; flex-direction: column; justify-content: space-between; gap: 16px;
+    }
+    .mini-stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
+    .mini-stat {
+      background: color-mix(in oklab, var(--bp-fg) 4%, transparent); border: 1px solid var(--bp-line);
+      border-radius: 12px; padding: 10px 8px; text-align: center;
+    }
+    .mini-stat strong { display: block; font-size: 18px; font-weight: 900; color: var(--ux-cyan); }
+    .mini-stat span { font-size: 11px; color: var(--bp-muted); }
+    .channel-row {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 10px 14px; border-radius: 11px;
+      background: color-mix(in oklab, var(--bp-fg) 4%, transparent); border: 1px solid var(--bp-line); font-size: 13.5px;
+    }
+    .channel-row span { color: var(--bp-dim); font-size: 11.5px; font-weight: 700; text-transform: uppercase; }
+
+    /* Drawer & Bottom Bar */
+    .notes-drawer {
+      width: 0; opacity: 0; overflow: hidden; border-left: 1px solid var(--bp-line);
+      background: var(--bp-bg-2); transition: width 0.3s ease, opacity 0.25s ease;
+      display: flex; flex-direction: column; flex-shrink: 0;
+    }
+    .notes-drawer.open { width: 390px; opacity: 1; }
+    .notes-header { padding: 16px 20px; border-bottom: 1px solid var(--bp-line); display: flex; justify-content: space-between; align-items: center; }
+    .notes-body { flex: 1 1 auto; min-height: 0; overflow-y: auto; padding: 20px; display: flex; flex-direction: column; gap: 14px; }
+    .notes-chip { font-family: 'JetBrains Mono', monospace; font-size: 11px; padding: 4px 10px; border-radius: 999px; background: var(--bp-bg-surface); border: 1px solid var(--bp-line); color: var(--ux-cyan); }
+    .notes-script { font-size: 14.5px; line-height: 1.66; white-space: pre-line; }
+    .notes-tip { padding: 12px 14px; border-radius: 12px; background: color-mix(in oklab, var(--ux-coral) 12%, var(--bp-bg-surface)); border: 1px solid color-mix(in oklab, var(--ux-coral) 32%, transparent); font-size: 13px; color: var(--bp-muted); }
+
+    .bottom-bar {
+      height: 54px; padding: 0 24px; border-top: 1px solid var(--bp-line);
+      background: color-mix(in oklab, var(--bp-bg) 90%, transparent);
+      display: flex; align-items: center; justify-content: space-between; flex-shrink: 0;
+    }
+    .slide-counter { font-family: 'JetBrains Mono', monospace; font-size: 13px; color: var(--bp-muted); }
+    .slide-counter strong { color: var(--ux-cyan); }
+    .nav-dots { display: flex; gap: 6px; align-items: center; }
+    .nav-dot { width: 8px; height: 8px; border-radius: 999px; border: none; background: var(--bp-line-strong); cursor: pointer; transition: all 0.2s; }
+    .nav-dot.active { width: 24px; background: var(--ux-cyan); }
+    .nav-controls { display: flex; gap: 8px; }
+
+    .modal-backdrop { position: fixed; inset: 0; background: rgba(6, 10, 20, 0.9); backdrop-filter: blur(12px); z-index: 200; display: none; padding: 36px; overflow-y: auto; }
+    .modal-backdrop.open { display: block; }
+    .overview-grid { max-width: 1240px; margin: 20px auto 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 16px; }
+    .overview-card { background: var(--bp-bg-surface); border: 1px solid var(--bp-line); border-radius: 14px; padding: 16px; cursor: pointer; text-align: left; color: var(--bp-fg); font-family: inherit; }
+    .overview-card:hover, .overview-card.active { border-color: var(--ux-cyan); }
+
+    @media (max-width: 960px) {
+      .cover-editorial, .split-circles, .forrester-split, .three-cols, .compare-grid, .compare-grid.two, .checkout-split, .closing-grid, .funnel-row { grid-template-columns: 1fr; }
+      .notes-drawer.open { position: fixed; right: 0; top: 58px; bottom: 54px; width: min(390px, 92vw); z-index: 120; }
+      .nav-dots { display: none; }
+    }
+  </style>
+</head>
+<body>
+<div id="app">
+  <header class="top-bar">
+    <div class="brand-group">
+      <div class="logo-bp"><span class="logo-bp-box"></span><span>BLUEPIXEL</span></div>
+      <span class="brand-divider">|</span>
+      <span class="brand-title">Entre Founders: De datos a decisiones, El ROI del UX</span>
+      <span class="brand-tag">14 Láminas · Figma 1008:5</span>
+    </div>
+    <div class="top-actions">
+      <button class="btn-action" id="btnNotes">🎙️ Guion (N)</button>
+      <button class="btn-action" id="btnGrid">▦ Índice (G)</button>
+      <button class="btn-action" id="btnTheme">☀️ Claro (T)</button>
+      <button class="btn-action" id="btnFullscreen">⛶ Presentar (F)</button>
+    </div>
+  </header>
+
+  <div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
+
+  <div class="workspace">
+    <main class="stage-container" id="stage">
+
+      <!-- SLIDE 01: COVER (Figma 1008:12) -->
+      <section class="slide active" data-title="Portada · De datos a decisiones" data-block="Apertura · 1008:12">
+        <div class="slide-watermark">01 / 14 · FIGMA 1008:12</div>
+        <div class="slide-inner cover-editorial">
+          <div class="cover-slab">
+            <div class="eyebrow">Entre Founders · BluePixel</div>
+            <h1 class="hero-title">De datos a<br><span class="text-gradient">decisiones:</span></h1>
+            <div class="cover-rule"></div>
+            <div style="font-size: clamp(1.5rem, 2.8vw, 2.3rem); font-weight: 800; letter-spacing: -0.02em;">El ROI del UX</div>
+            <p class="lead" style="margin-top: 14px;">Cómo convertir la experiencia de usuario en ventas, productividad y ahorros medibles para tu empresa.</p>
+          </div>
+          <div class="cover-speakers-col">
+            <div>
+              <div class="eyebrow coral">Ponentes</div>
+              <div style="display: flex; flex-direction: column; gap: 14px; margin-top: 12px;">
+                <div class="speaker-box">
+                  <div class="avatar-mono">AT</div>
+                  <div>
+                    <div style="font-size: 16px; font-weight: 800;">Alan Torres</div>
+                    <div style="font-size: 13px; color: var(--bp-muted);">Director UI · BluePixel</div>
+                  </div>
+                </div>
+                <div class="speaker-box">
+                  <div class="avatar-mono coral">JB</div>
+                  <div>
+                    <div style="font-size: 16px; font-weight: 800;">Jorge de Buen</div>
+                    <div style="font-size: 13px; color: var(--bp-muted);">Director UX · BluePixel</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div style="padding-top: 16px; border-top: 1px solid var(--bp-line); font-size: 13px; color: var(--bp-dim);">
+              <strong style="color: var(--bp-fg);">BLUEPIXEL</strong> · Software that Feels Right<br>
+              Liderado por María de Buen (CEO) · #1 UX/UI en México
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SLIDE 02: HOOK AUDITORIO (Figma 1008:37) -->
+      <section class="slide" data-title="¿Quién ha abandonado una app o sitio?" data-block="Dinámica · 1008:37">
+        <div class="slide-watermark">02 / 14 · FIGMA 1008:37</div>
+        <div class="slide-inner split-circles">
+          <div>
+            <div class="eyebrow">Pregunta para empezar</div>
+            <p style="font-size: clamp(1.3rem, 2vw, 1.7rem); font-weight: 600; color: var(--bp-muted); margin-bottom: 10px;">¿Cuántos de ustedes han</p>
+            <h2 class="hero-title"><span class="text-gradient">abandonado una app</span> o sitio web?</h2>
+            <p class="lead" style="margin-top: 20px;">Porque tardó demasiado en cargar, porque no encontraste el botón o porque el pago te marcó un error que nadie explicó.</p>
+          </div>
+          <div class="circles-quad">
+            <div class="geo-circle"><strong>Lenta</strong><span>Espera sin aviso</span></div>
+            <div class="geo-circle coral"><strong>Confusa</strong><span>Mucho texto y ruido</span></div>
+            <div class="geo-circle mint"><strong>Rota</strong><span>Errores sin explicar</span></div>
+            <div class="geo-circle"><strong>Adiós</strong><span>Te vas con otro</span></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SLIDE 03: DATO FORRESTER (Figma 1008:28) -->
+      <section class="slide" data-title="Estudio Forrester · Impacto Real" data-block="Evidencia · 1008:28">
+        <div class="slide-watermark">03 / 14 · FIGMA 1008:28</div>
+        <div class="slide-inner forrester-split">
+          <div class="forrester-card">
+            <div class="eyebrow" style="margin-bottom: 0;">Estudio Forrester · ROI del UX</div>
+            <div class="big-stat-row">
+              <div class="big-stat-box">
+                <div class="num" style="color: var(--ux-cyan);">+25%</div>
+                <div class="lbl">Aumento promedio en productividad de los empleados</div>
+              </div>
+              <div class="big-stat-box">
+                <div class="num" style="color: var(--ux-mint);">-50%</div>
+                <div class="lbl">Reducción en costos de capacitación</div>
+              </div>
+            </div>
+            <div style="font-size: 13px; color: var(--bp-muted);">Cuando una herramienta es clara desde el primer minuto, la gente trabaja más rápido y necesita menos soporte.</div>
+          </div>
+          <div>
+            <div class="eyebrow coral">No es estética, es rentabilidad</div>
+            <h2 class="slide-title">En un estudio de Forrester sobre el ROI de UX...</h2>
+            <p class="lead" style="font-size: clamp(1.15rem, 1.7vw, 1.5rem); color: var(--bp-fg);">
+              Se encontró que las empresas que invirtieron en UX vieron un <strong>aumento promedio del 25% en la productividad</strong> de sus equipos y una <strong>reducción del 50% en los costos de capacitación</strong>.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- SLIDE 04: QUÉ ES ROI (Figma 1008:55) -->
+      <section class="slide" data-title="¿Qué es el ROI?" data-block="Fundamento · 1008:55">
+        <div class="slide-watermark">04 / 14 · FIGMA 1008:55</div>
+        <div class="slide-inner forrester-split">
+          <div>
+            <div class="eyebrow">Hablemos el mismo idioma</div>
+            <p style="font-size: 22px; font-weight: 600; color: var(--bp-muted);">¿Qué es</p>
+            <h2 class="hero-title" style="font-size: clamp(4rem, 8vw, 6.8rem); color: var(--ux-cyan);">ROI?</h2>
+            <p style="font-size: 20px; font-weight: 700; margin-top: 8px;">Retorno de la Inversión</p>
+          </div>
+          <div style="background: var(--bp-bg-surface); border: 1px solid var(--bp-line-strong); border-radius: 26px; padding: clamp(26px, 4vw, 44px);">
+            <p style="font-size: clamp(1.3rem, 2.2vw, 1.95rem); font-weight: 600; line-height: 1.4;">
+              «Es un indicador clave que ayuda a determinar la <span class="text-gradient">rentabilidad de una inversión</span>. Es una razón que compara las ganancias o pérdidas de lo que inviertes.»
+            </p>
+            <p class="lead" style="margin-top: 18px; font-size: 15px;">En pocas palabras: por cada peso que inviertes en mejorar la experiencia de tu cliente o tu equipo, cuántos pesos regresan en ventas nuevas o en ahorros reales.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- SLIDE 05: PROBLEMA COMÚN (Figma 1008:46) -->
+      <section class="slide" data-title="¿Por qué contratar a un UX?" data-block="Problema Común · 1008:46">
+        <div class="slide-watermark">05 / 14 · FIGMA 1008:46</div>
+        <div class="slide-inner split-circles">
+          <div>
+            <div class="eyebrow coral">Problema común</div>
+            <h2 class="hero-title">¿Por qué contrataría a un <span class="text-gradient">UX</span> o a una empresa?</h2>
+            <p class="lead" style="margin-top: 18px;">Muchos fundadores piensan: «Mi equipo de programación ya puede armar las pantallas». El costo oculto aparece después, cuando el producto sale al aire y nadie compra ni lo usa.</p>
+          </div>
+          <div class="circles-quad">
+            <div class="geo-circle coral"><strong>$$$</strong><span>Retrabajo caro</span></div>
+            <div class="geo-circle"><strong>Fuga</strong><span>Clientes que se van</span></div>
+            <div class="geo-circle"><strong>Dudas</strong><span>Soporte saturado</span></div>
+            <div class="geo-circle mint"><strong>Certeza</strong><span>Validar antes</span></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SLIDE 06: QUÉ HACE UX (Figma 1008:61) -->
+      <section class="slide" data-title="¿Qué hace UX? · 3 Pasos" data-block="Método · 1008:61">
+        <div class="slide-watermark">06 / 14 · FIGMA 1008:61</div>
+        <div class="slide-inner">
+          <div class="eyebrow" style="text-align: center;">En tres pasos claros</div>
+          <h2 class="slide-title" style="text-align: center;">¿Qué hace <span class="text-gradient">UX</span>?</h2>
+          <div class="three-cols">
+            <div class="num-col-card">
+              <div class="big-n">01</div>
+              <div class="rule"></div>
+              <h3>Entiende el propósito del negocio.</h3>
+              <p>Antes de mover un botón, entendemos cómo gana dinero tu empresa, cuál es tu meta y dónde se está fugando hoy.</p>
+            </div>
+            <div class="num-col-card coral">
+              <div class="big-n">02</div>
+              <div class="rule"></div>
+              <h3>Entiende el dolor del usuario y propone soluciones.</h3>
+              <p>Escuchamos y observamos a personas reales para ver exactamente qué las frustra, las confunde o las detiene.</p>
+            </div>
+            <div class="num-col-card mint">
+              <div class="big-n">03</div>
+              <div class="rule"></div>
+              <h3>¡Resuelve!</h3>
+              <p>Diseñamos, probamos y medimos soluciones simples que quitan fricción y se reflejan directamente en tus resultados.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SLIDE 07: EJERCICIO LOADING (Figma 1008:381) -->
+      <section class="slide" data-title="Ejercicio 1 · Loading" data-block="Ejercicios · 1008:381">
+        <div class="slide-watermark">07 / 14 · EJERCICIO 01 · FIGMA 1008:381</div>
+        <div class="slide-inner">
+          <div class="eyebrow">Ejercicio en vivo · Percepción del tiempo</div>
+          <h2 class="slide-title">Ejercicio: <span class="text-gradient">Loading</span></h2>
+          <p class="lead">Tres pantallas tardan exactamente los mismos 3 segundos en abrir. ¿En cuál sientes que la app se trabó y en cuál confías y esperas?</p>
+          <div class="compare-grid">
+            <div class="mock-card bad">
+              <span class="mock-badge">Opción A · Pantalla vacía</span>
+              <div class="mock-screen" style="align-items: center;">
+                <span style="font-size: 13px; color: var(--bp-dim);">(Silencio total... pantalla en blanco)</span>
+              </div>
+              <p style="font-size: 13.5px; color: var(--bp-muted);">El usuario piensa que se cayó el internet o que el botón no sirvió y cierra la app.</p>
+            </div>
+            <div class="mock-card">
+              <span class="mock-badge">Opción B · Círculo eterno</span>
+              <div class="mock-screen" style="align-items: center;">
+                <div class="spinner-ring"></div>
+                <span style="font-size: 12.5px; color: var(--bp-dim); margin-top: 8px;">Cargando...</span>
+              </div>
+              <p style="font-size: 13.5px; color: var(--bp-muted);">Avisa que algo pasa, pero el usuario no sabe cuánto falta ni qué está por aparecer.</p>
+            </div>
+            <div class="mock-card good">
+              <span class="mock-badge">Opción C · Carga guiada</span>
+              <div class="mock-screen">
+                <div class="skel w50" style="background: rgba(45, 212, 191, 0.35);"></div>
+                <div class="skel w90"></div>
+                <div class="skel w70"></div>
+                <div style="font-size: 12px; color: var(--ux-mint); font-weight: 700; margin-top: 6px;">✓ Preparando tu resumen de compra...</div>
+              </div>
+              <p style="font-size: 13.5px; color: var(--bp-muted);">Se siente el doble de rápido porque el cerebro ya anticipa la estructura y mantiene la calma.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SLIDE 08: EJERCICIO MUCHO TEXTO (Figma 1008:386) -->
+      <section class="slide" data-title="Ejercicio 2 · Mucho texto" data-block="Ejercicios · 1008:386">
+        <div class="slide-watermark">08 / 14 · EJERCICIO 02 · FIGMA 1008:386</div>
+        <div class="slide-inner">
+          <div class="eyebrow coral">Ejercicio en vivo · Claridad</div>
+          <h2 class="slide-title">Ejercicio: <span class="text-gradient">Mucho texto</span></h2>
+          <p class="lead">Las personas en internet no leen palabra por palabra: escanean buscando lo que necesitan en 3 segundos.</p>
+          <div class="compare-grid two">
+            <div class="mock-card bad">
+              <span class="mock-badge">✕ Antes · Muro de texto</span>
+              <div class="mock-screen" style="font-size: 12.5px; line-height: 1.5; color: var(--bp-dim);">
+                Estimado usuario, le informamos que para poder continuar con el procedimiento de validación de su cuenta corporativa deberá leer atentamente los lineamientos vigentes, verificar que su correo coincida con el registro previo y aceptar las condiciones generales antes de proceder al siguiente paso del formulario de alta...
+              </div>
+              <p style="font-size: 13.5px; color: var(--bp-muted);">Genera fatiga inmediata. La gente se salta todo o abandona el registro.</p>
+            </div>
+            <div class="mock-card good">
+              <span class="mock-badge">✓ Después · Escaneable y directo</span>
+              <div class="mock-screen">
+                <strong style="font-size: 16px;">Activa tu cuenta en 2 pasos</strong>
+                <div style="font-size: 13px; color: var(--bp-muted);">1. Confirma tu correo de trabajo<br>2. Elige tu contraseña</div>
+                <div style="margin-top: 8px; padding: 9px 14px; border-radius: 10px; background: var(--grad-cyan); color: #fff; font-weight: 700; font-size: 13px; width: fit-content;">Continuar →</div>
+              </div>
+              <p style="font-size: 13.5px; color: var(--bp-muted);">Misma información, cero esfuerzo mental y mucha mayor tasa de avance.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SLIDE 09: EJERCICIO PASO 2 - A (Figma 1008:390) -->
+      <section class="slide" data-title="Ejercicio 3 · Paso 2 (Jerarquía)" data-block="Ejercicios · 1008:390">
+        <div class="slide-watermark">09 / 14 · EJERCICIO 03 · FIGMA 1008:390</div>
+        <div class="slide-inner">
+          <div class="eyebrow">Ejercicio en vivo · Decisión en el Paso 2</div>
+          <h2 class="slide-title">Ejercicio: <span class="text-gradient">Paso 2</span> — ¿Dónde doy clic?</h2>
+          <p class="lead">Cuando todo compite por atención en el mismo paso, el usuario duda. Y cada segundo de duda cuesta ventas.</p>
+          <div class="compare-grid">
+            <div class="mock-card bad">
+              <span class="mock-badge">Sin jerarquía</span>
+              <div class="mock-screen" style="gap: 8px;">
+                <div style="padding: 8px; border-radius: 8px; border: 1px solid var(--bp-line-strong); text-align: center; font-size: 12.5px;">Cancelar</div>
+                <div style="padding: 8px; border-radius: 8px; border: 1px solid var(--bp-line-strong); text-align: center; font-size: 12.5px;">Guardar borrador</div>
+                <div style="padding: 8px; border-radius: 8px; border: 1px solid var(--bp-line-strong); text-align: center; font-size: 12.5px;">Pagar ahora</div>
+              </div>
+              <p style="font-size: 13px; color: var(--bp-muted);">Todos los botones pesan igual: obligas al usuario a frenar y pensar.</p>
+            </div>
+            <div class="mock-card">
+              <span class="mock-badge">Exceso de color</span>
+              <div class="mock-screen" style="gap: 8px;">
+                <div style="padding: 8px; border-radius: 8px; background: #ef4444; color: #fff; text-align: center; font-size: 12.5px; font-weight: 700;">Cancelar</div>
+                <div style="padding: 8px; border-radius: 8px; background: #f59e0b; color: #000; text-align: center; font-size: 12.5px; font-weight: 700;">Ver detalles</div>
+                <div style="padding: 8px; border-radius: 8px; background: #22c55e; color: #fff; text-align: center; font-size: 12.5px; font-weight: 700;">Pagar ahora</div>
+              </div>
+              <p style="font-size: 13px; color: var(--bp-muted);">Un semáforo visual distrae y genera ansiedad al momento de pagar.</p>
+            </div>
+            <div class="mock-card good">
+              <span class="mock-badge">✓ Acción principal clara</span>
+              <div class="mock-screen" style="gap: 10px;">
+                <div style="padding: 11px; border-radius: 10px; background: var(--grad-cyan); color: #fff; text-align: center; font-size: 13.5px; font-weight: 800;">Continuar al pago →</div>
+                <div style="text-align: center; font-size: 12px; color: var(--bp-dim); text-decoration: underline;">Volver al carrito</div>
+              </div>
+              <p style="font-size: 13px; color: var(--bp-muted);">Una acción principal evidente y una secundaria discreta: flujo limpio.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SLIDE 10: EJERCICIO PASO 2 - B (Figma 1008:395) -->
+      <section class="slide" data-title="Ejercicio 4 · Paso 2 (Confianza)" data-block="Ejercicios · 1008:395">
+        <div class="slide-watermark">10 / 14 · EJERCICIO 04 · FIGMA 1008:395</div>
+        <div class="slide-inner">
+          <div class="eyebrow mint">Ejercicio en vivo · Reducir la fricción</div>
+          <h2 class="slide-title">Ejercicio: <span class="text-gradient">Paso 2</span> — Acompañar sin sorprender</h2>
+          <p class="lead">Dos formas de pedir datos en el paso previo al pago. Pequeños cambios aquí multiplican la conversión sin gastar un peso extra en anuncios.</p>
+          <div class="compare-grid two">
+            <div class="mock-card bad">
+              <span class="mock-badge">✕ Fricción oculta</span>
+              <div class="mock-screen">
+                <div class="fake-input">Contraseña (mín. 12 caracteres, símbolo, mayúscula)</div>
+                <div class="fake-input">RFC obligatorio</div>
+                <div class="fake-input">Teléfono de casa + Referencia 1 + Referencia 2</div>
+              </div>
+              <p style="font-size: 13.5px; color: var(--bp-muted);">Pedir datos que no necesitas todavía hace que la gente abandone justo antes de sacar su tarjeta.</p>
+            </div>
+            <div class="mock-card good">
+              <span class="mock-badge">✓ Solo lo indispensable</span>
+              <div class="mock-screen">
+                <div class="fake-input" style="border-color: var(--ux-mint);">Correo para enviarte tu comprobante</div>
+                <div class="fake-input" style="border-color: var(--ux-mint);">Dirección de entrega (con autocompletado)</div>
+                <div style="font-size: 12px; color: var(--ux-mint); font-weight: 600;">🔒 Sin crear cuenta obligatoria · Envío estimado visible</div>
+              </div>
+              <p style="font-size: 13.5px; color: var(--bp-muted);">Menos campos, mayor confianza y visibilidad total del costo antes de pagar.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SLIDE 11: FUNNEL DE CONVERSIÓN (Figma 1008:284) -->
+      <section class="slide" data-title="Funnel de Conversión Real" data-block="Datos · 1008:284">
+        <div class="slide-watermark">11 / 14 · FIGMA 1008:284</div>
+        <div class="slide-inner">
+          <div class="eyebrow coral">Dónde se escapa tu dinero</div>
+          <h2 class="slide-title">Funnel de <span class="text-gradient">Conversión</span></h2>
+          <div class="funnel-wrap">
+            <div class="funnel-row">
+              <div class="funnel-bar-track"><div class="funnel-bar" style="width: 100%;">100%</div></div>
+              <div class="funnel-label"><span class="funnel-icon">📱</span><div><strong>Entran al sitio o app</strong><div style="font-size: 12px; color: var(--bp-dim);">Todo el tráfico que ya pagaste en marketing</div></div></div>
+            </div>
+            <div class="funnel-row">
+              <div class="funnel-bar-track"><div class="funnel-bar mid" style="width: 72%;">15%</div></div>
+              <div class="funnel-label"><span class="funnel-icon">🛒</span><div><strong>Agregan un producto al carrito</strong><div style="font-size: 12px; color: var(--bp-dim);">85% salió sin dar el primer paso</div></div></div>
+            </div>
+            <div class="funnel-row">
+              <div class="funnel-bar-track"><div class="funnel-bar mid" style="width: 58%;">8%</div></div>
+              <div class="funnel-label"><span class="funnel-icon">🛍️</span><div><strong>Entran a revisar su carrito</strong><div style="font-size: 12px; color: var(--bp-dim);">Dudas de precio, envío o disponibilidad</div></div></div>
+            </div>
+            <div class="funnel-row">
+              <div class="funnel-bar-track"><div class="funnel-bar warn" style="width: 40%;">2%</div></div>
+              <div class="funnel-label"><span class="funnel-icon">📦</span><div><strong>Llenan datos de envío</strong><div style="font-size: 12px; color: var(--bp-dim);">Formularios largos frenan la compra</div></div></div>
+            </div>
+            <div class="funnel-row">
+              <div class="funnel-bar-track"><div class="funnel-bar warn" style="width: 34%;">2%</div></div>
+              <div class="funnel-label"><span class="funnel-icon">💳</span><div><strong>Llegan a la pantalla de pago</strong><div style="font-size: 12px; color: var(--bp-dim);">El momento más delicado de toda la venta</div></div></div>
+            </div>
+            <div class="funnel-row">
+              <div class="funnel-bar-track"><div class="funnel-bar end" style="width: 22%;">1%</div></div>
+              <div class="funnel-label"><span class="funnel-icon">✅</span><div><strong>Compra confirmada</strong><div style="font-size: 12px; color: var(--ux-coral); font-weight: 700;">¡La mitad de quienes ya iban a pagar se caen aquí!</div></div></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SLIDE 12: CASO REAL ANTES VS DESPUÉS (Figma 1008:76) -->
+      <section class="slide" data-title="Caso Real · Antes vs. Después en Pago" data-block="Caso Real · 1008:76">
+        <div class="slide-watermark">12 / 14 · CASO CHECKOUT · FIGMA 1008:76</div>
+        <div class="slide-inner">
+          <div class="eyebrow mint">Caso real de rediseño · Desktop & Móvil</div>
+          <h2 class="slide-title">Antes vs. Después: <span class="text-gradient">rescatar la venta en el pago</span></h2>
+          <div class="checkout-split">
+            <div class="chk-panel before">
+              <div style="display: flex; justify-content: space-between; align-items: center;">
+                <span class="mock-badge" style="background: rgba(239,68,68,0.16); color: #f87171;">✕ ANTES · FRICCIÓN SILENCIOSA</span>
+                <span style="font-size: 12px; color: var(--bp-dim);">Hallazgos del diagnóstico UX</span>
+              </div>
+              <div class="fake-input">1. El botón de finalizar no indicaba qué dato faltaba</div>
+              <div class="fake-input">2. Errores genéricos sin señalar el campo exacto</div>
+              <div class="fake-input">3. Alternativas de pago ocultas en menús secundarios</div>
+              <p style="font-size: 13.5px; color: var(--bp-muted); margin-top: 4px;">
+                <strong>¿Qué pasaba?</strong> La mitad de los clientes que ya habían decidido comprar abandonaban en esta última pantalla por falta de claridad.
+              </p>
+            </div>
+
+            <div class="chk-panel after">
+              <div style="display: flex; justify-content: space-between; align-items: center;">
+                <span class="mock-badge" style="background: rgba(45,212,191,0.16); color: var(--ux-mint);">✓ DESPUÉS · REDISEÑO UX</span>
+                <span style="font-size: 12px; color: var(--bp-dim);">Desktop & Móvil</span>
+              </div>
+              <div>
+                <div style="font-size: 12px; font-weight: 700; margin-bottom: 8px; color: var(--bp-muted);">Mejoras aplicadas en pantalla:</div>
+                <div class="pay-pills">
+                  <div class="pay-pill selected">✓ Opciones visibles</div>
+                  <div class="pay-pill">Meses y financiamiento</div>
+                  <div class="pay-pill">Selector en 1 clic</div>
+                </div>
+              </div>
+              <div class="fake-input" style="border-color: var(--ux-mint); color: var(--bp-fg);">✓ Aviso inmediato junto al campo exacto (vigencia o código faltante)</div>
+              <div class="inline-err">Mensaje humano y accionable: «Revisa el campo señalado para completar tu compra»</div>
+              <p style="font-size: 13px; color: var(--bp-muted);">
+                <strong>Impacto:</strong> Pasar la conversión del 1% al 2% en esta sola pantalla <strong>duplica tus ingresos</strong> con exactamente el mismo presupuesto de marketing.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SLIDE 13: CONCLUSIONES (Figma 1008:349) -->
+      <section class="slide" data-title="Conclusiones · 3 Acciones" data-block="Cierre · 1008:349">
+        <div class="slide-watermark">13 / 14 · FIGMA 1008:349</div>
+        <div class="slide-inner">
+          <div class="eyebrow" style="text-align: center;">Para aplicar el lunes en tu empresa</div>
+          <h2 class="slide-title" style="text-align: center;"><span class="text-gradient">Conclusiones</span></h2>
+          <div class="three-cols">
+            <div class="num-col-card">
+              <div class="big-n">01</div>
+              <div class="rule"></div>
+              <h3>Toma datos</h3>
+              <p>Deja de adivinar por gusto personal. Mide dónde entran tus clientes, dónde se atoran y en qué paso abandonan.</p>
+            </div>
+            <div class="num-col-card coral">
+              <div class="big-n">02</div>
+              <div class="rule"></div>
+              <h3>¡Reacciona!</h3>
+              <p>Corrige primero los puntos donde estás perdiendo ventas ya ganadas, como tu registro, tu carrito o tu pantalla de pago.</p>
+            </div>
+            <div class="num-col-card mint">
+              <div class="big-n">03</div>
+              <div class="rule"></div>
+              <h3>Planea tu ROI</h3>
+              <p>Trata el UX como una inversión financiera medible: define qué número quieres mover antes de rediseñar una sola pantalla.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SLIDE 14: CIERRE & CONTACTO (Figma 1008:364) -->
+      <section class="slide" data-title="A partir de hoy... Gracias" data-block="Contacto · 1008:364">
+        <div class="slide-watermark">14 / 14 · CONTACTO · FIGMA 1008:364</div>
+        <div class="slide-inner">
+          <div style="text-align: center;">
+            <div class="eyebrow">A partir de hoy...</div>
+            <h2 class="slide-title" style="margin-bottom: 10px;">Piensa como UX en <span class="text-gradient">todo lo que hagas</span></h2>
+            <p class="lead" style="margin: 0 auto; text-align: center;">En productos, servicios e incluso en tu día a día. ¡Muchas gracias!</p>
+          </div>
+
+          <div class="closing-grid">
+            <div class="contact-card">
+              <div>
+                <div style="display: flex; align-items: center; gap: 16px; margin-bottom: 14px;">
+                  <img src="assets/maria_de_buen_foto.png" alt="María de Buen" style="width: 72px; height: 72px; border-radius: 50%; object-fit: cover; border: 2px solid var(--ux-cyan);">
+                  <div>
+                    <div style="font-size: 19px; font-weight: 900;">BLUEPIXEL · Software that Feels Right</div>
+                    <div style="font-size: 13.5px; color: var(--ux-cyan); font-weight: 600;">María de Buen (CEO & Co-founder)</div>
+                    <div style="font-size: 13px; color: var(--bp-muted);">Ponentes de hoy: <strong>Alan Torres</strong> (Director UI) · <strong>Jorge de Buen</strong> (Director UX)</div>
+                  </div>
+                </div>
+                <p style="font-size: 13.5px; color: var(--bp-muted); line-height: 1.5;">
+                  Ayudamos a founders y empresas en México y Latinoamérica a convertir datos reales en experiencias digitales que generan retorno medible.
+                </p>
+              </div>
+              <div class="mini-stats">
+                <div class="mini-stat"><strong>#1</strong><span>UX/UI México</span></div>
+                <div class="mini-stat"><strong style="color: var(--ux-coral);">350+</strong><span>Proyectos</span></div>
+                <div class="mini-stat"><strong style="color: var(--ux-mint);">60+</strong><span>Equipo</span></div>
+                <div class="mini-stat"><strong>10+</strong><span>Años</span></div>
+              </div>
+            </div>
+
+            <div class="contact-card">
+              <div style="display: flex; flex-direction: column; gap: 9px;">
+                <div class="channel-row"><span>Redes María</span><strong>@mariadebuen (LinkedIn · IG · TikTok)</strong></div>
+                <div class="channel-row"><span>BluePixel</span><strong>@bluepixelsoftware</strong></div>
+                <div class="channel-row"><span>Sitio Web</span><strong>www.bluepixel.mx</strong></div>
+                <div class="channel-row"><span>Correo</span><strong>maria@bluepixel.mx</strong></div>
+                <div class="channel-row"><span>WhatsApp B2B</span><strong>+52 55 7481 1018</strong></div>
+              </div>
+              <div style="padding: 13px 16px; border-radius: 14px; background: linear-gradient(135deg, rgba(0,210,255,0.12), rgba(255,107,74,0.14)); border: 1px solid color-mix(in oklab, var(--ux-coral) 40%, transparent);">
+                <div style="font-family: 'JetBrains Mono', monospace; font-size: 10.5px; color: var(--ux-coral); font-weight: 700;">🗓️ PRÓXIMO WEBINAR · 20 DE NOVIEMBRE · LUMA</div>
+                <div style="font-size: 14px; font-weight: 800; margin-top: 3px;">«UX en la era agéntica: cómo mantener el criterio humano frente a los sesgos de la IA»</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+    <aside class="notes-drawer" id="notesDrawer">
+      <div class="notes-header">
+        <div>
+          <div style="font-size: 12px; font-weight: 800; color: var(--ux-cyan);">🎙️ GUION DEL ORADOR</div>
+          <div id="notesSlideTitle" style="font-size: 13px; color: var(--bp-muted); margin-top: 2px;">Lámina 01</div>
+        </div>
+        <button class="btn-action" id="btnCloseNotes">✕</button>
+      </div>
+      <div class="notes-body">
+        <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+          <span class="notes-chip" id="notesTime">⏱ 1:15 min</span>
+          <span class="notes-chip" id="notesSpeaker">Alan & Jorge</span>
+        </div>
+        <div class="notes-script" id="notesScript"></div>
+        <div class="notes-tip" id="notesTip"></div>
+      </div>
+    </aside>
+  </div>
+
+  <footer class="bottom-bar">
+    <div class="slide-counter">Lámina <strong id="currentNum">01</strong> / <span id="totalNum">14</span></div>
+    <div class="nav-dots" id="navDots"></div>
+    <div class="nav-controls">
+      <button class="btn-action" id="btnPrev">← Anterior</button>
+      <button class="btn-action" id="btnNext">Siguiente →</button>
+    </div>
+  </footer>
+</div>
+
+<div class="modal-backdrop" id="gridModal">
+  <div style="max-width: 1240px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; color: #fff;">
+    <h3 style="font-size: 20px; font-weight: 800;">Índice · Entre Founders: El ROI del UX</h3>
+    <button class="btn-action" id="btnCloseGrid">✕ Cerrar</button>
+  </div>
+  <div class="overview-grid" id="overviewGrid"></div>
+</div>
+
+<script>
+  const SPEAKER_NOTES = [
+    { time: "1:15 min", speaker: "Alan Torres & Jorge de Buen", script: "Hola a todos, qué gusto compartir entre founders. Somos Alan Torres, Director de UI, y Jorge de Buen, Director de UX en BluePixel.\n\nHoy vamos a hablar de algo muy concreto y muy financiero: cómo pasar de corazonadas a decisiones basadas en datos, y por qué el diseño de experiencia de usuario tiene uno de los retornos de inversión más altos de cualquier negocio digital.", tip: "Arranque directo de founder a founder: dejar claro desde el segundo 1 que hablaremos de negocio y números, no de teoría decorativa." },
+    { time: "1:30 min", speaker: "Jorge de Buen", script: "Levanten la mano: ¿cuántos de ustedes han abandonado una app o un sitio web justo cuando querían comprar o hacer un trámite?\n\nExacto, casi todos. Y lo más fuerte es que cuando abandonamos un sitio porque es lento, confuso o nos marca un error sin explicación, rara vez mandamos un correo para quejarnos: simplemente cerramos la pestaña y nos vamos con la competencia.", tip: "Interacción rápida con el público para activar la sala." },
+    { time: "1:45 min", speaker: "Jorge de Buen", script: "Esto no es solo una sensación, está medido. En un estudio de Forrester sobre el retorno de inversión del UX, se encontró que las empresas que invierten en diseñar bien la experiencia logran un 25% más de productividad en sus equipos y reducen a la mitad sus costos de capacitación.\n\nCuando una herramienta se entiende a la primera, ahorras dinero todos los días.", tip: "Pausar en las dos cifras grandes: +25% productividad y -50% capacitación." },
+    { time: "1:00 min", speaker: "Alan Torres", script: "Para hablar todos el mismo idioma, recordemos qué es el ROI: el Retorno de la Inversión. Es la medida más honesta de un negocio: comparas cuánto pusiste contra cuánto ganaste o ahorraste.\n\nCuando hablamos de UX en BluePixel no hablamos de gustos personales; hablamos de cuánto dinero recuperas al eliminar fricciones.", tip: "Mantener esta lámina ágil y clara." },
+    { time: "1:30 min", speaker: "Alan Torres", script: "Y aquí llega la pregunta que nos hacen casi todos los founders al principio: '¿Por qué contrataría a un especialista en UX o a una empresa si mis programadores ya saben hacer pantallas?'.\n\nLa respuesta es simple: construir algo equivocado cuesta muchísimo más caro que validarlo bien antes de empezar.", tip: "Conectar con la experiencia real de emprendedores que han pagado retrabajos." },
+    { time: "1:45 min", speaker: "Jorge de Buen", script: "¿Qué hace realmente un equipo de UX? Tres cosas muy simples y poderosas:\n\nUno: entiende el propósito y los números de tu negocio. Dos: escucha y observa el dolor real del usuario para proponer soluciones. Y tres: resuelve y mide que haya funcionado.", tip: "Recorrer 01, 02 y 03 con energía ascendente." },
+    { time: "1:45 min", speaker: "Alan Torres", script: "Hagamos unos ejercicios rápidos para verlo con nuestros propios ojos. Primero: la espera o 'loading'.\n\nLas tres opciones tardan exactamente lo mismo, pero una pantalla en blanco te hace pensar que falló todo; un círculo girando sin contexto desespera; mientras que una carga guiada que te muestra qué viene hace que la espera se sienta la mitad de larga.", tip: "Preguntar al público qué opción prefieren antes de revelar la explicación." },
+    { time: "1:30 min", speaker: "Alan Torres", script: "Segundo ejercicio: el muro de texto. A veces las empresas quieren explicar hasta la última letra pequeña en la misma pantalla.\n\nEl problema es que nadie lo lee. Cuando limpias el mensaje, dejas dos pasos claros y un botón evidente, mucha más gente completa el proceso.", tip: "Contrastar visualmente izquierda vs. derecha." },
+    { time: "1:30 min", speaker: "Alan Torres", script: "Tercer ejercicio: la jerarquía en el Paso 2. Si pones tres botones iguales o un arcoíris de colores compitiendo entre sí, haces que el usuario dude.\n\nUn solo botón principal claro guía a la persona sin esfuerzo hacia el siguiente paso.", tip: "Señalar la tercera tarjeta como estándar de claridad." },
+    { time: "1:30 min", speaker: "Jorge de Buen", script: "Cuarto ejercicio: pedir solo lo indispensable. Cada campo innecesario que agregas antes de cobrar es un obstáculo que tira tu tasa de conversión.\n\nPide solo lo necesario para entregar valor y deja todo lo demás para después de la compra.", tip: "Conectar con formularios largos que todos hemos sufrido." },
+    { time: "2:00 min", speaker: "Jorge de Buen", script: "Ahora veamos esto en dinero real con un funnel de conversión típico de comercio electrónico.\n\nDe cada 100 personas que llegan a tu sitio —por las que ya pagaste anuncios y marketing—, solo 15 agregan al carrito, 8 revisan, 2 llegan al envío y al pago... y apenas 1 termina comprando.\n\nFíjense en los últimos dos escalones: la mitad de la gente que YA decidió comprarte se cae justo en la pantalla de pago.", tip: "Enfatizar que rescatar ese último paso duplica ventas sin subir presupuesto de pauta." },
+    { time: "2:30 min", speaker: "Alan Torres & Jorge de Buen", script: "Veamos un caso real de antes y después en una pantalla de pago en computadora y celular.\n\nAntes, si el cliente olvidaba el código de seguridad de su tarjeta o ponía mal la fecha, no había una indicación clara y las opciones de pago estaban escondidas. Resultado: venta perdida.\n\nDespués del rediseño: pusimos visibles todas las formas de pago —tarjeta, PayPal, CoppelPay, Kueski Pay, Aplazo— y señalamos en el instante exactamente qué campo corregir. Un cambio puntual de UX con impacto directo en facturación.", tip: "Recorrer el antes (rojo) y después (menta) detallando los mensajes de ayuda." },
+    { time: "1:45 min", speaker: "Jorge de Buen", script: "Para cerrar con acciones concretas que se puedan llevar el lunes:\n\nUno: toma datos reales, no opiniones. Dos: reacciona rápido en los puntos donde pierdes clientes que ya querían comprarte. Y tres: planea el ROI de cada mejora antes de empezar.", tip: "Ritmo firme de cierre ejecutivo." },
+    { time: "1:30 min", speaker: "Alan Torres & Jorge de Buen", script: "A partir de hoy, los invitamos a pensar como UX en todo lo que hagan: en sus plataformas, en sus servicios e incluso en su día a día.\n\nMuchísimas gracias por acompañarnos. Aquí tienen todos los canales de BluePixel y de nuestra CEO María de Buen, además de la invitación al próximo webinar del 20 de noviembre en Luma sobre cómo mantener el criterio humano frente a la IA. ¡Abrimos espacio para sus preguntas!", tip: "Dejar la lámina en pantalla durante las preguntas y respuestas." }
+  ];
+
+  const slides = Array.from(document.querySelectorAll('.slide'));
+  const totalSlides = slides.length;
+  let currentIndex = 0;
+
+  const progressFill = document.getElementById('progressFill');
+  const currentNum = document.getElementById('currentNum');
+  const totalNum = document.getElementById('totalNum');
+  const navDots = document.getElementById('navDots');
+  const notesDrawer = document.getElementById('notesDrawer');
+  const notesSlideTitle = document.getElementById('notesSlideTitle');
+  const notesTime = document.getElementById('notesTime');
+  const notesSpeaker = document.getElementById('notesSpeaker');
+  const notesScript = document.getElementById('notesScript');
+  const notesTip = document.getElementById('notesTip');
+  const gridModal = document.getElementById('gridModal');
+  const overviewGrid = document.getElementById('overviewGrid');
+  const btnNotes = document.getElementById('btnNotes');
+  const btnTheme = document.getElementById('btnTheme');
+
+  totalNum.textContent = String(totalSlides).padStart(2, '0');
+
+  slides.forEach((slide, i) => {
+    const dot = document.createElement('button');
+    dot.className = 'nav-dot';
+    dot.title = `${String(i + 1).padStart(2, '0')} · ${slide.dataset.title}`;
+    dot.onclick = () => goToSlide(i);
+    navDots.appendChild(dot);
+
+    const card = document.createElement('button');
+    card.className = 'overview-card';
+    card.innerHTML = `<div style="font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--ux-cyan);margin-bottom:6px;">${String(i+1).padStart(2,'0')} · ${slide.dataset.block}</div><div style="font-size:14px;font-weight:700;">${slide.dataset.title}</div>`;
+    card.onclick = () => { goToSlide(i); toggleGrid(false); };
+    overviewGrid.appendChild(card);
+  });
+
+  function updateUI() {
+    slides.forEach((s, i) => {
+      s.classList.remove('active', 'prev');
+      if (i === currentIndex) s.classList.add('active');
+      else if (i < currentIndex) s.classList.add('prev');
+    });
+    progressFill.style.width = `${((currentIndex + 1) / totalSlides) * 100}%`;
+    currentNum.textContent = String(currentIndex + 1).padStart(2, '0');
+    Array.from(navDots.children).forEach((d, i) => d.classList.toggle('active', i === currentIndex));
+    Array.from(overviewGrid.children).forEach((c, i) => c.classList.toggle('active', i === currentIndex));
+
+    const n = SPEAKER_NOTES[currentIndex];
+    notesSlideTitle.textContent = `Lámina ${String(currentIndex + 1).padStart(2, '0')} · ${slides[currentIndex].dataset.title}`;
+    notesTime.textContent = `⏱ ${n.time}`;
+    notesSpeaker.textContent = `🎤 ${n.speaker}`;
+    notesScript.textContent = n.script;
+    notesTip.innerHTML = `<strong>Nota de escenario:</strong> ${n.tip}`;
+  }
+
+  function goToSlide(idx) { currentIndex = Math.max(0, Math.min(totalSlides - 1, idx)); updateUI(); }
+  function toggleNotes(force) { const o = typeof force === 'boolean' ? force : !notesDrawer.classList.contains('open'); notesDrawer.classList.toggle('open', o); btnNotes.classList.toggle('active', o); }
+  function toggleGrid(force) { const o = typeof force === 'boolean' ? force : !gridModal.classList.contains('open'); gridModal.classList.toggle('open', o); }
+  function toggleTheme() { const h = document.documentElement; const next = h.dataset.theme === 'dark' ? 'light' : 'dark'; h.dataset.theme = next; btnTheme.textContent = next === 'dark' ? '☀️ Claro (T)' : '🌙 Oscuro (T)'; }
+  function toggleFullscreen() { if (!document.fullscreenElement) document.documentElement.requestFullscreen?.(); else document.exitFullscreen?.(); }
+
+  document.getElementById('btnPrev').onclick = () => goToSlide(currentIndex - 1);
+  document.getElementById('btnNext').onclick = () => goToSlide(currentIndex + 1);
+  btnNotes.onclick = () => toggleNotes();
+  document.getElementById('btnCloseNotes').onclick = () => toggleNotes(false);
+  document.getElementById('btnGrid').onclick = () => toggleGrid();
+  document.getElementById('btnCloseGrid').onclick = () => toggleGrid(false);
+  btnTheme.onclick = toggleTheme;
+  document.getElementById('btnFullscreen').onclick = toggleFullscreen;
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') { toggleGrid(false); return; }
+    if (gridModal.classList.contains('open')) return;
+    if (e.key === 'ArrowRight' || e.key === ' ') { e.preventDefault(); goToSlide(currentIndex + 1); }
+    else if (e.key === 'ArrowLeft') { e.preventDefault(); goToSlide(currentIndex - 1); }
+    else if (e.key === 'Home') goToSlide(0);
+    else if (e.key === 'End') goToSlide(totalSlides - 1);
+    else if (e.key.toLowerCase() === 'n') toggleNotes();
+    else if (e.key.toLowerCase() === 'g') toggleGrid();
+    else if (e.key.toLowerCase() === 't') toggleTheme();
+    else if (e.key.toLowerCase() === 'f') toggleFullscreen();
+  });
+
+  updateUI();
+</script>
+</body>
+</html>

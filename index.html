@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Conferencias BluePixel · María de Buen & Equipo Directivo</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Onest:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #090e1a;
+      --surface: #121a2d;
+      --surface-2: #18233c;
+      --fg: #f8fafc;
+      --muted: #cbd5e1;
+      --dim: #94a3b8;
+      --line: rgba(255, 255, 255, 0.11);
+      --cyan: #00d2ff;
+      --coral: #ff6b4a;
+      --orange: #e75125;
+      --mint: #2dd4bf;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Onest', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: radial-gradient(circle at 20% 0%, #162342 0%, #090e1a 60%);
+      color: var(--fg);
+      min-height: 100vh;
+      padding: clamp(24px, 4vw, 54px) clamp(18px, 4vw, 48px);
+      -webkit-font-smoothing: antialiased;
+    }
+    .container { max-width: 1180px; margin: 0 auto; }
+
+    .top-brand {
+      display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 14px;
+      padding-bottom: 22px; border-bottom: 1px solid var(--line); margin-bottom: 34px;
+    }
+    .logo { display: inline-flex; align-items: center; gap: 10px; font-weight: 900; font-size: 18px; letter-spacing: 0.04em; }
+    .logo .sq { width: 18px; height: 18px; border-radius: 4px; background: linear-gradient(135deg, var(--cyan), #2563eb); }
+    .pill {
+      font-family: 'JetBrains Mono', monospace; font-size: 11px; font-weight: 600;
+      padding: 6px 12px; border-radius: 999px;
+      background: rgba(0, 210, 255, 0.12); color: var(--cyan); border: 1px solid rgba(0, 210, 255, 0.3);
+    }
+
+    .hero {
+      display: grid; grid-template-columns: 1.25fr 0.75fr; gap: 28px; align-items: center;
+      margin-bottom: 40px;
+    }
+    h1 { font-size: clamp(2rem, 4.2vw, 3.4rem); font-weight: 900; line-height: 1.06; letter-spacing: -0.03em; margin-bottom: 14px; }
+    .grad { background: linear-gradient(135deg, var(--cyan), var(--mint) 55%, var(--coral)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .lead { font-size: 16px; line-height: 1.6; color: var(--muted); max-width: 58ch; }
+
+    .maria-box {
+      background: var(--surface); border: 1px solid var(--line); border-radius: 22px; padding: 22px;
+      display: flex; flex-direction: column; gap: 16px;
+    }
+    .maria-top { display: flex; align-items: center; gap: 14px; }
+    .maria-top img { width: 68px; height: 68px; border-radius: 50%; object-fit: cover; border: 2px solid var(--cyan); }
+    .stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; }
+    .stat { background: rgba(255,255,255,0.04); border: 1px solid var(--line); border-radius: 10px; padding: 10px 6px; text-align: center; }
+    .stat strong { display: block; font-size: 17px; font-weight: 900; color: var(--cyan); }
+    .stat span { font-size: 10.5px; color: var(--dim); }
+
+    .grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 22px; margin-bottom: 36px; }
+    .deck-card {
+      background: var(--surface); border: 1px solid var(--line); border-radius: 22px;
+      padding: 26px; display: flex; flex-direction: column; justify-content: space-between; gap: 18px;
+      transition: transform 0.2s ease, border-color 0.2s ease; position: relative; overflow: hidden;
+    }
+    .deck-card:hover { transform: translateY(-4px); border-color: var(--cyan); }
+    .deck-card::before { content: ""; position: absolute; top: 0; left: 0; right: 0; height: 4px; background: linear-gradient(90deg, var(--cyan), var(--mint)); }
+    .deck-card.orange::before { background: linear-gradient(90deg, var(--orange), var(--coral)); }
+    .deck-card.coral::before { background: linear-gradient(90deg, var(--cyan), var(--coral)); }
+
+    .meta-row { display: flex; align-items: center; justify-content: space-between; gap: 10px; flex-wrap: wrap; }
+    .deck-num { font-family: 'JetBrains Mono', monospace; font-size: 11px; font-weight: 600; color: var(--cyan); text-transform: uppercase; letter-spacing: 0.08em; }
+    .deck-card.orange .deck-num { color: var(--coral); }
+    .badge-ok { font-size: 11px; font-weight: 700; padding: 3px 10px; border-radius: 999px; background: rgba(45,212,191,0.14); color: var(--mint); }
+
+    .deck-card h2 { font-size: 22px; font-weight: 800; line-height: 1.22; letter-spacing: -0.02em; }
+    .deck-card p { font-size: 14.5px; line-height: 1.55; color: var(--muted); }
+    .deck-speakers { font-size: 12.5px; color: var(--dim); }
+
+    .actions { display: flex; gap: 10px; flex-wrap: wrap; }
+    .btn {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 11px 18px; border-radius: 12px; font-weight: 700; font-size: 13.5px;
+      text-decoration: none; transition: all 0.15s ease;
+    }
+    .btn-primary { background: linear-gradient(135deg, var(--cyan), #2563eb); color: #fff; }
+    .deck-card.orange .btn-primary { background: linear-gradient(135deg, var(--coral), var(--orange)); }
+    .btn-primary:hover { filter: brightness(1.1); transform: translateY(-1px); }
+    .btn-ghost { background: rgba(255,255,255,0.05); border: 1px solid var(--line); color: var(--fg); }
+    .btn-ghost:hover { border-color: var(--cyan); }
+
+    .tips-bar {
+      background: var(--surface); border: 1px solid var(--line); border-radius: 18px; padding: 20px 24px;
+      display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px;
+    }
+    .keys { display: flex; gap: 12px; flex-wrap: wrap; font-size: 13px; color: var(--muted); }
+    kbd {
+      font-family: 'JetBrains Mono', monospace; font-size: 11px; font-weight: 600;
+      padding: 3px 7px; border-radius: 6px; background: var(--surface-2); border: 1px solid var(--line); color: var(--cyan);
+    }
+
+    footer { margin-top: 28px; text-align: center; font-size: 13px; color: var(--dim); }
+    @media (max-width: 860px) { .hero, .grid { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header class="top-brand">
+      <div class="logo"><span class="sq"></span><span>BLUEPIXEL · CONFERENCIAS & WEBINARS</span></div>
+      <span class="pill">5 Decks Interactivos en Vivo · Lenguaje Claro B2B</span>
+    </header>
+
+    <section class="hero">
+      <div>
+        <h1>Conferencias Oficiales de <span class="grad">BluePixel</span></h1>
+        <p class="lead">
+          Colección interactiva codificada directamente desde el archivo de Figma de <strong>María de Buen</strong>. Cada presentación incluye diseño fiel al original, imágenes reales, guion del orador integrado (tecla <strong>N</strong>), vista índice y modo claro/oscuro para auditorio.
+        </p>
+      </div>
+      <div class="maria-box">
+        <div class="maria-top">
+          <img src="./01_El_CX_en_la_era_de_la_IA/assets/maria_de_buen_foto.png" alt="María de Buen">
+          <div>
+            <div style="font-size: 17px; font-weight: 800;">María de Buen</div>
+            <div style="font-size: 13px; color: var(--cyan); font-weight: 600;">CEO & Co-founder · BluePixel</div>
+            <div style="font-size: 12px; color: var(--dim); margin-top: 2px;">@mariadebuen · maria@bluepixel.mx · +52 55 7481 1018</div>
+          </div>
+        </div>
+        <div class="stats">
+          <div class="stat"><strong>#1</strong><span>UX/UI MX</span></div>
+          <div class="stat"><strong style="color: var(--coral);">350+</strong><span>Proyectos</span></div>
+          <div class="stat"><strong style="color: var(--mint);">60+</strong><span>Equipo</span></div>
+          <div class="stat"><strong>10+</strong><span>Años</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="grid">
+      <!-- 05 WEBINAR ESTRELLA -->
+      <article class="deck-card" style="grid-column: 1 / -1; border-color: var(--cyan); background: radial-gradient(circle at 10% 20%, rgba(0, 210, 255, 0.08) 0%, var(--surface) 60%);">
+        <div>
+          <div class="meta-row">
+            <span class="deck-num" style="color: var(--cyan); font-weight: 800;">★ WEBINAR B2B · 13 LÁMINAS</span>
+            <span class="badge-ok" style="background: rgba(0, 210, 255, 0.15); color: var(--cyan);">● Nuevo · Enfoque Agéntico y C-Level</span>
+          </div>
+          <h2 style="margin-top: 10px; font-size: 24px;">«UX en la era agéntica»: La relevancia del diseño UX/UI para crecimiento empresarial</h2>
+          <p style="margin-top: 8px; font-size: 15px;">Adaptación del núcleo de Talent Land enfocada en tomadores de decisión. Cómo pasar de prompts y chatbots a agentes autónomos conectados a ERPs, garantizando adopción operativa con supervisión visual, RAG privado y criterio humano al mando.</p>
+          <div class="deck-speakers" style="margin-top: 10px;">Ponente: <strong>María de Buen (CEO @BluePixel)</strong> · Paleta BPDS Agéntica (Cian Eléctrico, Menta & Coral)</div>
+        </div>
+        <div class="actions">
+          <a class="btn btn-primary" href="./05_UX_en_la_Era_Agentica/UX_en_la_Era_Agentica_Deck.html">▶ Abrir Presentación de Webinar</a>
+        </div>
+      </article>
+      <!-- 01 -->
+      <article class="deck-card orange">
+        <div>
+          <div class="meta-row">
+            <span class="deck-num">Conferencia 01 · 13 Láminas</span>
+            <span class="badge-ok">● Lista para presentar</span>
+          </div>
+          <h2 style="margin-top: 10px;">El CX en la era de la IA</h2>
+          <p style="margin-top: 8px;">Cómo la inteligencia artificial está redefiniendo las reglas de la experiencia de cliente. Casos Oura Ring, Nike, Starbucks Deep Brew, Booking y Tesla, más el framework práctico de 5 pasos (LPAAO).</p>
+          <div class="deck-speakers" style="margin-top: 10px;">Ponente: <strong>María de Buen</strong> · Paleta Naranja CX & Navy</div>
+        </div>
+        <div class="actions">
+          <a class="btn btn-primary" href="./01_El_CX_en_la_era_de_la_IA/El_CX_en_la_era_de_la_IA_Deck.html">▶ Abrir Presentación</a>
+        </div>
+      </article>
+
+      <!-- 02 -->
+      <article class="deck-card coral">
+        <div>
+          <div class="meta-row">
+            <span class="deck-num">Conferencia 02 · 13 Láminas</span>
+            <span class="badge-ok">● Lista para presentar</span>
+          </div>
+          <h2 style="margin-top: 10px;">Talent Land · UX y AI: el nuevo motor del crecimiento empresarial</h2>
+          <p style="margin-top: 8px;">Por qué invertir en IA sin diseño fracasa: la paradoja de adopción, el ejercicio de Excel, la fórmula Tecnología × Adopción = Impacto, la tríada Trust–Flow–Delight y los 3 patrones de diseño.</p>
+          <div class="deck-speakers" style="margin-top: 10px;">Ponente: <strong>María de Buen</strong> · Paleta Talent Land Cian & Coral</div>
+        </div>
+        <div class="actions">
+          <a class="btn btn-primary" href="./02_Talent_Land/Talent_Land_Maria_De_Buen_Deck.html">▶ Abrir Presentación</a>
+        </div>
+      </article>
+
+      <!-- 03 -->
+      <article class="deck-card">
+        <div>
+          <div class="meta-row">
+            <span class="deck-num">Conferencia 03 · 18 Láminas</span>
+            <span class="badge-ok">● Lista para presentar</span>
+          </div>
+          <h2 style="margin-top: 10px;">Diseñadores del Futuro: UX, Tecnología y Diseño de Empresas</h2>
+          <p style="margin-top: 8px;">Los 10 años y 10 retos reales de BluePixel (2015–2025): cómo usar el pensamiento de diseño para construir una empresa, afrontar la era de la IA y dominar las 4 habilidades emergentes.</p>
+          <div class="deck-speakers" style="margin-top: 10px;">Ponentes: <strong>María de Buen & Alan Torres</strong> · Figma 1197:2</div>
+        </div>
+        <div class="actions">
+          <a class="btn btn-primary" href="./03_Disenadores_del_Futuro/Disenadores_del_Futuro_Deck.html">▶ Abrir Presentación</a>
+        </div>
+      </article>
+
+      <!-- 04 -->
+      <article class="deck-card">
+        <div>
+          <div class="meta-row">
+            <span class="deck-num">Conferencia 04 · 14 Láminas</span>
+            <span class="badge-ok">● Lista para presentar</span>
+          </div>
+          <h2 style="margin-top: 10px;">Entre Founders: De datos a decisiones, El ROI del UX</h2>
+          <p style="margin-top: 8px;">Evidencia Forrester (+25% productividad, -50% capacitación), 4 ejercicios prácticos de fricción en vivo, embudo real de conversión y caso antes vs. después en pantalla de pago.</p>
+          <div class="deck-speakers" style="margin-top: 10px;">Ponentes: <strong>Alan Torres & Jorge de Buen</strong> · Figma 1008:5</div>
+        </div>
+        <div class="actions">
+          <a class="btn btn-primary" href="./04_Entre_Founders_ROI_del_UX/Entre_Founders_ROI_del_UX_Deck.html">▶ Abrir Presentación</a>
+        </div>
+      </article>
+    </section>
+
+    <section class="tips-bar">
+      <div>
+        <strong style="font-size: 14px;">Atajos dentro de cada presentación</strong>
+        <div style="font-size: 12.5px; color: var(--dim); margin-top: 2px;">Listas para compartir en pantalla o ensayar con guion en vivo</div>
+      </div>
+      <div class="keys">
+        <span><kbd>←</kbd> <kbd>→</kbd> Avanzar</span>
+        <span><kbd>N</kbd> Ver Guion</span>
+        <span><kbd>G</kbd> Índice</span>
+        <span><kbd>T</kbd> Claro / Oscuro</span>
+        <span><kbd>F</kbd> Pantalla completa</span>
+      </div>
+    </section>
+
+    <footer>
+      BLUEPIXEL · Software that Feels Right · @bluepixelsoftware · www.bluepixel.mx · Alineado al Webinar Luma del 20 de Noviembre 2026
+    </footer>
+  </div>
+</body>
+</html>
